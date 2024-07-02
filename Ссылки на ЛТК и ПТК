@@ -1,6 +1,0 @@
-https://m9app.online/tech-map/LTK.php?token=wMHaF1LPS8HKtZdF-MP9UmtYezVyCwOITIiopa7RLU0&user_id=112189&product_code=AAA-Test%231   -  ЛТК
-https://m9app.online/tech-map/PTK.php?token=wMHaF1LPS8HKtZdF-MP9UmtYezVyCwOITIiopa7RLU0&user_id=112189&product_code=AAA-Test%231   -  ПТК
-
-нужно организовать локальный сервер и репоиторий, после чего скорректировать ссылку
-
-примерно должно быть так: https://localhost/tech-map/PTK.php?token=wMHaF1LPS8HKtZdF-MP9UmtYezVyCwOITIiopa7RLU0&user_id=112189&product_code=AAA-Test%231
