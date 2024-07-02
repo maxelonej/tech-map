@@ -1,0 +1,602 @@
+.m9-container {
+    justify-content: center; /* Центрирование по горизонтали */
+    padding: 20px; /* Внутренний отступ для содержимого контейнера */
+    margin: 20px 20px 20px 20px; /* Внешний отступ сверху и снизу 20px, слева и справа 30px */
+    border-radius: 10px; /* Скругление углов контейнера */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для создания эффекта глубины */
+    background: #f8f9fa;
+}
+
+.m9-container_wrapperContainer { /* Контейнер для форм Взвесил/Посчитал, Дата/Время, Подпись, Заказано */
+    justify-content: center; /* Центрирование по горизонтали */
+    padding: 20px; /* Внутренний отступ для содержимого контейнера */
+    border-radius: 20px; /* Скругление углов контейнера */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2); /* Увеличение тени */
+    background-color: #c7d2dd; /* Добавляем цвет фона */
+}
+
+.m9-container-margin {
+    margin: 20px 20px 20px 20px; /* Внешний отступ сверху и снизу 20px, слева и справа 30px */
+}
+
+.m9-container-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    height: auto;
+    color: #000000; /* Изменение цвета текста на белый для лучшей контрастности */
+    word-wrap: break-word;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%); /* Градиентный фон */
+    background-clip: border-box;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2); /* Увеличение тени */
+    transition: all 0.3s ease; /* Добавление плавной анимации */
+    font-family: 'Roboto', sans-serif; /* Изменение шрифта */
+}
+
+.m9-container-card-flex {
+    position: relative;
+    display: flex;
+    flex-direction: row; /* Горизонтальное расположение элементов */
+    flex-wrap: wrap; /* Переход элементов на новую строку при нехватке места */
+    min-width: 300px;
+    height: auto;
+    color: #000000;
+    word-wrap: break-word;
+    /* background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%); */
+    background-clip: border-box;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    /* border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.2); */
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    align-items: center; /* Выравнивание элементов по центру по вертикали */
+}
+
+.m9-container-card.collapsed {
+    max-height: 100px; /* Задайте желаемую максимальную высоту */
+    overflow: hidden; /* Скрывает содержимое, выходящее за пределы максимальной высоты */
+}
+
+.m9-table {
+    --bs-table-color-type: initial;
+    --bs-table-bg-type: initial;
+    --bs-table-color-state: initial;
+    --bs-table-bg-state: initial;
+    --bs-table-color: var(--bs-emphasis-color);
+    --bs-table-bg: var(--bs-body-bg);
+    --bs-table-border-color: #e0e0e0; /* Мягкий цвет границы */
+    --bs-table-accent-bg: transparent;
+    --bs-table-striped-color: var(--bs-emphasis-color);
+    --bs-table-striped-bg: rgba(var(--bs-emphasis-color-rgb), 0.05);
+    --bs-table-active-color: var(--bs-emphasis-color);
+    --bs-table-active-bg: rgba(var(--bs-emphasis-color-rgb), 0.1);
+    --bs-table-hover-color: var(--bs-emphasis-color);
+    --bs-table-hover-bg: rgba(var(--bs-emphasis-color-rgb), 0.075);
+    width: 100%;
+    overflow: hidden;
+    /* margin-bottom: 1rem; */
+    vertical-align: top;
+    border-color: var(--bs-table-border-color);
+    border-radius: 20px;
+    border-collapse: separate;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Мягкая тень */
+    background: #f8f9fa; /* Нежный цвет фона */
+    transition: all 0.3s ease;
+    border: 1px solid var(--bs-table-border-color); /* Тонкая граница */
+    /* border-collapse: separate; */
+    border-spacing: 0;
+}
+
+.m9-table th {
+    white-space: nowrap; /* Предотвращает перенос текста */
+}
+
+.m9-table th, .m9-table td {
+    padding: 20px;
+    text-align: left;
+    border: 1px solid var(--bs-table-border-color); /* Тонкая граница */
+    color: #333; /* Темный цвет текста */
+}
+
+.m9-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Нежный цвет фона для чередующихся строк */
+}
+
+.m9-table tbody tr:hover {
+    background-color: #e9ecef; /* Нежный цвет фона при наведении */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Мягкая тень при наведении */
+}
+
+.m9-input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem; /* Увеличиваем внутренний отступ для лучшего комфорта */
+    font-size: 14px; /* Увеличиваем размер шрифта */
+    font-weight: 500; /* Увеличиваем вес шрифта для более выразительного текста */
+    line-height: 1.5;
+    height: calc(2.5em + .75rem + 2px);
+    color: #333; /* Темный цвет текста для лучшей читаемости */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fbfbfb; /* Светлый цвет фона */
+    background-clip: padding-box;
+    border: 1px solid #ced4da; /* Тонкая граница */
+    border-radius: 15px; /* Увеличиваем скругление углов */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Увеличиваем тень для создания эффекта глубины */
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out; /* Добавляем анимацию для фона */
+    outline: none; /* Удаляем стандартное выделение при фокусе */
+}
+
+.m9-input:focus {
+    border-color: #80bdff; /* Цвет границы при фокусе */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Тень при фокусе */
+    background-color: #fff; /* Белый фон при фокусе */
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out; /* Добавляем анимацию для фона */
+}
+
+.m9-input:disabled {
+    background-color: #e0e0e0; /* Темный цвет фона для заблокированных форм */
+    color: #000000; /* Белый цвет текста для лучшей читаемости на темном фоне */
+}
+
+/* Стилизация контейнера выпадающего списка */
+.m9-select {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f8f9fa; /* Нежный цвет фона */
+    border: 1px solid #ced4da; /* Тонкая граница */
+    border-radius: 15px; /* Скругление углов */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Мягкая тень */
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out;
+    outline: none;
+    appearance: none; /* Удаление стандартного внешнего вида */
+    -webkit-appearance: none; /* Для совместимости с браузерами на базе WebKit */
+    -moz-appearance: none; /* Для совместимости с браузерами на базе Mozilla */
+}
+
+/* Стилизация выпадающего списка при фокусе */
+.m9-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    background-color: #fff;
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.m9-select:disabled {
+    background-color: #e0e0e0; /* Темный цвет фона для заблокированных форм */
+    color: #000000; /* Белый цвет текста для лучшей читаемости на темном фоне */
+}
+
+/* .embossed-heavy {
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 
+        inset 0 2px 3px rgba(255,255,255,0.3), 
+        inset 0 -2px 3px rgba(0,0,0,0.3),
+        0 1px 1px rgba(255,255,255,0.9);
+} */
+
+.m9-input-line {
+    display: block;
+    border: none;
+    color: #333;
+    background: transparent;
+    border-bottom: 2px solid #ced4da; /* Увеличиваем толщину линии */
+    padding: 10px 2px 0 2px; /* Увеличиваем внутренний отступ для лучшего комфорта */
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out; /* Добавляем анимацию для изменения цвета границы */
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.02); /* Добавляем легкую тень для создания эффекта глубины */
+}
+
+.m9-input-line:focus {
+    outline: none;
+    border-bottom: 2px solid #51CBEE; /* Изменяем цвет линии при фокусе */
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.07); /* Увеличиваем тень при фокусе */
+}
+
+.m9-input-mac {  /* форма в mac-стиле */
+    display: block;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 8px;
+    color: #333;
+    box-shadow: 
+        inset 0 2px 0 rgba(0,0,0,.2), 
+        0 0 4px rgba(0,0,0,0.1);
+}
+
+.m9-input-mac:focus {
+    outline: none;
+    box-shadow: 
+        inset 0 2px 0 rgba(0,0,0,.2), 
+        0 0 4px rgba(0,0,0,0.1), 
+        0 0 5px 1px #51CBEE;
+}
+
+.m9-btn-custom {
+    background-color: #007bff; /* Цвет фона кнопки */
+    border-color: #007bff; /* Цвет границы кнопки */
+    color: #fff; /* Цвет текста кнопки */
+    font-weight: 600; /* Жирный текст */
+    padding: 0.5rem 1rem; /* Внутренний отступ кнопки */
+    font-size: 1rem; /* Размер шрифта */
+    border-radius: 20px; /* Скругление углов кнопки */
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Анимация для изменения цвета */
+}
+
+.m9-btn-custom:hover {
+    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+    border-color: #0056b3; /* Цвет границы кнопки при наведении */
+    color: #fff; /* Цвет текста кнопки при наведении */
+}
+
+.m9-btn-custom:focus {
+    outline: none; /* Удаление стандартного выделения при фокусе */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Тень при фокусе */
+}
+
+.m9-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem; /* Увеличиваем внутренний отступ для лучшего комфорта */
+    font-size: 14px; /* Увеличиваем размер шрифта */
+    font-weight: 600; /* Увеличиваем вес шрифта для более выразительного текста */
+    line-height: 1.5;
+    color: #333; /* Темный цвет текста для лучшей читаемости */
+    background: linear-gradient(135deg, #f0f0f0 0%, #d1d1d1 100%); /* Градиентный фон серо-синего цвета */
+    background-clip: padding-box;
+    border: 1px solid #ced4da; /* Тонкая граница серо-синего цвета */
+    border-radius: 20px; /* Увеличиваем скругление углов для более округлого вида */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Увеличиваем тень для создания эффекта глубины */
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out; /* Добавляем анимацию для фона */
+    outline: none; /* Удаляем стандартное выделение при фокусе */
+    cursor: pointer; /* Изменение курсора на указатель при наведении */
+}
+
+.m9-btn:focus {
+    border-color: #80bdff; /* Цвет границы при фокусе */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Тень при фокусе */
+    background: linear-gradient(135deg, #d1d1d1 0%, #f0f0f0 100%); /* Градиентный фон при фокусе */
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out; /* Добавляем анимацию для фона */
+}
+
+.m9-btn:disabled {
+    background: linear-gradient(135deg, #e0e0e0 0%, #d1e7f8 100%); /* Градиентный фон для заблокированных форм */
+    color: #000000; /* Белый цвет текста для лучшей читаемости на темном фоне */
+    cursor: not-allowed; /* Изменение курсора на "запрещено" при отключении кнопки */
+}
+
+.m9-btn:hover {
+    background: linear-gradient(135deg, #d1d1d1 0%, #f0f0f0 100%); /* Градиентный фон кнопки при наведении */
+    border-color: #7c9ec2; /* Цвет границы кнопки при наведении */
+    color: #333; /* Цвет текста кнопки при наведении */
+}
+
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+
+/* 16 */
+.btn-16 {
+    border: none;
+    color: #000;
+}
+
+/* 16 */
+.btn-16 {
+    border: none;
+    color: #000;
+}
+
+.btn-16:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    box-shadow:
+        -7px -7px 20px 0px #fff9,
+        -4px -4px 5px 0px #fff9,
+        7px 7px 20px 0px #0002,
+        4px 4px 5px 0px #0001;
+    transition: all 0.3s ease;
+}
+
+.btn-16:hover {
+    color: #000;
+}
+
+.btn-16:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+}
+
+.btn-16:active {
+    top: 2px;
+}
+
+.m9-navigation-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem; /* Увеличиваем внутренний отступ для лучшего комфорта */
+    font-size: 14px; /* Увеличиваем размер шрифта */
+    font-weight: 600; /* Увеличиваем вес шрифта для более выразительного текста */
+    line-height: 1.5;
+    color: #333; /* Темный цвет текста для лучшей читаемости */
+    background: linear-gradient(135deg, #f0f0f0 0%, #d1d1d1 100%); /* Градиентный фон серо-синего цвета */
+    background-clip: padding-box;
+    border: 1px solid #ced4da; /* Тонкая граница серо-синего цвета */
+    border-radius: 20px; /* Увеличиваем скругление углов для более округлого вида */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Увеличиваем тень для создания эффекта глубины */
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out; /* Добавляем анимацию для фона */
+    outline: none; /* Удаляем стандартное выделение при фокусе */
+    cursor: pointer; /* Изменение курсора на указатель при наведении */
+    margin: 0 10px; /* Отступы слева и справа между кнопками */
+}
+
+.m9-navigation-btn:hover {
+    background: linear-gradient(135deg, #d1d1d1 0%, #f0f0f0 100%); /* Градиентный фон кнопки при наведении */
+    border-color: #7c9ec2; /* Цвет границы кнопки при наведении */
+    color: #333; /* Цвет текста кнопки при наведении */
+}
+
+.m9-navigation-btn:focus {
+    border-color: #80bdff; /* Цвет границы при фокусе */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Тень при фокусе */
+    background: linear-gradient(135deg, #d1d1d1 0%, #f0f0f0 100%); /* Градиентный фон при фокусе */
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out; /* Добавляем анимацию для фона */
+}
+
+.m9-checkbox-gradient.style-h {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.m9-checkbox-gradient.style-h input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.m9-checkbox-gradient.style-h input:checked ~ .checkbox__checkmark {
+    background-color: #98e5eb;
+}
+.m9-checkbox-gradient.style-h input:checked ~ .checkbox__checkmark:after {
+    opacity: 1;
+    top: -3px;
+}
+.m9-checkbox-gradient.style-h input:checked ~ .checkbox__body {
+    background-position: 0 0;
+    color: #fff;
+}
+.m9-checkbox-gradient.style-h:hover input ~ .checkbox__checkmark {
+    background-color: #98e5eb;
+}
+.m9-checkbox-gradient.style-h:hover input:checked ~ .checkbox__checkmark {
+    background-color: #98e5eb;
+}
+.m9-checkbox-gradient.style-h:hover .checkbox__body {
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+}
+.m9-checkbox-gradient.style-h .checkbox__checkmark {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    height: 22px;
+    width: 22px;
+    background-color: #98e5eb;
+    transition: background-color 0.25s ease;
+    border-radius: 4px;
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.1), inset -2px -2px 4px rgba(255,255,255,0.4);
+}
+.m9-checkbox-gradient.style-h .checkbox__checkmark:after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: -15px;
+    width: 10px;
+    height: 20px;
+    border: solid #fff;
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.25s ease, top 0.25s ease;
+}
+
+.m9-checkbox-gradient.style-h.checkbox__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    line-height: 1.4;
+    font-size: 16px;
+    transition: font-weight 0.25s ease;
+    font-weight: bold;
+    color: #333;
+    background: linear-gradient(45deg, #00c3ff 0%, #98e5eb 50%, #98e5eb 50%, #98e5eb 100%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    padding: 15px;
+    /* padding-left: 52px; */
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    transition: box-shadow 0.25s ease, background 1s ease, color 0.25s ease;
+    width: fit-content; /* Устанавливает ширину контейнера равной содержимому */
+    margin: auto; /* Центрирует контейнер относительно его родителя */
+}
+
+/* Анимация для плавного исчезновения */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Стили для анимации */
+@keyframes savingAnimation {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.saving-indicator {
+    position: fixed; /* Фиксированное позиционирование */
+    top: 20px; /* Немного ниже верхнего края экрана */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Смещение на половину ширины элемента влево, чтобы центрировать */
+    padding: 15px 20px; /* Увеличиваем внутренний отступ */
+    background-color: #4CAF50; /* Зеленый фон с прозрачностью */
+    color: #fff; /* Белый текст */
+    border-radius: 20px; /* Скругление углов */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для создания эффекта глубины */
+    animation: savingAnimation 1s infinite; /* Анимация */
+    display: none; /* По умолчанию скрыт */
+    z-index: 1000; /* Убедитесь, что индикатор будет виден поверх других элементов */
+    font-size: 16px; /* Увеличиваем размер шрифта */
+    font-weight: bold; /* Жирный текст */
+}
+
+.m9-navigation-menu {
+    display: flex;
+    justify-content: space-between; /* Разделяет элементы по горизонтали */
+    align-items: center;
+    background-color: #d6d6d6; /* Нежный цвет фона */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Мягкая тень */
+    margin: 20px; /* Отступы сверху и снизу */
+}
+
+.m9-navigation-menu-icon {
+    display: inline-block; /* Позволяет использовать margin и padding */
+    width: 30px !important;
+    height: 30px !important;
+    margin-left: 30px; /* Отступ справа от иконки */
+    cursor: pointer; /* Изменяем курсор на указатель при наведении */
+    fill: #333; /* Цвет иконки */
+    transition: fill 0.3s ease; /* Анимация изменения цвета */
+}
+
+.m9-navigation-menu-icon:hover {
+    fill: #007bff; /* Цвет иконки при наведении */
+}
+
+/* ---------------------Стиль подчеркивания ссылки при наведении------------------------- */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    background: #fff;
+  }
+  .wrapper {
+    min-height: 100vh; /* растягиваем по высоте браузера */
+    width: 100%; /* растягиваем по ширине браузера */
+    display: grid; /* для центрирования дочерних ссылок */
+    place-items: center; /* центрируем дочерние ссылки */
+  }
+  a.underline {
+    font-size: 6vw; /* размер шрифта относительно ширины браузера */
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Lora', serif;
+    color: #e76f51;
+    position: relative;
+    transition: color 0.8s, text-shadow 0.8s; /* для плавного изменения цвета и тени(свечения) ссылки */
+  }
+  a.underline:after {
+    content: '';
+    display: block;
+    position: absolute; /* позиционируем относительно ссылки */
+    bottom: 15%;
+    background: #2a9d8f;
+    height: 20%; /* высота относительно высоты ссылки */
+    width: 0%; /* изначально ширина полосы подчеркивания равна 0% */
+    z-index: -1; /* ставим полосу подчеркивания позади текста ссылки */
+    transition: width 0.8s, opacity 0.8s, box-shadow 0.8s; /* для плавного изменения ширины, прозрачности, тени(свечения) */
+    border-radius: 100px;
+    opacity: 0; /* изначально полоса полностью прозрачна */
+    box-shadow: 0 0 16px rgba(42,157,143,0);
+  }
+  a.underline:hover {
+    color: #f4a261;
+    text-shadow: 0 0 16px rgba(244,162,97,0.64);
+  }
+  
+  /* При наведении на ссылку, псевдоэлемент :after становится непрозрачным и шириной 100% относительно текста ссылки*/
+  a.underline:hover:after {
+    width: 100%;
+    opacity: 1;
+    box-shadow: 0 0 16px rgba(42,157,143,0.88);
+  }
+  
+  /* Underline A */
+  
+  /* В первом случае :after позиционируем к правому краю текста ссылки */
+  a.underline_a:after {
+    right: 0;
+  }
+  /* при наведении позиционируем к левому краю */
+  a.underline_a:hover:after {
+    right: auto;
+    left: 0;
+  }
+  
+  /* Underline B */
+  
+  /* В втором случае :after позиционируем к левому краю текста ссылки */
+  a.underline_b:after {
+    left: 0;
+  }
+  /* при наведении позиционируем к правому краю */
+  a.underline_b:hover:after {
+    left: auto;
+    right: 0;
+  }
+  
+  /* Underline C */
+  
+  /* В третьем случае :after центрируем */
+  a.underline_c:after {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+  

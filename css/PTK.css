@@ -1,0 +1,275 @@
+.width-200 {
+    width: 200px;
+}
+
+.margin-right-200 {
+    margin-right: 200px;
+}
+
+.versiontk {
+    width: 230px;
+}
+
+.global_weight {
+    width:  100px;
+}
+
+.full_weight {
+    width:  80px;
+}
+
+.recipeButton-style {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+/* .assembleButton-style {
+    position: absolute;
+    right: 15px;
+    top: 70px;
+} */
+
+.phaseBlockHeaderInput-style {
+    width: 50px;
+    margin-left: 10px;
+}
+
+.deleted {
+    border-color: red !important;
+}
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
+.modal-dialog-centered {
+    max-width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.modal-content-full-height {
+    height: 100vh;
+}
+
+.version-select {
+    width: 280px; /* Установка фиксированной ширины */
+}
+
+.num-phase-select {
+    width: 70px; /* Fixed width for the select element */
+    float: 'left';
+}
+
+.select-container {
+    display: flex;
+    align-items: center;
+    justify-content: start; /* Добавлено для выравнивания элементов в начале контейнера */
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+}
+
+.add-batch-button {
+    margin-left: 10px; /* Отступ слева для кнопки "+" */
+}
+
+.btn-circle-green {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Делаем кнопку круглой */
+    width: 40px; /* Задаем ширину кнопки */
+    height: 40px; /* Задаем высоту кнопки */
+    background-color: #ffffff; /* Зеленый цвет фона */
+    color: white; /* Белый цвет текста */
+    border: none; /* Убираем границу */
+    cursor: pointer; /* Курсор в виде указателя */
+}
+
+.selectize-dropdown {
+    background-color: white !important; /* Устанавливаем фон выпадающего списка белым */
+}
+
+/* Стиль для строки при начале перетаскивания */
+.dragging {
+    opacity: 0.75;
+    background-color: #e1f5fe; /* Светло-голубой фон */
+    border: 2px dashed #29b6f6; /* Пунктирная рамка синего цвета */
+}
+
+/* Стиль для подсветки целевой строки */
+.drag-over {
+    background-color: #ffecb3; /* Светло-желтый фон */
+    border-top: 2px solid #ff9800; /* Желтая граница сверху */
+    border-bottom: 2px solid #ff9800; /* Желтая граница снизу */
+}
+
+.form-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px; /* Добавим немного отступа снизу */
+}
+
+.form-container label {
+    margin-right: 5px; /* Добавим немного отступа между надписью и полем ввода */
+}
+
+.table-container {
+    width:   100%; /* Устанавливаем ширину контейнера таблицы равной ширине родительского элемента */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+table {
+    width:   100%; /* Устанавливаем ширину таблицы равной ширине родительского контейнера */
+    border-collapse: collapse;
+}
+
+td {
+    width:   50%; /* Устанавливаем ширину ячейки равной половине ширины таблицы */
+    padding:   10px;
+    box-sizing: border-box;
+    text-align: center; /* Выравниваем содержимое ячейки по центру */
+    position: relative; /* Позиционирование для кнопки удаления */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:   30px; /* Устанавливаем ширину контейнера кнопки */
+    height:   30px; /* Устанавливаем высоту контейнера кнопки */
+    margin:  0 auto; /* Центрируем контейнер кнопки по горизонтали */
+}
+
+.image-button {
+    width:   100%;
+    height:   100%;
+    background: none;
+    border: none;
+    padding:   0;
+    cursor: pointer;
+}
+
+.button-image {
+    width:   100%;
+    height:   100%;
+    object-fit: cover;
+}
+
+.image-upload-input {
+    display: none; /* Скрываем input */
+}
+
+.uploaded-image {
+    max-width:  60%; /* Устанавливаем максимальную ширину изображения равной ширине td */
+    max-height:  60%; /* Устанавливаем максимальную высоту изображения равной высоте td */
+    object-fit: contain; /* Обрезаем изображение, чтобы оно помещалось в контейнер */
+}
+
+.delete-button {
+    position: absolute;
+    top:   0;
+    right:   0;
+    background: none; /* Убираем фон кнопки */
+    border: none; /* Убираем рамку кнопки */
+    cursor: pointer;
+    display: none; /* Скрываем кнопку удаления */
+}
+
+.delete-button-image {
+    width:   30px;
+    height:   30px;
+    object-fit: cover;
+}
+
+#adress {
+    width: 100px; /* Устанавливаем ширину элемента */
+    margin-left: 20px;
+}
+
+#loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Чтобы занавес был поверх всех других элементов */
+}
+
+
+/*---------------------------Кнопка Добавить компонент------------------------*/
+
+#addButton {
+    padding: 0; /* Убираем внутренние отступы */
+    border: none; /* Убираем границу */
+    background: none; /* Убираем фон */
+    cursor: pointer; /* Курсор в виде указателя */
+    margin-left: 10px;
+
+}
+
+#addButton img {
+    width: 30px; /* Ширина изображения */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    transition: opacity 0.3s ease; /* Плавное изменение прозрачности */
+}
+
+#addButton:hover img {
+    opacity: 0; /* Делаем изображение полностью прозрачным при наведении */
+}
+
+#addButton:hover {
+    background: url('icons/icons8-add-64 (1).png') no-repeat center;
+    background-size: 30px; /* Размер гифки */
+}
+
+/*---------------------Конец кнопки Добавить компонент------------------------*/
+
+/*---------------------------Кнопка Добавить фазу----------------------------------------*/
+
+#addPhaseButton {
+    padding: 0; /* Убираем внутренние отступы */
+    border: none; /* Убираем границу */
+    background: none; /* Убираем фон */
+    cursor: pointer; /* Курсор в виде указателя */
+    display: block; /* Элемент блочного типа */
+    margin: 30px auto; /* Выравнивание по центру */
+}
+
+#addPhaseButton img {
+    width: 40px; /* Ширина изображения */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    transition: opacity 0.3s ease; /* Плавное изменение прозрачности */
+}
+
+#addPhaseButton:hover img {
+    opacity: 0; /* Делаем изображение полностью прозрачным при наведении */
+}
+
+#addPhaseButton:hover {
+    background: url('icons/icons8-add-new-96 (1).png') no-repeat center;
+    background-size: 40px; /* Размер гифки */
+}
+
+/*---------------------------Конец кнопки "Добавить фазу"---------------------------------------*/
+
+/*---------------------------Форма с суммой процентов-------------------------------------------*/
+
+
+
+/*---------------------------Конец формы с суммой процентов-------------------------------------*/
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap; /* This allows the items to wrap onto multiple lines if needed */
+    gap: 10px; /* Adjust the gap between items as needed */
+}
