@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="https://m9app.online/9x/tech-map/css/LTK.css?15"> -->
     <link rel="stylesheet" type="text/css" href="css/m9-style.css?v=<?php echo $currentTime; ?>">
@@ -55,7 +57,7 @@
     <div id="modal" class="modal" style="display: none; width: 100vw; height: 100vh;"></div>
     
     <div class="flex-container">
-    <select class="m9-input versiontk version-select" id="versionSelect" style="margin-left: 20px ;"></select>
+    <select class="m9-input versiontk version-select" id="versionSelect"></select>
 
     <input class="m9-input global_weight" id="global_weight" title="Общий вес на продукт" type="number">
 
