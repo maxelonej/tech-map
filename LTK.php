@@ -15,10 +15,9 @@ $currentTime = time();
 </head>
 
 <body data-page="LTK">
-  <!-- todo -->
-  <!-- <div id="loadingScreen" style="display:none;">
+  <div id="loadingScreen" style="display:none;">
     <img src="icons/37 (1).gif" alt="Загрузка" style="width: 80px; height: 80px;">
-</div> -->
+</div>
   <div id="headerMenuContainer"></div>
   <div id="headerContainer"></div>
   <div class="modal fade m9-container" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel"
