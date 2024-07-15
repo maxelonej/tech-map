@@ -600,7 +600,7 @@ function createPhaseDataBlock(
 
   // Создаем изображение для свертывания
   let collapseImage = document.createElement("img");
-  collapseImage.src = "../icons/icons8-развернуть-96.png";
+  collapseImage.src = "./icons/icons8-развернуть-96.png";
   collapseImage.alt = "Expand";
   collapseImage.style.width = "30px";
   collapseImage.style.height = "30px";
@@ -628,8 +628,8 @@ function createPhaseDataBlock(
   function toggleCollapse() {
     let isCollapsed = collapseContainer.classList.contains("show");
     collapseImage.src = isCollapsed
-      ? "../icons/icons8-развернуть-96.png"
-      : "../icons/icons8-свернуть-96.png";
+      ? "./icons/icons8-развернуть-96.png"
+      : "./icons/icons8-свернуть-96.png";
     collapseContainer.classList.toggle("show");
   }
 
@@ -664,7 +664,7 @@ function createPhaseDataBlock(
   labels1.forEach((labelText) => {
     let formGroup = document.createElement("div");
     formGroup.className =
-      "form-group d-flex justify-content-between w-100 flex-wrap gap-2";
+      "form-group d-flex flex-column justify-content-between w-100 flex-wrap gap-2";
     let label = document.createElement("label");
     label.textContent = labelText;
 
@@ -791,7 +791,7 @@ function createPhaseDataBlock(
   labels2.forEach((labelText) => {
     let formGroup = document.createElement("div");
     formGroup.className =
-      "form-group d-flex justify-content-between w-100 flex-wrap gap-2";
+      "form-group d-flex flex-column justify-content-between w-100 flex-wrap gap-2";
     let label = document.createElement("label");
     label.textContent = labelText;
 
@@ -923,8 +923,8 @@ function createPhaseDataBlock(
   collapseImage.addEventListener("click", function () {
     let isCollapsed = collapseContainer.classList.contains("show");
     collapseImage.innerHTML = isCollapsed
-      ? '<img src="../icons/icons8-развернуть-96.png" alt="Expand" style="width: 30px; height: 30px;">'
-      : '<img src="../icons/icons8-свернуть-96.png" alt="Collapse" style="width: 30px; height: 30px;">';
+      ? '<img src="./icons/icons8-развернуть-96.png" alt="Expand" style="width: 30px; height: 30px;">'
+      : '<img src="./icons/icons8-свернуть-96.png" alt="Collapse" style="width: 30px; height: 30px;">';
   });
 
   return phaseDataBlock;
@@ -1014,7 +1014,7 @@ function createComponentsTable(
 
   let addButton = document.createElement("button");
   let imgElement = document.createElement("img");
-  imgElement.src = "../icons/icons8-add-64.png";
+  imgElement.src = "./icons/icons8-add-64.png";
   imgElement.alt = "Добавить компонент";
   addButton.appendChild(imgElement);
   addButton.className = "button-image button-margin block-ptk";
@@ -1626,7 +1626,7 @@ function addNewRowToTable(table, compDataFull, componentGood, selectsData) {
     };
     let deleteImage = document.createElement("img");
     deleteImage.className = "block-ptk";
-    deleteImage.setAttribute("src", "../icons/icons8-cross-mark-96.png");
+    deleteImage.setAttribute("src", "./icons/icons8-cross-mark-96.png");
     deleteImage.setAttribute("width", "25");
     deleteImage.setAttribute("height", "25");
     deleteImage.setAttribute("alt", "Удалить");
@@ -1749,7 +1749,7 @@ function createTableFromData(
         newRow.remove();
       };
       let deleteImage = document.createElement("img");
-      deleteImage.setAttribute("src", "../icons/icons8-cross-mark-96.png");
+      deleteImage.setAttribute("src", "./icons/icons8-cross-mark-96.png");
       deleteImage.setAttribute("width", "25");
       deleteImage.setAttribute("height", "25");
       deleteImage.setAttribute("alt", "Удалить");
@@ -1787,12 +1787,12 @@ function createMixingModeBlock(
   // Создаем контейнер для кнопки и названия
   let headerContainer = document.createElement("div");
   headerContainer.className =
-    "d-flex justify-content-between align-items-center mb-3";
+    "d-flex justify-content-between align-items-center";
   headerContainer.style.cursor = "pointer"; // Изменяем курсор при наведении
 
   // Создаем изображение для свертывания
   let collapseImage = document.createElement("img");
-  collapseImage.src = "../icons/icons8-развернуть-96.png";
+  collapseImage.src = "./icons/icons8-развернуть-96.png";
   collapseImage.alt = "Expand";
   collapseImage.style.width = "30px";
   collapseImage.style.height = "30px";
@@ -1820,8 +1820,8 @@ function createMixingModeBlock(
   function toggleCollapse() {
     let isCollapsed = collapseContainer.classList.contains("show");
     collapseImage.src = isCollapsed
-      ? "../icons/icons8-развернуть-96.png"
-      : "../icons/icons8-свернуть-96.png";
+      ? "./icons/icons8-развернуть-96.png"
+      : "./icons/icons8-свернуть-96.png";
     collapseContainer.classList.toggle("show");
   }
 
@@ -1857,7 +1857,7 @@ function createMixingModeBlock(
   labels1.forEach((labelText) => {
     let formGroup = document.createElement("div");
     formGroup.className =
-      "form-group d-flex justify-content-between w-100 flex-wrap gap-2";
+      "form-group d-flex flex-column justify-content-between w-100 flex-wrap gap-2";
     let label = document.createElement("label");
     label.textContent = labelText;
 
@@ -1948,7 +1948,7 @@ function createMixingModeBlock(
   labels2.forEach((labelText) => {
     let formGroup = document.createElement("div");
     formGroup.className =
-      "form-group d-flex justify-content-between w-100 flex-wrap gap-2";
+      "form-group d-flex flex-column justify-content-between w-100 flex-wrap gap-2";
     let label = document.createElement("label");
     label.textContent = labelText;
 
@@ -2030,8 +2030,8 @@ function createMixingModeBlock(
   collapseImage.addEventListener("click", function () {
     let isCollapsed = collapseContainer.classList.contains("show");
     collapseImage.innerHTML = isCollapsed
-      ? '<img src="../icons/icons8-развернуть-96.png" alt="Expand" style="width:   30px; height:   30px;">'
-      : '<img src="../icons/icons8-свернуть-96.png" alt="Collapse" style="width:   30px; height:   30px;">';
+      ? '<img src="./icons/icons8-развернуть-96.png" alt="Expand" style="width:   30px; height:   30px;">'
+      : '<img src="./icons/icons8-свернуть-96.png" alt="Collapse" style="width:   30px; height:   30px;">';
   });
 
   return mixingModeBlock;
@@ -2231,7 +2231,7 @@ function addDeleteButton(row) {
     };
     let deleteImage = document.createElement("img");
     deleteImage.className = "block-ptk";
-    deleteImage.setAttribute("src", "../icons/icons8-cross-mark-96.png");
+    deleteImage.setAttribute("src", "./icons/icons8-cross-mark-96.png");
     deleteImage.setAttribute("width", "25");
     deleteImage.setAttribute("height", "25");
     deleteImage.setAttribute("alt", "Удалить");
@@ -2448,7 +2448,7 @@ function createEmptyComponentRow(tbody, data, _dataversion) {
   };
   let deleteImage = document.createElement("img");
   deleteImage.className = "block-ptk";
-  deleteImage.setAttribute("src", "../icons/icons8-cross-mark-96.png");
+  deleteImage.setAttribute("src", "./icons/icons8-cross-mark-96.png");
   deleteImage.setAttribute("width", "25");
   deleteImage.setAttribute("height", "25");
   deleteImage.setAttribute("alt", "Удалить");
@@ -3072,7 +3072,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       // Создаем элемент img для отображения изображения кнопки
       const imageElement = document.createElement("img");
       imageElement.classList.add("button-image");
-      imageElement.src = "../icons/icons8-add-image-96.png";
+      imageElement.src = "./icons/icons8-add-image-96.png";
       button.appendChild(imageElement);
 
       // Создаем элемент input для загрузки изображений, который будет скрыт
@@ -3098,7 +3098,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       // Создаем элемент img для отображения изображения кнопки удаления
       const deleteImage = document.createElement("img");
       deleteImage.classList.add("delete-button-image");
-      deleteImage.src = "../icons/icons8-cross-mark-96.png";
+      deleteImage.src = "./icons/icons8-cross-mark-96.png";
       deleteImage.style.width = "30px";
       deleteImage.style.height = "30px";
       deleteButton.appendChild(deleteImage);
@@ -3287,7 +3287,7 @@ const createPhaseInterface = (
   const container = document.createElement("div");
   container.className = "card phase";
   container.style.padding = "0px";
-  container.style.backgroundColor = "#f8f9fa";
+  container.style.backgroundColor = "#fff";
   if (phaseData && phaseData.ID) {
     container.id = phaseData.ID; // Устанавливаем существующий ID фазы
   }
@@ -3745,7 +3745,6 @@ function createNavigationMenu(data) {
   return menuContainer;
 }
 
-/* todo: вернуть
 window.addEventListener('load', function() {
     var loadingScreen = document.getElementById('loadingScreen');
     loadingScreen.style.display = 'flex'; // Показать занавес загрузки
@@ -3753,7 +3752,6 @@ window.addEventListener('load', function() {
         loadingScreen.style.display = 'none'; // Скрыть занавес загрузки через 3 секунды
     }, 2000);
 });
-*/
 
 async function loadJsonFromLocalFile(filePath) {
   try {
