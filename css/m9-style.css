@@ -1,8 +1,50 @@
+@font-face {
+  font-family: 'Inter Medium';
+  src: url('../fonts/Inter-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter SemiBold';
+  src: url('../fonts/Inter-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter Bold';
+  src: url('../fonts/Inter-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --blue: #3042dc;
+  --blue-hover: #2933c0;
+  --blue-opacity: #3042dc0d;
+  --blue-opacity-hover: #2933c01d;
+  --gray: #f2f2f2;
+  --gray-hover: #e3e3e3;
+  --input-percents: #0000001A;
+  --select-focus-box-shadow: #3042dc33;
+  --transition: .3s ease-in-out;
+  --ff-500: 'Inter Medium';
+  --ff-600: 'Inter SemiBold';
+  --ff-700: 'Inter Bold';
+}
+
 .m9-container {
-  justify-content: center;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 24px;
+  font-weight: 600;
+  font-family: var(--ff-600);
+  margin: 0;
+  cursor: pointer;
   background: #f8f9fa;
 }
 
@@ -717,6 +759,7 @@ h5 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* Мягкая тень */
   margin: 20px;
+  margin-bottom: 0;
   /* Отступы сверху и снизу */
 }
 
@@ -758,7 +801,7 @@ h5 {
 /* ---------------------Стиль подчеркивания ссылки при наведении------------------------- */
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--ff-500);
   position: relative;
   background: #fff;
 }
