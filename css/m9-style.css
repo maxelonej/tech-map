@@ -749,18 +749,35 @@ h5 {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  /* Разделяет элементы по горизонтали */
   align-items: center;
   gap: 1.6rem;
   background-color: #d6d6d6;
-  /* Нежный цвет фона */
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Мягкая тень */
   margin: 20px;
   margin-bottom: 0;
-  /* Отступы сверху и снизу */
+}
+
+.m9-navigation-menu-icon {
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.m9-navigation-menu-icon:hover {
+  background: var(--gray);
+}
+
+.m9-navigation-menu-icon {
+  transition: var(--transition);
+}
+
+.m9-navigation-menu-icon:hover {
+  background: var(--gray);
 }
 
 /* Контейнер фаз */
@@ -778,24 +795,6 @@ h5 {
   row-gap: 1rem;
   align-items: center;
   justify-content: end;
-}
-
-.m9-navigation-menu-icon {
-  display: inline-block;
-  /* Позволяет использовать margin и padding */
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  /* Изменяем курсор на указатель при наведении */
-  fill: #333;
-  /* Цвет иконки */
-  transition: fill 0.3s ease;
-  /* Анимация изменения цвета */
-}
-
-.m9-navigation-menu-icon:hover {
-  fill: #007bff;
-  /* Цвет иконки при наведении */
 }
 
 /* ---------------------Стиль подчеркивания ссылки при наведении------------------------- */
