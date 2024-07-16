@@ -36,27 +36,50 @@
   --ff-700: 'Inter Bold';
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.box-shadow {
+  box-shadow: 0px 0px 12px 0px #0000000A;
+}
+
+.border-radius {
+  border-radius: 16px;
+}
+
+textarea {
+  resize: none;
+}
+
 .m9-container {
-  padding: 20px;
+  /* padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   font-size: 24px;
   font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   font-family: var(--ff-600);
   margin: 0;
-  cursor: pointer;
-  background: #f8f9fa;
+  cursor: pointer; */
 }
 
-.phaseContainer {}
+.m9-rounded {
+  border-radius: 16px;
+}
 
-.accordion {}
+.transition {
+  transition: var(--transition);
+}
+
+.rotate-180 {
+  rotate: 180deg;
+}
 
 /* Фаза 1 */
-.accordion-childrens {
+/* .accordion-childrens {
   display: none;
   margin-top: 20px;
-}
+} */
 
 .accordion-childrens.active {
   display: block;
@@ -168,60 +191,6 @@ h5 {
   /* Задайте желаемую максимальную высоту */
   overflow: hidden;
   /* Скрывает содержимое, выходящее за пределы максимальной высоты */
-}
-
-.m9-table {
-  --bs-table-color-type: initial;
-  --bs-table-bg-type: initial;
-  --bs-table-color-state: initial;
-  --bs-table-bg-state: initial;
-  --bs-table-color: var(--bs-emphasis-color);
-  --bs-table-bg: var(--bs-body-bg);
-  --bs-table-border-color: #e0e0e0;
-  /* Мягкий цвет границы */
-  --bs-table-accent-bg: transparent;
-  --bs-table-striped-color: var(--bs-emphasis-color);
-  --bs-table-striped-bg: rgba(var(--bs-emphasis-color-rgb), 0.05);
-  --bs-table-active-color: var(--bs-emphasis-color);
-  --bs-table-active-bg: rgba(var(--bs-emphasis-color-rgb), 0.1);
-  --bs-table-hover-color: var(--bs-emphasis-color);
-  --bs-table-hover-bg: rgba(var(--bs-emphasis-color-rgb), 0.075);
-  width: 100%;
-  overflow: hidden;
-  /* margin-bottom: 1rem; */
-  vertical-align: top;
-  border-color: var(--bs-table-border-color);
-  border-radius: 20px;
-  border-collapse: separate;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Мягкая тень */
-  background: #f8f9fa;
-  /* Нежный цвет фона */
-  transition: all 0.3s ease;
-  border: 1px solid var(--bs-table-border-color);
-  /* Тонкая граница */
-  /* border-collapse: separate; */
-  border-spacing: 0;
-}
-
-.m9-table th {
-  white-space: nowrap;
-  /* Предотвращает перенос текста */
-}
-
-.m9-table th,
-.m9-table td {
-  padding: 20px;
-  text-align: left;
-  border: 1px solid var(--bs-table-border-color);
-  /* Тонкая граница */
-  color: #333;
-  /* Темный цвет текста */
-}
-
-.m9-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-  /* Нежный цвет фона для чередующихся строк */
 }
 
 .m9-table tbody tr:hover {
@@ -801,8 +770,7 @@ h5 {
 
 body {
   font-family: var(--ff-500);
-  position: relative;
-  background: #fff;
+  background: var(--gray);
 }
 
 .wrapper {
