@@ -595,8 +595,7 @@ function createPhaseDataBlock(
   // Создаем контейнер для кнопки и названия
   let headerContainer = document.createElement("div");
   headerContainer.className =
-    "d-flex justify-content-between align-items-center";
-  headerContainer.style.cursor = "pointer"; // Изменяем курсор при наведении
+    "d-flex justify-content-between align-items-center cursor-pointer";
 
   // Создаем изображение для свертывания
   let collapseImage = document.createElement("img");
@@ -1787,8 +1786,7 @@ function createMixingModeBlock(
   // Создаем контейнер для кнопки и названия
   let headerContainer = document.createElement("div");
   headerContainer.className =
-    "d-flex justify-content-between align-items-center";
-  headerContainer.style.cursor = "pointer"; // Изменяем курсор при наведении
+    "d-flex justify-content-between align-items-center cursor-pointer";
 
   // Создаем изображение для свертывания
   let collapseImage = document.createElement("img");
@@ -2615,8 +2613,6 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   // Создаем заголовок карточки, который будет служить переключателем
   const accordionHeader = document.createElement("div");
   accordionHeader.className = "m9-container";
-  accordionHeader.style.cursor = "pointer";
-  accordionHeader.style.margin = "0";
   accordionHeader.textContent = "Компоненты";
   accordion.appendChild(accordionHeader);
   // Добавляем обработчик событий для шапки аккордеона
@@ -2763,8 +2759,6 @@ function createOutputControlCollapsibleContainer(
   // Создаем заголовок карточки, который будет служить переключателем
   const accordionHeader = document.createElement("div");
   accordionHeader.className = "m9-container";
-  accordionHeader.style.cursor = "pointer";
-  accordionHeader.style.margin = "0";
   accordionHeader.textContent = "Выходной контроль";
   accordion.appendChild(accordionHeader);
   accordionHeader.addEventListener("click", () => {
