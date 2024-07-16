@@ -3346,13 +3346,10 @@ const createPhaseInterface = (
   containerHeader.appendChild(numberPhaseSelect);
 
   // Создаем кнопку для копирования таблицы компонентов в фазе
-  const copyTable = document.createElement("span");
+  const copyTable = document.createElement("img");
   copyTable.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
   copyTable.alt = "Копировать таблицу";
-  copyTable.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="30" height="30"><path d="M19,2H5C2.243,2,0,4.243,0,7v10c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5V7c0-2.757-2.243-5-5-5Zm3,5v4H7V4h12c1.654,0,3,1.346,3,3ZM2,17V7c0-1.654,1.346-3,3-3V20c-1.654,0-3-1.346-3-3Zm17,3H7v-7h15v4c0,1.654-1.346,3-3,3Z"/></svg>
-    `;
-  copyTable.style.cursor = "pointer"; // Делаем иконку кликабельной
+  copyTable.src = "./img/copy.svg";
   copyTable.onclick = function () {
     // Находим таблицу внутри контейнера с классом 'card phase'
     const table = this.closest(".card.phase").querySelector("table");
@@ -3364,22 +3361,10 @@ const createPhaseInterface = (
   containerHeader.appendChild(copyTable);
 
   // Создаем кнопку для копирования таблицы компонентов в фазе
-  const removePhaseButton = document.createElement("span");
+  const removePhaseButton = document.createElement("img");
   removePhaseButton.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
   removePhaseButton.alt = "Удалить фазу";
-  removePhaseButton.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="30" height="30"><g>
-	<path d="M342.635,169.365c-12.493-12.501-32.754-12.507-45.255-0.014c-0.005,0.005-0.01,0.01-0.015,0.014L256,210.752   l-41.365-41.387c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.752,256l-41.387,41.365   c-12.501,12.501-12.501,32.769,0,45.269c12.501,12.501,32.769,12.501,45.269,0l0,0L256,301.248l41.365,41.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.248,256l41.387-41.365   c12.501-12.493,12.507-32.754,0.014-45.255C342.644,169.375,342.64,169.37,342.635,169.365z"/>
-	<path d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.615,256-256C511.847,114.678,397.322,0.153,256,0z M256,448   c-106.039,0-192-85.961-192-192S149.961,64,256,64s192,85.961,192,192C447.882,361.99,361.99,447.882,256,448z"/></g>
-    </svg>
-    `;
-  removePhaseButton.style.cursor = "pointer"; // Делаем иконку кликабельной
-  removePhaseButton.onmouseover = function () {
-    this.style.fill = "red"; // Изменяем цвет иконки на красный при наведении
-  };
-  removePhaseButton.onmouseout = function () {
-    this.style.fill = "#333"; // Возвращаем цвет иконки к исходному при убирании курсора
-  };
+  removePhaseButton.src = "./img/trash.svg";
   removePhaseButton.onclick = function () {
     // Проверяем, существует ли ID фазы
     if (phaseData && phaseData.ID) {
@@ -3739,12 +3724,12 @@ function createNavigationMenu(data) {
   return menuContainer;
 }
 
-window.addEventListener('load', function() {
-    var loadingScreen = document.getElementById('loadingScreen');
-    loadingScreen.style.display = 'flex'; // Показать занавес загрузки
-    setTimeout(function() {
-        loadingScreen.style.display = 'none'; // Скрыть занавес загрузки через 3 секунды
-    }, 2000);
+window.addEventListener("load", function () {
+  var loadingScreen = document.getElementById("loadingScreen");
+  loadingScreen.style.display = "flex"; // Показать занавес загрузки
+  setTimeout(function () {
+    loadingScreen.style.display = "none"; // Скрыть занавес загрузки через 3 секунды
+  }, 2000);
 });
 
 async function loadJsonFromLocalFile(filePath) {
