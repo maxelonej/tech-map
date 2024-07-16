@@ -2605,12 +2605,12 @@ const getStringSostav = (headerComponents) => {
 // Фаза 1. Аккордеон Компоненты
 function createCollapsibleTableContainer(data = null, dataversion = null) {
   const accordion = document.createElement("div");
-  accordion.className += "border-radius bg-white box-shadow";
+  accordion.className += "accordion border-radius box-shadow";
 
   // Accordion header
   const accordionHeader = document.createElement("div");
   accordionHeader.className +=
-    "d-flex justify-content-between align-items-center py-3 cursor-pointer";
+    "accordion-header d-flex justify-content-between align-items-center py-3 cursor-pointer";
 
   // Header left side: img, text
   const accordionLeft = document.createElement("div");
@@ -2640,15 +2640,27 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   accordionHeader.append(accordionLeft, accordionRight);
   accordion.appendChild(accordionHeader);
 
+  // Detail box
+  const detailBox = document.createElement("div");
+  detailBox.className = "detail-box";
+
+  // Inner box
+  const innerBox = document.createElement("div");
+  innerBox.className = "inner-box";
+
+  // Transition box
+  const transitionBox = document.createElement("div");
+  transitionBox.className = "transition-box";
+
   // Accordion content
-  const accordionChildrens = document.createElement("div");
-  accordionChildrens.className =
-    "d-none overflow-hidden border-top border-black border-2 transition";
+  const accordionContent = document.createElement("div");
+  accordionContent.className = "overflow-hidden transition content";
 
   // Show content on accodion click
   accordionHeader.addEventListener("click", function () {
-    accordionChildrens.classList.toggle("d-block");
+    detailBox.classList.toggle("active");
     accordionRightImg.classList.toggle("rotate-180");
+    accordionHeader.classList.toggle("border-bottom-only");
   });
 
   const button = document.createElement("button");
@@ -2683,9 +2695,8 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   };
 
   button.classList.add("btn", "btn-link");
-  accordion.appendChild(accordionChildrens);
 
-  accordionChildrens.appendChild(button);
+  accordionContent.appendChild(button);
 
   // Создаем контейнер для таблицы
   const tableContainer = document.createElement("div");
@@ -2703,7 +2714,7 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   tableContainer.style.whiteSpace = "nowrap"; // Запрещает перенос строк, чтобы содержимое прокручивалось горизонтально
 
   // Добавляем контейнер с таблицей в accordion
-  accordionChildrens.appendChild(tableContainer);
+  accordionContent.appendChild(tableContainer);
 
   // Создаем заголовок таблицы
   const thead = document.createElement("thead");
@@ -2769,7 +2780,11 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
     console.log(selectedValues);
   };
 
-  accordionChildrens.appendChild(addButtonComponent);
+  accordionContent.appendChild(addButtonComponent);
+  transitionBox.appendChild(accordionContent);
+  innerBox.appendChild(transitionBox);
+  detailBox.appendChild(innerBox);
+  accordion.appendChild(detailBox);
 
   // Возвращаем созданный контейнер
   return accordion;
@@ -2781,12 +2796,12 @@ function createOutputControlCollapsibleContainer(
   dataversion = null
 ) {
   const accordion = document.createElement("div");
-  accordion.className = "border-radius bg-white box-shadow";
+  accordion.className += "accordion border-radius box-shadow";
 
-  // Header
+  // Accordion header
   const accordionHeader = document.createElement("div");
   accordionHeader.className +=
-    "d-flex justify-content-between align-items-center py-3 cursor-pointer";
+    "accordion-header d-flex justify-content-between align-items-center py-3 cursor-pointer";
 
   // Header left side: img, text
   const accordionLeft = document.createElement("div");
@@ -2795,7 +2810,7 @@ function createOutputControlCollapsibleContainer(
   const accordionLeftImg = document.createElement("img");
   accordionLeftImg.className = "ml-3";
   accordionLeftImg.src = "./img/accordion/compass.svg";
-  accordionLeftImg.alt = "Компоненты";
+  accordionLeftImg.alt = "Выходной контроль";
 
   const accordionLeftText = document.createElement("p");
   accordionLeftText.className += "h4 m-0 ml-3";
@@ -2816,22 +2831,49 @@ function createOutputControlCollapsibleContainer(
   accordionHeader.append(accordionLeft, accordionRight);
   accordion.appendChild(accordionHeader);
 
-  accordionHeader.addEventListener("click", () => {
-    document
-      .getElementById("outputControlCollapsibleTable")
-      .classList.toggle("active");
+  // Detail box
+  const detailBox = document.createElement("div");
+  detailBox.className = "detail-box";
+
+  // Inner box
+  const innerBox = document.createElement("div");
+  innerBox.className = "inner-box";
+
+  // Transition box
+  const transitionBox = document.createElement("div");
+  transitionBox.className = "transition-box";
+
+  // Accordion content
+  const accordionContent = document.createElement("div");
+  accordionContent.className = "overflow-hidden transition content";
+
+  // Show content on accodion click
+  accordionHeader.addEventListener("click", function () {
+    detailBox.classList.toggle("active");
     accordionRightImg.classList.toggle("rotate-180");
+    accordionHeader.classList.toggle("border-bottom-only");
   });
 
   // Создаем таблицу внутри контента с классами Bootstrap
   const table = document.createElement("table");
   table.className = "m9-table";
-  table.id = "outputControlCollapsibleTable";
   table.style.tableLayout = "fixed";
   table.style.width = "100%";
   table.style.marginTop = "20px";
   table.style.overflow = "auto";
-  accordion.appendChild(table);
+
+  const tableContainer = document.createElement("div");
+  tableContainer.classList.add("table-container");
+  tableContainer.style.marginTop = "0px";
+  tableContainer.style.overflowX = "auto";
+  tableContainer.style.whiteSpace = "nowrap";
+
+  tableContainer.appendChild(table);
+  accordionContent.appendChild(tableContainer);
+  transitionBox.appendChild(accordionContent);
+  innerBox.appendChild(transitionBox);
+  detailBox.appendChild(innerBox);
+  accordion.appendChild(detailBox);
 
   // Создаем заголовок таблицы
   const thead = document.createElement("thead");
@@ -2945,18 +2987,14 @@ function createFormRow(labelText) {
 
 // Фаза 3. Испытания
 function createCollapsibleContainerTests(_data = null, dataversion = null) {
-  // Создаем сворачиваемый контейнер с классами Bootstrap
   const accordion = document.createElement("div");
+  accordion.className += "accordion border-radius box-shadow";
   accordion.id = "CollapsibleContentTest";
-  accordion.className += "border-radius bg-white box-shadow";
-  const accordionChildrens = document.createElement("div");
-  accordionChildrens.className =
-    "d-none overflow-hidden border-top border-black border-2 transition";
 
   // Accordion header
   const accordionHeader = document.createElement("div");
   accordionHeader.className +=
-    "d-flex justify-content-between align-items-center py-3 cursor-pointer";
+    "accordion-header d-flex justify-content-between align-items-center py-3 cursor-pointer";
 
   // Header left side: img, text
   const accordionLeft = document.createElement("div");
@@ -2986,18 +3024,34 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   accordionHeader.append(accordionLeft, accordionRight);
   accordion.appendChild(accordionHeader);
 
+  // Detail box
+  const detailBox = document.createElement("div");
+  detailBox.className = "detail-box";
+
+  // Inner box
+  const innerBox = document.createElement("div");
+  innerBox.className = "inner-box";
+
+  // Transition box
+  const transitionBox = document.createElement("div");
+  transitionBox.className = "transition-box";
+
+  // Accordion content
+  const accordionContent = document.createElement("div");
+  accordionContent.className = "overflow-hidden transition content";
+
+  // Show content on accodion click
   accordionHeader.addEventListener("click", function () {
-    accordionChildrens.classList.toggle("d-block");
+    detailBox.classList.toggle("active");
     accordionRightImg.classList.toggle("rotate-180");
+    accordionHeader.classList.toggle("border-bottom-only");
   });
-  accordion.appendChild(accordionHeader);
-  accordion.appendChild(accordionChildrens);
 
   // Создаем контент для сворачиваемого контейнера с классами Bootstrap
   const collapsibleContentTests = document.createElement("div");
   collapsibleContentTests.classList.add("collapse", "card-body");
   collapsibleContentTests.style.maxWidth = "100vw"; // Задаем максимальную ширину, равную ширине окна просмотра
-  accordionChildrens.appendChild(collapsibleContentTests);
+  accordionContent.appendChild(collapsibleContentTests);
 
   // Создаем таблицу внутри контента с классами Bootstrap
   const table = document.createElement("table");
@@ -3006,7 +3060,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   table.style.tableLayout = "fixed"; // Фиксируем ширину столбцов
   table.style.width = "100%"; // Устанавливаем ширину таблицы равной 100%
   table.style.marginTop = "20px";
-  accordionChildrens.appendChild(table);
+  accordionContent.appendChild(table);
 
   // Создаем thead для таблицы
   const thead = document.createElement("thead");
@@ -3095,7 +3149,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   formsRow.appendChild(recipeVersionInput);
   formsRow.appendChild(testStartEndInput);
 
-  accordionChildrens.appendChild(formsRow);
+  accordionContent.appendChild(formsRow);
 
   // Создаем большое текстовое поле для примечаний
   const notesTextarea = document.createElement("textarea");
@@ -3105,12 +3159,12 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   notesTextarea.setAttribute("placeholder", "Примечания");
   // Присваиваем значение из dataversion.test
   notesTextarea.value = dataversion.test.notes;
-  accordionChildrens.appendChild(notesTextarea);
+  accordionContent.appendChild(notesTextarea);
 
   // Создаем контейнер для таблицы
   const tableContainer = document.createElement("div");
   tableContainer.classList.add("table-container");
-  accordionChildrens.appendChild(tableContainer);
+  accordionContent.appendChild(tableContainer);
 
   // Создаем таблицу
   const tableimage = document.createElement("table");
@@ -3251,6 +3305,11 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
         .catch((error) => reject(error));
     });
   }
+
+  transitionBox.appendChild(accordionContent);
+  innerBox.appendChild(transitionBox);
+  detailBox.appendChild(innerBox);
+  accordion.appendChild(detailBox);
 
   return accordion;
 }
@@ -3797,13 +3856,13 @@ function createNavigationMenu(data) {
   return menuContainer;
 }
 
-window.addEventListener("load", function () {
-  var loadingScreen = document.getElementById("loadingScreen");
-  loadingScreen.style.display = "flex"; // Показать занавес загрузки
-  setTimeout(function () {
-    loadingScreen.style.display = "none"; // Скрыть занавес загрузки через 3 секунды
-  }, 2000);
-});
+// window.addEventListener("load", function () {
+//   var loadingScreen = document.getElementById("loadingScreen");
+//   loadingScreen.style.display = "flex"; // Показать занавес загрузки
+//   setTimeout(function () {
+//     loadingScreen.style.display = "none"; // Скрыть занавес загрузки через 3 секунды
+//   }, 2000);
+// });
 
 async function loadJsonFromLocalFile(filePath) {
   try {

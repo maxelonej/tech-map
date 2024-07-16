@@ -52,6 +52,74 @@ textarea {
   resize: none;
 }
 
+.accordion {
+  background: var(--white);
+  transition: var(--transition);
+}
+
+.accordion-header {
+  background: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: 16px;
+  transition: var(--transition);
+}
+
+.accordion-header:hover {
+  border: 1px solid var(--black);
+}
+
+.accordion-header.border-bottom-only {
+  border-bottom: 1px solid #dbdada;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* .accordion:has(.detail-box.active) {
+  background-image: linear-gradient(44deg, #a8b0f4, #fdbebe);
+} */
+
+.detail-box {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.detail-box.active {
+  grid-template-rows: 1fr;
+}
+
+.inner-box {
+  min-height: 0;
+}
+
+.transition-box {
+  padding: 0.3rem;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  transition: 0.5s;
+  transform: translateY(-100%);
+  /* transform: translateY(0); */
+}
+
+.detail-box.active .transition-box {
+  transform: translateY(0);
+}
+
+.content {
+  /* scale: .6; */
+  /* opacity: 0; */
+  transition: 0.5s;
+}
+
+.detail-box.active .content {
+  scale: 1;
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
 .m9-container {
   /* padding: 20px;
   border-radius: 10px;
@@ -87,7 +155,7 @@ textarea {
 
 /* Фаза 2 */
 #outputControlCollapsibleTable {
-  display: none;
+  /* display: none; */
 }
 
 #outputControlCollapsibleTable.active {
