@@ -3412,6 +3412,7 @@ function populatePhaseSelect(selectElement, selectedPhases, currentPhaseNum) {
 
 let phaseCounter = 0;
 
+// Фаза 4. Фазы
 const createPhaseInterface = (
   phaseData = null,
   selectsData = null,
@@ -4012,8 +4013,6 @@ async function loadJsonFromLocalFile(filePath) {
         const buttonstwo = document.querySelectorAll(".block-ptk"); // Исправлено здесь
         // Получаем кнопку с ID 'addButton'
         const addButton = document.getElementById("addButton");
-        // Получаем кнопку с ID 'addPhaseButton'
-        const addPhaseButton = document.getElementById("addPhaseButton");
 
         // Разблокируем все элементы input и select
         inputs.forEach((input) => {
@@ -4244,6 +4243,71 @@ async function loadJsonFromLocalFile(filePath) {
           // Сортировка phasesData по num_phase в порядке возрастания
           phasesData.sort((a, b) => a.num_phase - b.num_phase);
 
+          const accordion = document.createElement("div");
+          accordion.className += "accordion border-radius box-shadow";
+
+          // Accordion header
+          const accordionHeader = document.createElement("div");
+          accordionHeader.className +=
+            "accordion-header d-flex justify-content-between align-items-center py-3 cursor-pointer";
+
+          // Header left side: img, text
+          const accordionLeft = document.createElement("div");
+          accordionLeft.className += "d-flex align-items-center";
+
+          const accordionLeftImg = document.createElement("img");
+          accordionLeftImg.className = "ml-3";
+          accordionLeftImg.src = "./img/accordion/layers.svg";
+          accordionLeftImg.alt = "Фазы";
+
+          const accordionLeftText = document.createElement("p");
+          accordionLeftText.className += "h4 m-0 ml-3";
+          accordionLeftText.textContent = "Фазы";
+
+          accordionLeft.append(accordionLeftImg, accordionLeftText);
+
+          // Header right side: text + switcher, img
+          const accordionRight = document.createElement("div");
+
+          const accordionRightImg = document.createElement("img");
+          accordionRightImg.className += "mr-3 transition";
+          accordionRightImg.src = "./img/accordion/open-arrow.svg";
+          accordionRightImg.alt = "Открыть аккордеон";
+
+          accordionRight.appendChild(accordionRightImg);
+
+          accordionHeader.append(accordionLeft, accordionRight);
+          accordion.appendChild(accordionHeader);
+
+          // Detail box
+          const detailBox = document.createElement("div");
+          detailBox.className = "detail-box";
+
+          // Inner box
+          const innerBox = document.createElement("div");
+          innerBox.className = "inner-box";
+
+          // Transition box
+          const transitionBox = document.createElement("div");
+          transitionBox.className = "transition-box";
+
+          // Accordion content
+          const accordionContent = document.createElement("div");
+          accordionContent.className = "overflow-hidden transition content";
+
+          transitionBox.appendChild(accordionContent);
+          innerBox.appendChild(transitionBox);
+          detailBox.appendChild(innerBox);
+          accordion.appendChild(detailBox);
+
+          // Show content on accodion click
+          accordionHeader.addEventListener("click", function () {
+            detailBox.classList.toggle("active");
+            accordionRightImg.classList.toggle("rotate-180");
+            accordionHeader.classList.toggle("border-bottom-only");
+          });
+
+          // Фаза 4. Фазы
           phasesData.forEach((phaseData) => {
             const phaseInterface = createPhaseInterface(
               phaseData,
@@ -4252,8 +4316,14 @@ async function loadJsonFromLocalFile(filePath) {
               selectedPhases,
               data
             );
-            phasesContainer.appendChild(phaseInterface);
+            accordionContent.appendChild(phaseInterface);
           });
+
+          // Получаем кнопку с ID 'addPhaseButton'
+          const addPhaseButton = document.getElementById("addPhaseButton");
+          accordionContent.appendChild(addPhaseButton);
+
+          phasesContainer.appendChild(accordion);
         }
 
         // Определяем контейнер для заголовка
