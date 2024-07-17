@@ -311,51 +311,29 @@ h5 {
 .m9-input {
   display: block;
   width: 100%;
-  min-width: 296px;
   padding: 0.75rem 1rem;
-  /* Увеличиваем внутренний отступ для лучшего комфорта */
   font-size: 14px;
-  /* Увеличиваем размер шрифта */
   font-weight: 500;
-  /* Увеличиваем вес шрифта для более выразительного текста */
   line-height: 1.5;
   height: calc(2.5em + .75rem + 2px);
-  color: #333;
-  /* Темный цвет текста для лучшей читаемости */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-color: #fbfbfb;
-  /* Светлый цвет фона */
   background-clip: padding-box;
-  border: 1px solid #ced4da;
-  /* Тонкая граница */
+  border: 2px solid var(--gray);
   border-radius: 15px;
-  /* Увеличиваем скругление углов */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Увеличиваем тень для создания эффекта глубины */
-  transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out;
-  /* Добавляем анимацию для фона */
+  transition: var(--transition);
   outline: none;
-  /* Удаляем стандартное выделение при фокусе */
 }
 
 .m9-input:focus {
-  border-color: #80bdff;
-  /* Цвет границы при фокусе */
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  /* Тень при фокусе */
-  background-color: #fff;
-  /* Белый фон при фокусе */
-  transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out;
-  /* Добавляем анимацию для фона */
+  border: 2px solid var(--blue);
+  box-shadow: none;
 }
 
 .m9-input:disabled {
   background-color: #e0e0e0;
-  /* Темный цвет фона для заблокированных форм */
-  color: #000000;
-  /* Белый цвет текста для лучшей читаемости на темном фоне */
 }
 
 /* Стилизация контейнера выпадающего списка */

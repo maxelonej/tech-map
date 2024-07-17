@@ -2975,6 +2975,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   // Transition box
   const transitionBox = document.createElement("div");
   transitionBox.className = "transition-box";
+  transitionBox.style.paddingTop = "0";
 
   // Accordion content
   const accordionContent = document.createElement("div");
@@ -3067,7 +3068,8 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
 
   // Создаем формы для температуры, версии рецептуры и даты испытаний
   const formsRow = document.createElement("div");
-  formsRow.classList.add("row", "mt-3");
+  formsRow.classList.add("row");
+  formsRow.style.marginTop = "64px";
 
   const tempTestingInput = createFormInput(
     "t на начало испытаний",
