@@ -931,3 +931,27 @@ a.underline_c:after {
   right: 0;
   margin: 0 auto;
 }
+
+/*---------------------------Кнопка Добавить фазу----------------------------------------*/
+
+#addPhaseButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: block;
+  padding: 5px;
+  border-radius: 8px;
+  margin: 30px auto;
+  transition: var(--transition);
+}
+
+#addPhaseButton img {
+  width: 40px;
+  height: auto;
+}
+
+#addPhaseButton:hover {
+  background: var(--gray);
+}
+
+/*---------------------------Конец кнопки "Добавить фазу"---------------------------------------*/
