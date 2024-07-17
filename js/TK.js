@@ -1618,19 +1618,14 @@ function addNewRowToTable(table, compDataFull, componentGood, selectsData) {
   if (currentPage === "LTK") {
     // Кнопка удаления
     let deleteCell = document.createElement("td");
-    let deleteButton = document.createElement("button");
-    deleteButton.className = "btn block-ptk";
-    deleteButton.onclick = function () {
+    let deleteImage = document.createElement("img");
+    deleteImage.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
+    deleteImage.alt = "Удалить";
+    deleteImage.src = "./img/trash.svg";
+    deleteImage.onclick = function () {
       newRow.remove();
     };
-    let deleteImage = document.createElement("img");
-    deleteImage.className = "block-ptk";
-    deleteImage.setAttribute("src", "./icons/icons8-cross-mark-96.png");
-    deleteImage.setAttribute("width", "25");
-    deleteImage.setAttribute("height", "25");
-    deleteImage.setAttribute("alt", "Удалить");
-    deleteButton.appendChild(deleteImage);
-    deleteCell.appendChild(deleteButton);
+    deleteCell.appendChild(deleteImage);
     newRow.appendChild(deleteCell);
   }
 
@@ -1742,19 +1737,15 @@ function createTableFromData(
     if (currentPage === "LTK") {
       // Кнопка удаления
       let deleteCell = document.createElement("td");
-      let deleteButton = document.createElement("button");
-      deleteButton.className = "btn block-ptk";
-      deleteButton.onclick = function () {
+      let deleteImage = document.createElement("img");
+      deleteImage.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
+      deleteImage.alt = "Удалить";
+      deleteImage.src = "./img/trash.svg";
+      deleteImage.onclick = function () {
         newRow.remove();
       };
-      let deleteImage = document.createElement("img");
-      deleteImage.setAttribute("src", "./icons/icons8-cross-mark-96.png");
-      deleteImage.setAttribute("width", "25");
-      deleteImage.setAttribute("height", "25");
-      deleteImage.setAttribute("alt", "Удалить");
       // Добавляем изображение в кнопку
-      deleteButton.appendChild(deleteImage);
-      deleteButton.onclick = function () {
+      deleteImage.onclick = function () {
         let param = component.ID; // Получаем ID компонента
         console.log(param);
         let urlupdate = `https://${domain}/9x/app/php/delete-phase-component.php?${urlParams}&component_id=${param}`;
@@ -1762,7 +1753,7 @@ function createTableFromData(
         row.remove(); // Удаляем строку из таблицы
       };
 
-      deleteCell.appendChild(deleteButton);
+      deleteCell.appendChild(deleteImage);
       row.appendChild(deleteCell);
     }
 
@@ -2222,19 +2213,14 @@ function addDeleteButton(row) {
   if (currentPage === "LTK") {
     // Кнопка удаления
     let deleteCell = document.createElement("td");
-    let deleteButton = document.createElement("button");
-    deleteButton.className = "btn block-ptk";
-    deleteButton.onclick = function () {
+    const deleteImage = document.createElement("img");
+    deleteImage.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
+    deleteImage.alt = "Удалить";
+    deleteImage.src = "./img/trash.svg";
+    deleteImage.onclick = function () {
       newRow.remove();
     };
-    let deleteImage = document.createElement("img");
-    deleteImage.className = "block-ptk";
-    deleteImage.setAttribute("src", "./icons/icons8-cross-mark-96.png");
-    deleteImage.setAttribute("width", "25");
-    deleteImage.setAttribute("height", "25");
-    deleteImage.setAttribute("alt", "Удалить");
-    deleteButton.appendChild(deleteImage);
-    deleteCell.appendChild(deleteButton);
+    deleteCell.appendChild(deleteImage);
     row.appendChild(deleteCell);
   }
 }
@@ -2439,19 +2425,13 @@ function createEmptyComponentRow(tbody, data, _dataversion) {
 
   // Кнопка удаления
   let deleteCell = document.createElement("td");
-  let deleteButton = document.createElement("button");
-  deleteButton.className = "btn block-ptk";
-  deleteButton.onclick = function () {
+  deleteImage.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
+  deleteImage.alt = "Удалить";
+  deleteImage.src = "./img/trash.svg";
+  deleteImage.onclick = function () {
     row.remove();
   };
-  let deleteImage = document.createElement("img");
-  deleteImage.className = "block-ptk";
-  deleteImage.setAttribute("src", "./icons/icons8-cross-mark-96.png");
-  deleteImage.setAttribute("width", "25");
-  deleteImage.setAttribute("height", "25");
-  deleteImage.setAttribute("alt", "Удалить");
-  deleteButton.appendChild(deleteImage);
-  deleteCell.appendChild(deleteButton);
+  deleteCell.appendChild(deleteImamage);
   row.appendChild(deleteCell);
 }
 
@@ -2529,7 +2509,7 @@ function updateCollapsibleTableContainer(
   }
 
   // Находим кнопку добавления в контейнере и обновляем ее обработчик событий
-  const addButton = collapsibleContainer.querySelector(".btn-circle-green");
+  const addButton = collapsibleContainer.querySelector(".m9-add-component");
 
   // Удаляем предыдущий обработчик события 'click', если он существует
   addButton.removeEventListener("click", addButton.onclick);
@@ -2557,7 +2537,7 @@ function updateOutputControlCollapsibleContainer(
   }
   // Находим кнопку добавления в контейнере и обновляем ее обработчик событий
   const addButton =
-    collapsibleOutputContainer.querySelector(".btn-circle-green");
+    collapsibleOutputContainer.querySelector(".m9-add-component");
   // Удаляем предыдущий обработчик события 'click', если он существует
   addButton.removeEventListener("click", addButton.onclick);
   // Добавляем новый обработчик события для добавления одной новой строки
@@ -2654,7 +2634,7 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
 
   // Accordion content
   const accordionContent = document.createElement("div");
-  accordionContent.className = "overflow-hidden transition content";
+  accordionContent.className = "transition content";
 
   // Show content on accodion click
   accordionHeader.addEventListener("click", function () {
@@ -2662,41 +2642,6 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
     accordionRightImg.classList.toggle("rotate-180");
     accordionHeader.classList.toggle("border-bottom-only");
   });
-
-  const button = document.createElement("button");
-  console.log(dataversion);
-  button.style.marginTop = "10px";
-  button.textContent = "Вывод состава";
-  button.onclick = async function () {
-    uniqueInciString = getStringSostav(dataversion);
-    alert(uniqueInciString); // Показываем состав
-
-    // Спрашиваем подтверждение у пользователя
-    const isConfirmed = confirm("Скопировать состав в буфер обмена?");
-    if (isConfirmed) {
-      try {
-        // Копируем в буфер обмена, если пользователь подтвердил действие
-        await navigator.clipboard.writeText(uniqueInciString);
-        alert("Состав успешно скопирован в буфер обмена.");
-      } catch (err) {
-        console.error("Ошибка при копировании в буфер обмена: ", err);
-        alert("Не удалось скопировать состав в буфер обмена.");
-      }
-    }
-
-    // Подготовка данных для отправки
-    const dataToSend = {
-      composition: uniqueInciString,
-    };
-
-    const url = `https://${domain}/9x/app/php/fill-primary-composition.php?${urlParams}`;
-
-    hookPost(url, dataToSend);
-  };
-
-  button.classList.add("btn", "btn-link");
-
-  accordionContent.appendChild(button);
 
   // Создаем контейнер для таблицы
   const tableContainer = document.createElement("div");
@@ -2725,10 +2670,12 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
     "Поставщик",
     "Название по накладной",
   ];
+
   headers.forEach((headerText) => {
     const th = document.createElement("th");
     th.textContent = headerText;
-    th.style.minWidth = "300px"; // Устанавливаем минимальную ширину для ячеек заголовка
+    th.classList.add("th");
+    // th.style.minWidth = "300px"; // Устанавливаем минимальную ширину для ячеек заголовка
     headerRow.appendChild(th);
   });
 
@@ -2754,17 +2701,8 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
 
   // Создаем кнопку для добавления новых строк
   const addButtonComponent = document.createElement("button");
-  addButtonComponent.classList.add(
-    "btn",
-    "btn-success",
-    "btn-circle-green",
-    "mt-2",
-    "block-ptk"
-  );
-  // Устанавливаем изображение в качестве фона кнопки
-  addButtonComponent.style.backgroundImage = "url('icons/icons8-plus-144.png')";
-  addButtonComponent.style.backgroundSize = "contain"; // Регулируйте размер изображения при необходимости
-  addButtonComponent.style.backgroundRepeat = "no-repeat";
+  addButtonComponent.classList.add("m9-add-component", "block-ptk");
+  addButtonComponent.textContent = "+ Добавить компонент";
 
   if (currentPage === "PTK") {
     addButtonComponent.display = "none";
@@ -2845,7 +2783,7 @@ function createOutputControlCollapsibleContainer(
 
   // Accordion content
   const accordionContent = document.createElement("div");
-  accordionContent.className = "overflow-hidden transition content";
+  accordionContent.className = "transition content";
 
   // Show content on accodion click
   accordionHeader.addEventListener("click", function () {
@@ -3038,7 +2976,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
 
   // Accordion content
   const accordionContent = document.createElement("div");
-  accordionContent.className = "overflow-hidden transition content";
+  accordionContent.className = "transition content";
 
   // Show content on accodion click
   accordionHeader.addEventListener("click", function () {
@@ -3231,7 +3169,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       // Создаем элемент img для отображения изображения кнопки удаления
       const deleteImage = document.createElement("img");
       deleteImage.classList.add("delete-button-image");
-      deleteImage.src = "./icons/icons8-cross-mark-96.png";
+      deleteImage.src = "./img/trash.svg";
       deleteImage.style.width = "30px";
       deleteImage.style.height = "30px";
       deleteButton.appendChild(deleteImage);
@@ -4293,7 +4231,7 @@ async function loadJsonFromLocalFile(filePath) {
 
           // Accordion content
           const accordionContent = document.createElement("div");
-          accordionContent.className = "overflow-hidden transition content";
+          accordionContent.className = "transition content";
 
           transitionBox.appendChild(accordionContent);
           innerBox.appendChild(transitionBox);
@@ -4355,7 +4293,7 @@ async function loadJsonFromLocalFile(filePath) {
               }
             });
 
-          document.querySelectorAll(".btn-circle-green").forEach((button) => {
+          document.querySelectorAll(".m9-add-component").forEach((button) => {
             button.style.display = "block";
           });
 
@@ -4420,7 +4358,7 @@ async function loadJsonFromLocalFile(filePath) {
             document.getElementById("addPhaseButton").style.display = "block";
           }
           document.getElementById("deletLTM").style.display = "inline-block";
-          document.querySelectorAll(".btn-circle-green").forEach((button) => {
+          document.querySelectorAll(".m9-add-component").forEach((button) => {
             button.style.display = "block";
           });
           // Отображаем все кнопки "Удалить" внутри элементов с классом card

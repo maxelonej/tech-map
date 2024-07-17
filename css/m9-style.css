@@ -91,6 +91,26 @@ textarea {
 
 .inner-box {
   min-height: 0;
+  overflow-x: auto;
+}
+
+.m9-add-component {
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  padding: .7rem 0;
+  cursor: pointer;
+  background: var(--blue-opacity);
+  color: var(--blue);
+  font-family: var(--ff-500);
+  font-weight: 500;
+  border-radius: 5px;
+  border: 0;
+  transition: var(--transition);
+}
+
+.m9-add-component:hover {
+  background: var(--blue-opacity-hover);
 }
 
 .transition-box {
@@ -100,6 +120,8 @@ textarea {
   flex-direction: column;
   gap: 0.2rem;
   transition: 0.5s;
+  padding-top: 36px;
+  margin-inline: 32px;
   transform: translateY(-100%);
   /* transform: translateY(0); */
 }
@@ -148,6 +170,24 @@ textarea {
   display: none;
   margin-top: 20px;
 } */
+
+.th {
+  opacity: .5;
+  color: var(--black);
+  padding: 0;
+  padding-bottom: 16px;
+  font-family: var(--ff-500);
+  font-weight: normal;
+}
+
+td~td,
+.th~.th {
+  padding-left: 32px;
+}
+
+tr:last-child td {
+  padding-bottom: 0;
+}
 
 .accordion-childrens.active {
   display: block;
@@ -261,17 +301,16 @@ h5 {
   /* Скрывает содержимое, выходящее за пределы максимальной высоты */
 }
 
-.m9-table tbody tr:hover {
+/* .m9-table tbody tr:hover {
   background-color: #e9ecef;
-  /* Нежный цвет фона при наведении */
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Мягкая тень при наведении */
-}
+} */
 
 .m9-input {
   display: block;
   width: 100%;
+  min-width: 296px;
   padding: 0.75rem 1rem;
   /* Увеличиваем внутренний отступ для лучшего комфорта */
   font-size: 14px;
