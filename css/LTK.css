@@ -150,13 +150,10 @@ table {
 
 td {
   width: 50%;
-  /* Устанавливаем ширину ячейки равной половине ширины таблицы */
   box-sizing: border-box;
   padding-bottom: 24px;
-  text-align: center;
-  /* Выравниваем содержимое ячейки по центру */
+  color: var(--black);
   position: relative;
-  /* Позиционирование для кнопки удаления */
 }
 
 .button-container {

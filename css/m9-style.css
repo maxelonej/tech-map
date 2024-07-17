@@ -171,7 +171,7 @@ textarea {
   margin-top: 20px;
 } */
 
-.th {
+th {
   opacity: .5;
   color: var(--black);
   padding: 0;
@@ -180,8 +180,9 @@ textarea {
   font-weight: normal;
 }
 
-td~td,
-.th~.th {
+/* Фаза 1 */
+#collapsibleTable tbody tr td~td,
+#collapsibleTable thead tr .th~.th {
   padding-left: 32px;
 }
 

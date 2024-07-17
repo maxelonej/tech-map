@@ -2780,6 +2780,7 @@ function createOutputControlCollapsibleContainer(
   // Transition box
   const transitionBox = document.createElement("div");
   transitionBox.className = "transition-box";
+  transitionBox.style.paddingTop = "0";
 
   // Accordion content
   const accordionContent = document.createElement("div");
@@ -2798,6 +2799,7 @@ function createOutputControlCollapsibleContainer(
   table.style.tableLayout = "fixed";
   table.style.width = "100%";
   table.style.marginTop = "20px";
+  table.style.marginBottom = "32px";
   table.style.overflow = "auto";
 
   const tableContainer = document.createElement("div");
@@ -2819,7 +2821,7 @@ function createOutputControlCollapsibleContainer(
 
   // Добавляем столбцы
   const columnHeader1 = document.createElement("th");
-  columnHeader1.textContent = "Параметры выходного контроля";
+  columnHeader1.textContent = "Параметры";
   headerRow.appendChild(columnHeader1);
 
   const columnHeader2 = document.createElement("th");
@@ -2827,10 +2829,10 @@ function createOutputControlCollapsibleContainer(
   headerRow.appendChild(columnHeader2);
 
   // Добавляем новый столбец для чекбоксов
-  const columnHeader3 = document.createElement("th");
-  columnHeader3.textContent = "Отметка";
-  columnHeader3.style.width = "110px"; // Устанавливаем ширину столбца
-  headerRow.appendChild(columnHeader3);
+  // const columnHeader3 = document.createElement("th");
+  // columnHeader3.textContent = "Отметка";
+  // columnHeader3.style.width = "110px"; // Устанавливаем ширину столбца
+  // headerRow.appendChild(columnHeader3);
 
   thead.appendChild(headerRow);
   table.appendChild(thead);
@@ -2876,28 +2878,28 @@ function createOutputControlCollapsibleContainer(
     row.appendChild(normInputCell);
 
     // Добавляем ячейку для чекбокса
-    const checkboxCell = document.createElement("td");
-    checkboxCell.style.textAlign = "center"; // Центрируем чекбоксы
-    checkboxCell.style.width = "110px"; // Устанавливаем ширину ячейки
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.addEventListener("change", function () {
-      if (this.checked) {
-        normInput.value = "-";
-        normInput.disabled = true;
-      } else {
-        normInput.value = "";
-        normInput.disabled = false;
-      }
-    });
+    // const checkboxCell = document.createElement("td");
+    // checkboxCell.style.textAlign = "center"; // Центрируем чекбоксы
+    // checkboxCell.style.width = "110px"; // Устанавливаем ширину ячейки
+    // const checkbox = document.createElement("input");
+    // checkbox.type = "checkbox";
+    // checkbox.addEventListener("change", function () {
+    //   if (this.checked) {
+    //     normInput.value = "-";
+    //     normInput.disabled = true;
+    //   } else {
+    //     normInput.value = "";
+    //     normInput.disabled = false;
+    //   }
+    // });
 
-    if (inputValue === "-") {
-      checkbox.checked = true;
-      normInput.disabled = true;
-    }
+    // if (inputValue === "-") {
+    //   checkbox.checked = true;
+    //   normInput.disabled = true;
+    // }
 
-    checkboxCell.appendChild(checkbox);
-    row.appendChild(checkboxCell);
+    // checkboxCell.appendChild(checkbox);
+    // row.appendChild(checkboxCell);
 
     tbody.appendChild(row);
   }
