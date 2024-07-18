@@ -3037,7 +3037,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   const table = document.createElement("table");
   table.className = "m9-table";
   table.id = "outputControlCollapsibleTable";
-  table.style.tableLayout = "fixed"; // Фиксируем ширину столбцов
+  table.style.tableLayout = ""; // Фиксируем ширину столбцов
   table.style.width = "100%"; // Устанавливаем ширину таблицы равной 100%
   table.style.marginTop = "20px";
   accordionContent.appendChild(table);

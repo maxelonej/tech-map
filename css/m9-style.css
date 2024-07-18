@@ -205,6 +205,10 @@ tr:last-child td {
   display: block;
 }
 
+#outputControlCollapsibleTable tbody tr td:first-child {
+  min-width: 200px;
+}
+
 .col div label {
   margin-bottom: 0;
 }
