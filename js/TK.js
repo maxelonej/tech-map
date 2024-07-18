@@ -2585,7 +2585,7 @@ const getStringSostav = (headerComponents) => {
 // Фаза 1. Аккордеон Компоненты
 function createCollapsibleTableContainer(data = null, dataversion = null) {
   const accordion = document.createElement("div");
-  accordion.className += "accordion border-radius box-shadow";
+  accordion.className += "accordion border-radius";
 
   // Accordion header
   const accordionHeader = document.createElement("div");
@@ -2734,7 +2734,7 @@ function createOutputControlCollapsibleContainer(
   dataversion = null
 ) {
   const accordion = document.createElement("div");
-  accordion.className += "accordion border-radius box-shadow";
+  accordion.className += "accordion border-radius";
 
   // Accordion header
   const accordionHeader = document.createElement("div");
@@ -2928,7 +2928,7 @@ function createFormRow(labelText) {
 // Фаза 3. Испытания
 function createCollapsibleContainerTests(_data = null, dataversion = null) {
   const accordion = document.createElement("div");
-  accordion.className += "accordion border-radius box-shadow";
+  accordion.className += "accordion border-radius";
   accordion.id = "CollapsibleContentTest";
 
   // Accordion header
@@ -4186,7 +4186,7 @@ async function loadJsonFromLocalFile(filePath) {
           phasesData.sort((a, b) => a.num_phase - b.num_phase);
 
           const accordion = document.createElement("div");
-          accordion.className += "accordion border-radius box-shadow";
+          accordion.className += "accordion border-radius";
 
           // Accordion header
           const accordionHeader = document.createElement("div");
