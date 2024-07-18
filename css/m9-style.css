@@ -841,7 +841,7 @@ h5 {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
+  padding: 32px;
 }
 
 .menu-items-container {
