@@ -15,6 +15,37 @@ $currentTime = time();
 </head>
 
 <body data-page="LTK">
+  <!-- custom select-option dropdown -->
+  <!-- Для проверки рекомендуется разкомментить в LTK.css первые строки -->
+  <!-- <div class="dropdown">
+    <div class="dropdown-select">
+      <span class="select">Default value</span>
+      <img class="arrow" src="./img/input/unactive-arrow.svg" alt="Стрелка">
+      <img class="close-input" src="./img/input/close-input.svg" alt="Крестик">
+    </div>
+    <div class="dropdown-selected"></div>
+    <div class="dropdown-list">
+      <div class="dropdown-list__item">1</div>
+      <div class="dropdown-list__item">2</div>
+      <div class="dropdown-list__item">3</div>
+    </div>
+  </div> -->
+
+  <!-- custom disabled select-option dropdown -->
+  <!-- <div class="dropdown">
+    <div class="dropdown-select disabled">
+      <span class="select">Default value</span>
+      <img class="arrow" src="./img/input/unactive-arrow.svg" alt="Стрелка">
+      <img class="close-input" src="./img/input/close-input.svg" alt="Крестик">
+    </div>
+    <div class="dropdown-selected"></div>
+    <div class="dropdown-list">
+      <div class="dropdown-list__item">1</div>
+      <div class="dropdown-list__item">2</div>
+      <div class="dropdown-list__item">3</div>
+    </div>
+  </div> -->
+
   <!-- <div id="loadingScreen" style="display:none;">
     <img src="icons/37 (1).gif" alt="Загрузка" style="width: 80px; height: 80px;">
   </div> -->

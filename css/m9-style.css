@@ -107,6 +107,7 @@ textarea {
   font-weight: 500;
   border-radius: 5px;
   border: 0;
+  outline: none;
   transition: var(--transition);
 }
 
@@ -323,17 +324,17 @@ h5 {
   background-color: #fbfbfb;
   background-clip: padding-box;
   border: 2px solid var(--gray);
-  border-radius: 15px;
+  border-radius: 8px;
   transition: var(--transition);
   outline: none;
 }
 
 .m9-input:focus {
   border: 2px solid var(--blue);
-  box-shadow: none;
 }
 
 .m9-input:disabled {
+  border: 2px solid #e0e0e0;
   background-color: #e0e0e0;
 }
 
@@ -345,23 +346,15 @@ h5 {
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
-  color: #333;
-  background-color: #f8f9fa;
-  /* Нежный цвет фона */
-  border: 1px solid #ced4da;
-  /* Тонкая граница */
-  border-radius: 15px;
-  /* Скругление углов */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Мягкая тень */
-  transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out;
+  color: var(--black);
+  background: var(--gray);
+  border: 1px solid var(--gray);
+  border-radius: 8px;
+  transition: var(--transition);
   outline: none;
   appearance: none;
-  /* Удаление стандартного внешнего вида */
   -webkit-appearance: none;
-  /* Для совместимости с браузерами на базе WebKit */
   -moz-appearance: none;
-  /* Для совместимости с браузерами на базе Mozilla */
 }
 
 /* Стилизация выпадающего списка при фокусе */
@@ -374,9 +367,7 @@ h5 {
 
 .m9-select:disabled {
   background-color: #e0e0e0;
-  /* Темный цвет фона для заблокированных форм */
   color: #000000;
-  /* Белый цвет текста для лучшей читаемости на темном фоне */
 }
 
 .card {
@@ -397,21 +388,15 @@ h5 {
   color: #333;
   background: transparent;
   border-bottom: 2px solid #ced4da;
-  /* Увеличиваем толщину линии */
   padding: 10px 2px 0 2px;
-  /* Увеличиваем внутренний отступ для лучшего комфорта */
   transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out;
-  /* Добавляем анимацию для изменения цвета границы */
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, .02);
-  /* Добавляем легкую тень для создания эффекта глубины */
 }
 
 .m9-input-line:focus {
   outline: none;
   border-bottom: 2px solid #51CBEE;
-  /* Изменяем цвет линии при фокусе */
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, .07);
-  /* Увеличиваем тень при фокусе */
 }
 
 .m9-input-mac {
@@ -974,3 +959,119 @@ a.underline_c:after {
 }
 
 /*---------------------------Конец кнопки "Добавить фазу"---------------------------------------*/
+
+/* Custom input */
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 16px;
+  padding-inline: 20px;
+  height: 48px;
+  min-width: 296px;
+  border: 2px solid var(--gray);
+  border-radius: 8px;
+  background: var(--gray);
+  transition: var(--transition);
+}
+
+.dropdown-select:hover {
+  border: 2px solid var(--blue);
+}
+
+.dropdown-select.active {
+  background: var(--white);
+  border: 2px solid var(--blue);
+}
+
+.dropdown-list,
+.dropdown-selected {
+  opacity: 0;
+  visibility: hidden;
+  transition: .2s linear;
+}
+
+.dropdown-list.active,
+.dropdown-selected.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-selected {
+  position: absolute;
+  z-index: -1;
+  transform: translateY(-107%);
+  min-width: 304px;
+  height: 64px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background: var(--white);
+  border-top: 1px solid #0000001A;
+  border-left: 1px solid #0000001A;
+  border-right: 1px solid #0000001A;
+}
+
+.dropdown-select.disabled {
+  border: 2px solid #e0e0e0;
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+  /* opacity: 0.5; */
+  /* pointer-events: none; */
+}
+
+.arrow {
+  transition: rotate var(--transition);
+}
+
+.arrow.active {
+  rotate: 180deg;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(94%) saturate(3222%) hue-rotate(233deg) brightness(92%) contrast(88%);
+}
+
+.close-input {
+  position: absolute;
+  right: 44px;
+  visibility: hidden;
+  opacity: 0;
+  cursor: pointer;
+  transition: .4s ease-in-out;
+  padding: 10px;
+}
+
+.close-input:hover {
+  rotate: 90deg;
+}
+
+.close-input.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown-list {
+  padding: 18px 24px;
+  min-width: 304px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-bottom: 1px solid #0000001A;
+  border-left: 1px solid #0000001A;
+  border-right: 1px solid #0000001A;
+  background: var(--white);
+}
+
+.dropdown-list__item {
+  padding: 6px 9px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dropdown-list__item:hover {
+  background: var(--gray);
+}

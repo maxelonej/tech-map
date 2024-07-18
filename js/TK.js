@@ -15,6 +15,21 @@ if (currentPage === "LTK") {
 }
 const openNewTab = () => window.open(window.location.href, "_blank");
 
+// Кастом селектор
+const customSelect = `
+        <div class="dropdown-select">
+          <span class="select">Default value</span>
+          <img class="arrow" src="./img/input/unactive-arrow.svg" alt="Стрелка">
+          <img class="close-input" src="./img/input/close-input.svg" alt="Крестик">
+        </div>
+        <div class="dropdown-selected"></div>
+        <div class="dropdown-list">
+          <div class="dropdown-list__item">1</div>
+          <div class="dropdown-list__item">2</div>
+          <div class="dropdown-list__item">3</div>
+        </div>
+    `;
+
 // if (currentPage === 'LTK') {
 //     // Здесь код, специфичный для страницы ЛТК
 // } else if (currentPage === 'PTK') {
@@ -2228,11 +2243,26 @@ function addDeleteButton(row) {
 let selectedValues = {};
 
 function createEmptyComponentRow(tbody, data, _dataversion) {
+  // table row
   const row = document.createElement("tr");
-  const inciSelect = document.createElement("select");
-  const compositionSelect = document.createElement("select");
-  const providerSelect = document.createElement("select");
-  const invoiceNameSelect = document.createElement("select");
+
+  // Присвоить каждому элементу по классу и innerHTML
+  const createDropdownElement = (className, innerHTML) => {
+    const element = document.createElement("div");
+    element.classList.add(className);
+    element.innerHTML = innerHTML;
+    return element;
+  };
+
+  const inciSelect = createDropdownElement("dropdown", customSelect);
+  const compositionSelect = createDropdownElement("dropdown", customSelect);
+  const providerSelect = createDropdownElement("dropdown", customSelect);
+  const invoiceNameSelect = createDropdownElement("dropdown", customSelect);
+  // const inciSelect = document.createElement("select");
+  // const compositionSelect = document.createElement("select");
+  // const providerSelect = document.createElement("select");
+  // const invoiceNameSelect = document.createElement("select");
+
   invoiceNameSelect.classList.add("name");
   const selects = [
     inciSelect,
@@ -2243,8 +2273,10 @@ function createEmptyComponentRow(tbody, data, _dataversion) {
 
   selects.forEach((select) => {
     select.classList.add("m9-select");
+    // table data cell
     const cell = document.createElement("td");
     cell.appendChild(select);
+    // table row
     row.appendChild(cell);
   });
 
@@ -2286,6 +2318,8 @@ function createEmptyComponentRow(tbody, data, _dataversion) {
   let selectedInciValue = null;
 
   // Обработчик для inciSelect
+  // todo
+  /*
   $(inciSelect)[0].selectize.on("change", function () {
     selectedInciValue = this.getValue(); // Сохраняем выбранное значение inci
     console.log("selectedInciValue:", selectedInciValue);
@@ -2422,16 +2456,18 @@ function createEmptyComponentRow(tbody, data, _dataversion) {
       );
     }
   });
+  */
 
   // Кнопка удаления
   let deleteCell = document.createElement("td");
+  const deleteImage = document.createElement("img");
   deleteImage.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
   deleteImage.alt = "Удалить";
   deleteImage.src = "./img/trash.svg";
   deleteImage.onclick = function () {
     row.remove();
   };
-  deleteCell.appendChild(deleteImamage);
+  deleteCell.appendChild(deleteImage);
   row.appendChild(deleteCell);
 }
 
@@ -3553,14 +3589,13 @@ function checkAllInputs() {
   // document.querySelector('#assembleButton').disabled = !allFilled;
 }
 
-// todo восстановить
 // Функция для скрытия элементов с заданным классом
 function hideElementsByClass() {
-  // phasesContainer.querySelectorAll(className).forEach((element) => {
-  //   const label = element.previousElementSibling;
-  //   label.style.display = "none";
-  //   element.style.display = "none";
-  // });
+  phasesContainer.querySelectorAll(className).forEach((element) => {
+    const label = element.previousElementSibling;
+    label.style.display = "none";
+    element.style.display = "none";
+  });
 }
 
 // Function to remove an element and its previous sibling
@@ -4489,3 +4524,49 @@ async function loadJsonFromLocalFile(filePath) {
       console.error("Ошибка при получении данных из файла:", error);
     });
 })();
+
+// Custom input
+const dropdown = document.querySelector(".dropdown");
+const dropdownSelect = document.querySelector(".dropdown-select");
+const dropdownList = document.querySelector(".dropdown-list");
+const dropdownSelected = document.querySelector(".dropdown-selected");
+const selectElement = document.querySelector(".select");
+const initialValue = selectElement ? selectElement.textContent : "";
+const dropdownListItems = document.querySelectorAll(".dropdown-list__item");
+const arrow = document.querySelector(".arrow");
+const closeInput = document.querySelector(".close-input");
+
+closeInput.addEventListener("click", () => {
+  selectElement.textContent = initialValue;
+});
+
+dropdownSelect.addEventListener("click", () => {
+  console.log("clicked");
+  dropdownList.classList.toggle("active");
+  dropdownSelected.classList.toggle("active");
+  dropdownSelect.classList.toggle("active");
+  arrow.classList.toggle("active");
+  closeInput.classList.toggle("active");
+});
+
+dropdownListItems.forEach((item) => {
+  item.addEventListener("click", (event) => {
+    const selectedItemText = event.target.textContent;
+    selectElement.textContent = selectedItemText;
+    dropdownList.classList.remove("active");
+    dropdownSelected.classList.remove("active");
+    dropdownSelect.classList.remove("active");
+    arrow.classList.remove("active");
+    closeInput.classList.remove("active");
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (!dropdown.contains(event.target)) {
+    dropdownList.classList.remove("active");
+    dropdownSelected.classList.remove("active");
+    dropdownSelect.classList.remove("active");
+    arrow.classList.remove("active");
+    closeInput.classList.remove("active");
+  }
+});
