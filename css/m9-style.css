@@ -92,6 +92,7 @@ textarea {
 .inner-box {
   min-height: 0;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .m9-add-component {
