@@ -2315,7 +2315,7 @@ function createEmptyComponentRow(tbody, data, _dataversion) {
     $(compositionSelect)
   );
 
-  let selectedInciValue = null;
+  // let selectedInciValue = null;
 
   // Обработчик для inciSelect
   // todo
@@ -2633,7 +2633,7 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   accordionLeft.className += "d-flex align-items-center";
 
   const accordionLeftImg = document.createElement("img");
-  accordionLeftImg.className = "ml-3";
+  accordionLeftImg.style.marginLeft = "32px";
   accordionLeftImg.src = "./img/accordion/dataflow.svg";
   accordionLeftImg.alt = "Компоненты";
 
@@ -2782,8 +2782,8 @@ function createOutputControlCollapsibleContainer(
   accordionLeft.className += "d-flex align-items-center";
 
   const accordionLeftImg = document.createElement("img");
-  accordionLeftImg.className = "ml-3";
   accordionLeftImg.src = "./img/accordion/compass.svg";
+  accordionLeftImg.style.marginLeft = "32px";
   accordionLeftImg.alt = "Выходной контроль";
 
   const accordionLeftText = document.createElement("p");
@@ -2841,12 +2841,15 @@ function createOutputControlCollapsibleContainer(
   const tableContainer = document.createElement("div");
   tableContainer.classList.add("table-container");
   tableContainer.style.marginTop = "0px";
+  tableContainer.style.width = "632px";
+  tableContainer.style.paddingBottom = "0px";
   tableContainer.style.overflowX = "auto";
   tableContainer.style.whiteSpace = "nowrap";
 
   tableContainer.appendChild(table);
   accordionContent.appendChild(tableContainer);
   transitionBox.appendChild(accordionContent);
+  transitionBox.style.paddingBottom = "0px";
   innerBox.appendChild(transitionBox);
   detailBox.appendChild(innerBox);
   accordion.appendChild(detailBox);
@@ -2977,7 +2980,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   accordionLeft.className += "d-flex align-items-center";
 
   const accordionLeftImg = document.createElement("img");
-  accordionLeftImg.className = "ml-3";
+  accordionLeftImg.style.marginLeft = "32px";
   accordionLeftImg.src = "./img/accordion/star.svg";
   accordionLeftImg.alt = "Испытания";
 
@@ -4233,7 +4236,7 @@ async function loadJsonFromLocalFile(filePath) {
           accordionLeft.className += "d-flex align-items-center";
 
           const accordionLeftImg = document.createElement("img");
-          accordionLeftImg.className = "ml-3";
+          accordionLeftImg.style.marginLeft = "32px";
           accordionLeftImg.src = "./img/accordion/layers.svg";
           accordionLeftImg.alt = "Фазы";
 
