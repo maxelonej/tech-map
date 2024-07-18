@@ -52,6 +52,11 @@ textarea {
   resize: none;
 }
 
+#notes {
+  max-width: 625px;
+  min-width: 350px;
+}
+
 .accordion {
   background: var(--white);
   transition: var(--transition);
@@ -177,6 +182,7 @@ th {
   opacity: .5;
   color: var(--black);
   padding: 0;
+  padding-right: 61px;
   padding-bottom: 16px;
   font-family: var(--ff-500);
   font-weight: normal;
@@ -968,7 +974,7 @@ a.underline_c:after {
 
 /*---------------------------Конец кнопки "Добавить фазу"---------------------------------------*/
 
-/* Custom input */
+/* Start of Custom input */
 .dropdown {
   display: flex;
   flex-direction: column;
@@ -1082,4 +1088,35 @@ a.underline_c:after {
 
 .dropdown-list__item:hover {
   background: var(--gray);
+}
+
+/* End of Custom input */
+
+.form-group {
+  display: flex;
+}
+
+.form-group>label {
+  width: 100%;
+}
+
+@media screen and (max-width: 1440px) {
+  .form-group>label {
+    width: auto;
+  }
+
+  .form-group {
+    flex-flow: wrap row;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .m9-input {
+    width: auto;
+  }
+
+  .col {
+    width: auto;
+  }
 }

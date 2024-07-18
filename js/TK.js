@@ -3010,6 +3010,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   // Inner box
   const innerBox = document.createElement("div");
   innerBox.className = "inner-box";
+  innerBox.style.overflowX = "hidden";
 
   // Transition box
   const transitionBox = document.createElement("div");
@@ -3034,13 +3035,19 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   accordionContent.appendChild(collapsibleContentTests);
 
   // Создаем таблицу внутри контента с классами Bootstrap
+  const _tableContainer = document.createElement("div");
+  _tableContainer.classList.add("table-container");
+  _tableContainer.style.overflowX = "auto";
+
   const table = document.createElement("table");
   table.className = "m9-table";
   table.id = "outputControlCollapsibleTable";
   table.style.tableLayout = ""; // Фиксируем ширину столбцов
   table.style.width = "100%"; // Устанавливаем ширину таблицы равной 100%
   table.style.marginTop = "20px";
-  accordionContent.appendChild(table);
+
+  _tableContainer.appendChild(table);
+  accordionContent.appendChild(_tableContainer);
 
   // Создаем thead для таблицы
   const thead = document.createElement("thead");
@@ -3106,9 +3113,20 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   });
 
   // Создаем формы для температуры, версии рецептуры и даты испытаний
+  const forms = document.createElement("div");
+  forms.classList.add("col");
+  forms.className += " d-flex flex-wrap";
+  forms.style.marginBlock = "32px";
+  forms.style.gap = "30px";
+  forms.style.paddingBlock = "32px";
+  forms.style.borderBlock = "2px solid var(--gray)";
+
   const formsRow = document.createElement("div");
-  formsRow.classList.add("row");
-  formsRow.style.marginTop = "64px";
+  formsRow.classList.add("col");
+  formsRow.style.paddingInline = "0px";
+  if (window.matchMedia("(max-width: 1440px)").matches) {
+    formsRow.style.flexBasis = "auto";
+  }
 
   const tempTestingInput = createFormInput(
     "t на начало испытаний",
@@ -3126,21 +3144,23 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
     dataversion.test.test_start_end
   );
 
+  forms.appendChild(formsRow);
+
   formsRow.appendChild(tempTestingInput);
   formsRow.appendChild(recipeVersionInput);
   formsRow.appendChild(testStartEndInput);
 
-  accordionContent.appendChild(formsRow);
+  accordionContent.appendChild(forms);
 
   // Создаем большое текстовое поле для примечаний
   const notesTextarea = document.createElement("textarea");
-  notesTextarea.classList.add("form-control", "mt-3", "m9-input");
+  notesTextarea.classList.add("form-control", "m9-input");
   notesTextarea.id = "notes";
   notesTextarea.setAttribute("rows", "5");
   notesTextarea.setAttribute("placeholder", "Примечания");
   // Присваиваем значение из dataversion.test
   notesTextarea.value = dataversion.test.notes;
-  accordionContent.appendChild(notesTextarea);
+  forms.appendChild(notesTextarea);
 
   // Создаем контейнер для таблицы
   const tableContainer = document.createElement("div");
@@ -3164,60 +3184,50 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   });
   tableContainer.appendChild(tableimage);
 
-  // Создаем строки и ячейки для таблицы
-  for (let i = 0; i < 3; i++) {
-    const row = document.createElement("tr");
-    tableimage.appendChild(row);
+  // Создаем div-контейнер для кнопки с изображением
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("button-container");
 
-    for (let j = 0; j < 2; j++) {
-      const cell = document.createElement("td");
-      row.appendChild(cell);
+  // Создаем изображение
+  const imageElement = document.createElement("img");
+  imageElement.classList.add("button-image");
+  imageElement.src = "./img/attach/image.svg";
+  buttonContainer.appendChild(imageElement);
 
-      // Создаем div-контейнер для кнопки с изображением
-      const buttonContainer = document.createElement("div");
-      buttonContainer.classList.add("button-container");
-      cell.appendChild(buttonContainer);
+  // Создаем кнопку
+  const button = document.createElement("button");
+  button.textContent = "Добавить фото";
+  button.classList.add("image-button");
+  buttonContainer.appendChild(button);
 
-      // Создаем кнопку с изображением
-      const button = document.createElement("button");
-      button.classList.add("image-button");
-      buttonContainer.appendChild(button);
+  // Создаем элемент input для загрузки изображений, который будет скрыт
+  const imageInput = document.createElement("input");
+  imageInput.setAttribute("type", "file");
+  imageInput.setAttribute("accept", "image/*");
+  imageInput.classList.add("image-upload-input");
+  imageInput.style.display = "none"; // Скрываем input
+  imageInput.addEventListener("change", handleImageUpload);
+  buttonContainer.appendChild(imageInput);
 
-      // Создаем элемент img для отображения изображения кнопки
-      const imageElement = document.createElement("img");
-      imageElement.classList.add("button-image");
-      imageElement.src = "./icons/icons8-add-image-96.png";
-      button.appendChild(imageElement);
+  // Добавляем обработчик клика на кнопку для открытия диалога выбора файла
+  buttonContainer.addEventListener("click", function () {
+    imageInput.click();
+  });
 
-      // Создаем элемент input для загрузки изображений, который будет скрыт
-      const imageInput = document.createElement("input");
-      imageInput.setAttribute("type", "file");
-      imageInput.setAttribute("accept", "image/*");
-      imageInput.classList.add("image-upload-input");
-      imageInput.style.display = "none"; // Скрываем input
-      imageInput.addEventListener("change", handleImageUpload);
-      buttonContainer.appendChild(imageInput);
+  // Создаем кнопку для удаления изображения
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-button");
+  deleteButton.style.display = "none"; // Скрываем кнопку удаления
+  tableContainer.appendChild(deleteButton);
+  tableContainer.appendChild(buttonContainer);
 
-      // Добавляем обработчик клика на кнопку для открытия диалога выбора файла
-      button.addEventListener("click", function () {
-        imageInput.click();
-      });
-
-      // Создаем кнопку для удаления изображения
-      const deleteButton = document.createElement("button");
-      deleteButton.classList.add("delete-button");
-      deleteButton.style.display = "none"; // Скрываем кнопку удаления
-      cell.appendChild(deleteButton);
-
-      // Создаем элемент img для отображения изображения кнопки удаления
-      const deleteImage = document.createElement("img");
-      deleteImage.classList.add("delete-button-image");
-      deleteImage.src = "./img/trash.svg";
-      deleteImage.style.width = "30px";
-      deleteImage.style.height = "30px";
-      deleteButton.appendChild(deleteImage);
-    }
-  }
+  // Создаем элемент img для отображения изображения кнопки удаления
+  const deleteImage = document.createElement("img");
+  deleteImage.classList.add("delete-button-image");
+  deleteImage.src = "./img/trash.svg";
+  deleteImage.style.width = "30px";
+  deleteImage.style.height = "30px";
+  deleteButton.appendChild(deleteImage);
 
   function handleImageUpload(event) {
     const files = event.target.files;
@@ -3225,8 +3235,9 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       // Создаем элемент img
       const imageElement = document.createElement("img");
       imageElement.classList.add("uploaded-image");
-      imageElement.style.width = "100%"; // Устанавливаем ширину изображения равной ширине td
-      imageElement.style.height = "auto"; // Автоматически подстраиваем высоту
+      imageElement.style.width = "187px";
+      imageElement.style.height = "120px";
+      imageElement.style.borderRadius = "8px";
 
       // Читаем содержимое файла в формате Data URL
       const reader = new FileReader();
@@ -3299,6 +3310,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
 function createFormInput(labelText, id, value) {
   const colDiv = document.createElement("div");
   colDiv.classList.add("col");
+  colDiv.style.padding = "0px";
 
   const formGroup = document.createElement("div");
   formGroup.classList.add("form-group");
@@ -4528,48 +4540,49 @@ async function loadJsonFromLocalFile(filePath) {
     });
 })();
 
+// todo uncomment
 // Custom input
-const dropdown = document.querySelector(".dropdown");
-const dropdownSelect = document.querySelector(".dropdown-select");
-const dropdownList = document.querySelector(".dropdown-list");
-const dropdownSelected = document.querySelector(".dropdown-selected");
-const selectElement = document.querySelector(".select");
-const initialValue = selectElement ? selectElement.textContent : "";
-const dropdownListItems = document.querySelectorAll(".dropdown-list__item");
-const arrow = document.querySelector(".arrow");
-const closeInput = document.querySelector(".close-input");
+// const dropdown = document.querySelector(".dropdown");
+// const dropdownSelect = document.querySelector(".dropdown-select");
+// const dropdownList = document.querySelector(".dropdown-list");
+// const dropdownSelected = document.querySelector(".dropdown-selected");
+// const selectElement = document.querySelector(".select");
+// const initialValue = selectElement ? selectElement.textContent : "";
+// const dropdownListItems = document.querySelectorAll(".dropdown-list__item");
+// const arrow = document.querySelector(".arrow");
+// const closeInput = document.querySelector(".close-input");
 
-closeInput.addEventListener("click", () => {
-  selectElement.textContent = initialValue;
-});
+// closeInput.addEventListener("click", () => {
+//   selectElement.textContent = initialValue;
+// });
 
-dropdownSelect.addEventListener("click", () => {
-  console.log("clicked");
-  dropdownList.classList.toggle("active");
-  dropdownSelected.classList.toggle("active");
-  dropdownSelect.classList.toggle("active");
-  arrow.classList.toggle("active");
-  closeInput.classList.toggle("active");
-});
+// dropdownSelect.addEventListener("click", () => {
+//   console.log("clicked");
+//   dropdownList.classList.toggle("active");
+//   dropdownSelected.classList.toggle("active");
+//   dropdownSelect.classList.toggle("active");
+//   arrow.classList.toggle("active");
+//   closeInput.classList.toggle("active");
+// });
 
-dropdownListItems.forEach((item) => {
-  item.addEventListener("click", (event) => {
-    const selectedItemText = event.target.textContent;
-    selectElement.textContent = selectedItemText;
-    dropdownList.classList.remove("active");
-    dropdownSelected.classList.remove("active");
-    dropdownSelect.classList.remove("active");
-    arrow.classList.remove("active");
-    closeInput.classList.remove("active");
-  });
-});
+// dropdownListItems.forEach((item) => {
+//   item.addEventListener("click", (event) => {
+//     const selectedItemText = event.target.textContent;
+//     selectElement.textContent = selectedItemText;
+//     dropdownList.classList.remove("active");
+//     dropdownSelected.classList.remove("active");
+//     dropdownSelect.classList.remove("active");
+//     arrow.classList.remove("active");
+//     closeInput.classList.remove("active");
+//   });
+// });
 
-document.addEventListener("click", (event) => {
-  if (!dropdown.contains(event.target)) {
-    dropdownList.classList.remove("active");
-    dropdownSelected.classList.remove("active");
-    dropdownSelect.classList.remove("active");
-    arrow.classList.remove("active");
-    closeInput.classList.remove("active");
-  }
-});
+// document.addEventListener("click", (event) => {
+//   if (!dropdown.contains(event.target)) {
+//     dropdownList.classList.remove("active");
+//     dropdownSelected.classList.remove("active");
+//     dropdownSelect.classList.remove("active");
+//     arrow.classList.remove("active");
+//     closeInput.classList.remove("active");
+//   }
+// });
