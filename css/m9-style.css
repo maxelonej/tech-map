@@ -314,14 +314,16 @@ h5 {
   display: block;
   width: 100%;
   padding: 0.75rem 1rem;
-  font-size: 14px;
+  font-family: var(--ff-500);
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
   height: calc(2.5em + .75rem + 2px);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-color: #fbfbfb;
+  background: var(--gray);
+  color: var(--black);
   background-clip: padding-box;
   border: 2px solid var(--gray);
   border-radius: 8px;
@@ -330,7 +332,9 @@ h5 {
 }
 
 .m9-input:focus {
+  background: var(--white);
   border: 2px solid var(--blue);
+  box-shadow: none;
 }
 
 .m9-input:disabled {
