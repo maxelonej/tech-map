@@ -2739,6 +2739,7 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   // Создаем кнопку для добавления новых строк
   const addButtonComponent = document.createElement("button");
   addButtonComponent.classList.add("m9-add-component", "block-ptk");
+  addButtonComponent.style.outline = "none";
   addButtonComponent.textContent = "+ Добавить компонент";
 
   if (currentPage === "PTK") {
