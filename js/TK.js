@@ -3164,17 +3164,15 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
 
   // Создаем контейнер для таблицы
   const tableContainer = document.createElement("div");
-  tableContainer.classList.add("table-container");
+  tableContainer.className += "table-container d-flex flex-wrap";
+  tableContainer.style.position = "relative";
+  tableContainer.style.gap = "24px";
   accordionContent.appendChild(tableContainer);
 
-  // Создаем таблицу
-  const tableimage = document.createElement("table");
-  tableimage.style.width = "100%"; // Устанавливаем ширину таблицы равной ширине родительского контейнера
   // Добавляем обработчик клика на ячейку таблицы
-  tableimage.addEventListener("click", function (event) {
-    const target = event.target;
-    if (target.classList.contains("delete-button-image")) {
-      // Если нажата кнопка удаления, вызываем функцию удаления изображения
+  tableContainer.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.classList.contains("delete-button")) {
       handleImageDelete(target);
     } else if (target.classList.contains("button-image")) {
       // Если нажата кнопка добавления изображения, вызываем функцию загрузки изображения
@@ -3182,7 +3180,6 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       input.click();
     }
   });
-  tableContainer.appendChild(tableimage);
 
   // Создаем div-контейнер для кнопки с изображением
   const buttonContainer = document.createElement("div");
@@ -3192,6 +3189,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   const imageElement = document.createElement("img");
   imageElement.classList.add("button-image");
   imageElement.src = "./img/attach/image.svg";
+
   buttonContainer.appendChild(imageElement);
 
   // Создаем кнопку
@@ -3210,93 +3208,108 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   buttonContainer.appendChild(imageInput);
 
   // Добавляем обработчик клика на кнопку для открытия диалога выбора файла
-  buttonContainer.addEventListener("click", function () {
+  buttonContainer.addEventListener("click", () => {
     imageInput.click();
   });
 
   // Создаем кнопку для удаления изображения
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("delete-button");
-  deleteButton.style.display = "none"; // Скрываем кнопку удаления
-  tableContainer.appendChild(deleteButton);
+  deleteButton.style.display = "block"; // Скрываем кнопку удаления
+  // deleteButton.style.display = "none"; // Скрываем кнопку удаления
+  // tableContainer.appendChild(deleteButton);
   tableContainer.appendChild(buttonContainer);
 
   // Создаем элемент img для отображения изображения кнопки удаления
   const deleteImage = document.createElement("img");
   deleteImage.classList.add("delete-button-image");
   deleteImage.src = "./img/trash.svg";
-  deleteImage.style.width = "30px";
-  deleteImage.style.height = "30px";
   deleteButton.appendChild(deleteImage);
 
+  // Создаем обертку для контейнеров
+  const wrapperImageElement = document.createElement("div");
+  wrapperImageElement.classList.add("wrapper-uploaded-image");
   function handleImageUpload(event) {
     const files = event.target.files;
     for (const file of files) {
+      // Создаем контейнер для img
+      const containerImageElement = document.createElement("div");
+      containerImageElement.classList.add("container-uploaded-image");
+
       // Создаем элемент img
       const imageElement = document.createElement("img");
       imageElement.classList.add("uploaded-image");
-      imageElement.style.width = "187px";
-      imageElement.style.height = "120px";
-      imageElement.style.borderRadius = "8px";
+
+      // Создаем кнопку удаления
+      const deleteButton = document.createElement("button");
+      deleteButton.classList.add("delete-button");
+
+      // Создаем элемент img для отображения изображения кнопки удаления
+      const deleteImage = document.createElement("img");
+      deleteImage.classList.add("delete-button-image");
+      deleteImage.src = "./img/trash.svg";
+      deleteButton.appendChild(deleteImage);
+
+      containerImageElement.append(imageElement, deleteButton);
+
+      deleteButton.addEventListener("click", (e) => {
+        const wrapperImageElement = e.target.closest(".wrapper-uploaded-image");
+        wrapperImageElement.style.display = "none"; // Hide the container
+      });
 
       // Читаем содержимое файла в формате Data URL
       const reader = new FileReader();
-      reader.onload = function (e) {
+      reader.onload = (e) => {
         imageElement.src = e.target.result; // Устанавливаем src изображения
         // Добавляем изображение в контейнер
         const parentContainer = event.target.parentElement.parentElement;
-        parentContainer.appendChild(imageElement);
-        // Скрываем кнопку добавления и показываем кнопку удаления
-        parentContainer.querySelector(".button-container").style.display =
-          "none";
-        parentContainer.querySelector(".delete-button").style.display = "block";
-
-        // Отправляем изображение на сервер для сохранения
-        uploadImageToServer(file).then((imageUrl) => {
-          // Сохраняем URL изображения в базе данных
-          saveImageUrlToDatabase(imageUrl).then(() => {
-            // Обновляем интерфейс пользователя
-            updateUserInterface(imageUrl);
-          });
-        });
+        const wrapperImageElement = document.createElement("div");
+        wrapperImageElement.classList.add("wrapper-uploaded-image");
+        wrapperImageElement.appendChild(containerImageElement);
+        parentContainer.appendChild(wrapperImageElement);
       };
       reader.readAsDataURL(file);
     }
   }
 
+  // todo: uncomment, move back into -> reader.noload = (e) => {!here!}
+  // Показываем кнопку удаления
+  // parentContainer.querySelector(".delete-button").style.display = "block";
+
+  // Отправляем изображение на сервер для сохранения
+  // uploadImageToServer(file).then((imageUrl) => {
+  //   // Сохраняем URL изображения в базе данных
+  //   saveImageUrlToDatabase(imageUrl).then(() => {
+  //     // Обновляем интерфейс пользователя
+  //     updateUserInterface(imageUrl);
+  //   });
+  // });
+
   // Функция обработки удаления изображения
   function handleImageDelete(target) {
-    const parentContainer = target.closest("td");
-    const uploadedImage = parentContainer.querySelector(".uploaded-image");
-    if (uploadedImage) {
-      uploadedImage.remove();
-      // Показываем кнопку добавления и скрываем кнопку удаления
-      parentContainer.querySelector(".button-container").style.display =
-        "block";
-      parentContainer.querySelector(".delete-button").style.display = "none";
-    }
+    target.parentNode.remove();
   }
 
-  function uploadImageToServer(file) {
-    return new Promise((resolve, reject) => {
-      const formData = new FormData();
-      formData.append("image", file);
+  // function uploadImageToServer(file) {
+  //   return new Promise((resolve, reject) => {
+  //     const formData = new FormData();
+  //     formData.append("image", file);
 
-      fetch("https://" + domain + "/9x/tech-map/image-upload", {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            resolve(data.imageUrl);
-          } else {
-            reject(data.error);
-          }
-        })
-        .catch((error) => reject(error));
-    });
-  }
+  //     fetch("https://" + domain + "/9x/tech-map/image-upload", {
+  //       method: "POST",
+  //       body: formData,
+  //     })
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         if (data.success) {
+  //           resolve(data.imageUrl);
+  //         } else {
+  //           reject(data.error);
+  //         }
+  //       })
+  //       .catch((error) => reject(error));
+  //   });
+  // }
 
   transitionBox.appendChild(accordionContent);
   innerBox.appendChild(transitionBox);
