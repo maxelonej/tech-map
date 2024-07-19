@@ -117,6 +117,11 @@ $currentTime = time();
     <img src="icons/icons8-add-new-96.png" alt="Добавить фазу">
   </button>
 
+  <!-- Custom full-screen overlay -->
+  <div id="full-screen-overlay">
+    <img src="" alt="" id="full-screen-image">
+  </div>
+
   <!-- Подключение jQuery из CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
