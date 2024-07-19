@@ -3269,7 +3269,10 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       containerImageElement.append(imageElement, deleteButton, lookIcon);
 
       // Attach event listener to each container element
-      containerImageElement.addEventListener("click", () => {
+      containerImageElement.addEventListener("click", (e) => {
+        if (e.target.classList.contains("delete-button")) {
+          return; // Exit the function if the delete button was clicked
+        }
         const img = containerImageElement.querySelector("img.uploaded-image");
         fullScreenImage.src = img.src; // Set the image source
         overlay.style.opacity = "1";
@@ -3278,10 +3281,17 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       });
 
       deleteButton.addEventListener("click", (e) => {
-        const wrapperImageElementClosest = e.target.closest(
-          ".wrapper-uploaded-image"
-        );
-        wrapperImageElementClosest.style.display = "none"; // Hide the container
+        e.stopPropagation(); // Убирает открытие оверлея
+        const containerElement = e.target.closest(".container-uploaded-image");
+        if (containerElement) {
+          containerElement.classList.add("animate-remove"); // Add a class to trigger the animation
+          // Анимация удаления
+          setTimeout(() => {
+            setTimeout(() => {
+              containerElement.parentNode.removeChild(containerElement); // Remove the container element after the animation finishes
+            }, 50); // Add a short delay before removing the element
+          }, 300); // Adjust the timeout duration to match your animation duration
+        }
       });
 
       // Читаем содержимое файла в формате Data URL
@@ -3466,7 +3476,7 @@ const createPhaseInterface = (
   }
 
   const containerHeader = document.createElement("div");
-  containerHeader.className = "m9-container";
+  containerHeader.className = "";
   containerHeader.style.display = "flex";
   containerHeader.style.alignItems = "center";
   containerHeader.style.justifyContent = "flex-start";
@@ -4513,9 +4523,9 @@ async function loadJsonFromLocalFile(filePath) {
 
         // Добавляем обработчик событий для кнопки добавления фазы, если он еще не был добавлен
         let addPhaseButton = document.getElementById("addPhaseButton");
-        addPhaseButton.className = "block-ptk";
+        addPhaseButton.className = "m9-add-component block-ptk";
         if (addPhaseButton && !isAddPhaseButtonHandlerAdded) {
-          addPhaseButton.addEventListener("click", function () {
+          addPhaseButton.addEventListener("click", () => {
             const newPhaseInterface = createPhaseInterface(
               phasesData,
               selectsData,
