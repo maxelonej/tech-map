@@ -3229,6 +3229,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   // Создаем обертку для контейнеров
   const wrapperImageElement = document.createElement("div");
   wrapperImageElement.classList.add("wrapper-uploaded-image");
+
   function handleImageUpload(event) {
     const files = event.target.files;
     for (const file of files) {
@@ -3250,11 +3251,37 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       deleteImage.src = "./img/trash.svg";
       deleteButton.appendChild(deleteImage);
 
-      containerImageElement.append(imageElement, deleteButton);
+      // Создаем иконку лупы
+      const lookIcon = document.createElement("img");
+      lookIcon.classList.add("look");
+      lookIcon.src = "./img/attach/look.svg";
+
+      const overlay = document.getElementById("full-screen-overlay");
+      const fullScreenImage = document.getElementById("full-screen-image");
+
+      // Add an event listener to close the overlay when clicked
+      overlay.addEventListener("click", () => {
+        overlay.style.opacity = "0";
+        overlay.style.visibility = "hidden";
+        document.body.style.overflow = "auto";
+      });
+
+      containerImageElement.append(imageElement, deleteButton, lookIcon);
+
+      // Attach event listener to each container element
+      containerImageElement.addEventListener("click", () => {
+        const img = containerImageElement.querySelector("img.uploaded-image");
+        fullScreenImage.src = img.src; // Set the image source
+        overlay.style.opacity = "1";
+        overlay.style.visibility = "visible";
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+      });
 
       deleteButton.addEventListener("click", (e) => {
-        const wrapperImageElement = e.target.closest(".wrapper-uploaded-image");
-        wrapperImageElement.style.display = "none"; // Hide the container
+        const wrapperImageElementClosest = e.target.closest(
+          ".wrapper-uploaded-image"
+        );
+        wrapperImageElementClosest.style.display = "none"; // Hide the container
       });
 
       // Читаем содержимое файла в формате Data URL
@@ -3262,14 +3289,15 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       reader.onload = (e) => {
         imageElement.src = e.target.result; // Устанавливаем src изображения
         // Добавляем изображение в контейнер
-        const parentContainer = event.target.parentElement.parentElement;
-        const wrapperImageElement = document.createElement("div");
         wrapperImageElement.classList.add("wrapper-uploaded-image");
         wrapperImageElement.appendChild(containerImageElement);
-        parentContainer.appendChild(wrapperImageElement);
       };
       reader.readAsDataURL(file);
     }
+
+    // Append the wrapper to the parent container
+    const parentContainer = event.target.parentElement.parentElement;
+    parentContainer.appendChild(wrapperImageElement);
   }
 
   // todo: uncomment, move back into -> reader.noload = (e) => {!here!}
