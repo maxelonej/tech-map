@@ -3499,7 +3499,6 @@ const createPhaseInterface = (
   const phaseNameSelect = document.createElement("select");
   phaseNameSelect.className = "m9-input name-select";
   phaseNameSelect.style.width = "85px";
-  phaseNameSelect.style.marginLeft = "10px";
   const emptyOption = document.createElement("option"); // Добавляем пустую опцию
   emptyOption.value = "";
   emptyOption.text = "";
