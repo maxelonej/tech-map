@@ -113,9 +113,7 @@ $currentTime = time();
 
   <div id="phasesContainer"></div>
 
-  <button id="addPhaseButton" title="Добавить фазу">
-    <img src="icons/icons8-add-new-96.png" alt="Добавить фазу">
-  </button>
+  <button id="addPhaseButton" title="Добавить фазу">Добавить фазу +</button>
 
   <!-- Custom full-screen overlay -->
   <div id="full-screen-overlay">
