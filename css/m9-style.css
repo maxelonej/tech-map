@@ -121,8 +121,6 @@ textarea {
 }
 
 .transition-box {
-  padding: 0.3rem;
-  padding-top: 0;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -954,6 +952,8 @@ a.underline_c:after {
 
 #addPhaseButton {
   outline: none;
+  width: calc(100% - 64px);
+  margin-inline: auto;
 }
 
 /* #addPhaseButton {
@@ -1123,4 +1123,19 @@ a.underline_c:after {
   .col {
     width: auto;
   }
+}
+
+.phase {
+  padding: 0;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  border-bottom: 1px solid #dbdada;
+  border-radius: 0;
+  background: var(--white);
+  transition: var(--transition);
+}
+
+.phase:hover {
+  border-bottom: 1px solid #757575;
 }

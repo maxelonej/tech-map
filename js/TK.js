@@ -2647,7 +2647,8 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   const accordionRight = document.createElement("div");
 
   const accordionRightImg = document.createElement("img");
-  accordionRightImg.className += "mr-3 transition";
+  accordionRightImg.className += "transition";
+  accordionRightImg.style.marginRight = "32px";
   accordionRightImg.src = "./img/accordion/open-arrow.svg";
   accordionRightImg.alt = "Открыть аккордеон";
 
@@ -2796,7 +2797,8 @@ function createOutputControlCollapsibleContainer(
   const accordionRight = document.createElement("div");
 
   const accordionRightImg = document.createElement("img");
-  accordionRightImg.className += "mr-3 transition";
+  accordionRightImg.className += "transition";
+  accordionRightImg.style.marginRight = "32px";
   accordionRightImg.src = "./img/accordion/open-arrow.svg";
   accordionRightImg.alt = "Открыть аккордеон";
 
@@ -2994,7 +2996,8 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   const accordionRight = document.createElement("div");
 
   const accordionRightImg = document.createElement("img");
-  accordionRightImg.className += "mr-3 transition";
+  accordionRightImg.className += "transition";
+  accordionRightImg.style.marginRight = "32px";
   accordionRightImg.src = "./img/accordion/open-arrow.svg";
   accordionRightImg.alt = "Открыть аккордеон";
 
@@ -3469,28 +3472,28 @@ const createPhaseInterface = (
   phaseCounter++;
   const container = document.createElement("div");
   container.className = "card phase";
-  container.style.padding = "0px";
-  container.style.backgroundColor = "#fff";
   if (phaseData && phaseData.ID) {
     container.id = phaseData.ID; // Устанавливаем существующий ID фазы
   }
 
   const containerHeader = document.createElement("div");
-  containerHeader.className = "";
+  // containerHeader.className = "";
+  containerHeader.style.position = "relative";
   containerHeader.style.display = "flex";
   containerHeader.style.alignItems = "center";
   containerHeader.style.justifyContent = "flex-start";
   containerHeader.style.flexFlow = "row wrap";
   containerHeader.style.gap = "20px";
+  containerHeader.style.paddingInline = "32px";
 
   // Кнопка для сворачивания/разворачивания
-  const collapseButton = document.createElement("button");
-  collapseButton.className = "m9-btn-custom";
-  collapseButton.id = "leftElementId";
-  collapseButton.innerHTML = "&#9660;"; // Стрелочка вниз в HTML
-  collapseButton.setAttribute("data-toggle", "collapse");
-  collapseButton.setAttribute("data-target", `#collapseContent${phaseCounter}`);
-  containerHeader.appendChild(collapseButton);
+  // const collapseButton = document.createElement("button");
+  // collapseButton.className = "m9-btn-custom";
+  // collapseButton.id = "leftElementId";
+  // collapseButton.innerHTML = "&#9660;"; // Стрелочка вниз в HTML
+  // collapseButton.setAttribute("data-toggle", "collapse");
+  // collapseButton.setAttribute("data-target", `#collapseContent${phaseCounter}`);
+  // containerHeader.appendChild(collapseButton);
 
   // Создание списка для выбора названия фазы
   const phaseNameSelect = document.createElement("select");
@@ -3568,6 +3571,13 @@ const createPhaseInterface = (
     }
   };
   containerHeader.appendChild(removePhaseButton);
+
+  const arrow = document.createElement("img");
+  arrow.style.position = "absolute";
+  arrow.style.right = "32px";
+  arrow.src = "./img/accordion/open-arrow.svg";
+  arrow.alt = "Открыть аккордеон";
+  containerHeader.appendChild(arrow);
 
   container.appendChild(containerHeader);
 
@@ -4313,7 +4323,8 @@ async function loadJsonFromLocalFile(filePath) {
           const accordionRight = document.createElement("div");
 
           const accordionRightImg = document.createElement("img");
-          accordionRightImg.className += "mr-3 transition";
+          accordionRightImg.className += "transition";
+          accordionRightImg.style.marginRight = "32px";
           accordionRightImg.src = "./img/accordion/open-arrow.svg";
           accordionRightImg.alt = "Открыть аккордеон";
 
@@ -4333,6 +4344,8 @@ async function loadJsonFromLocalFile(filePath) {
           // Transition box
           const transitionBox = document.createElement("div");
           transitionBox.className = "transition-box";
+          transitionBox.style.marginInline = "0px";
+          transitionBox.style.paddingInline = "0px";
 
           // Accordion content
           const accordionContent = document.createElement("div");
