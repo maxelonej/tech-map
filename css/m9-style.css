@@ -110,7 +110,7 @@ textarea {
   color: var(--blue);
   font-family: var(--ff-500);
   font-weight: 500;
-  border-radius: 5px;
+  border-radius: 8px;
   border: 0;
   outline: none;
   transition: var(--transition);
@@ -953,6 +953,10 @@ a.underline_c:after {
 /*---------------------------Кнопка Добавить фазу----------------------------------------*/
 
 #addPhaseButton {
+  outline: none;
+}
+
+/* #addPhaseButton {
   border: none;
   background: none;
   cursor: pointer;
@@ -970,7 +974,7 @@ a.underline_c:after {
 
 #addPhaseButton:hover {
   background: var(--gray);
-}
+} */
 
 /*---------------------------Конец кнопки "Добавить фазу"---------------------------------------*/
 
