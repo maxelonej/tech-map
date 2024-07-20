@@ -2992,7 +2992,8 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   forms.style.marginTop = "32px";
   forms.style.marginBottom = "30px";
   forms.style.gap = "30px";
-  forms.style.paddingBlock = "32px";
+  forms.style.paddingTop = "32px";
+  forms.style.paddingBottom = "30px";
   forms.style.paddingInline = "0px";
   forms.style.borderBlock = "2px solid var(--gray)";
 
