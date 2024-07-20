@@ -1101,9 +1101,9 @@ a.underline_c:after {
   display: flex;
 }
 
-.col:last-child .form-group {
+/* .col:last-child .form-group {
   margin-bottom: 0;
-}
+} */
 
 .form-group>label {
   width: 100%;

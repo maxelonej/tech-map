@@ -615,6 +615,26 @@ function createPhaseDataBlock(
   const col = document.createElement("div");
   col.className = "col";
 
+  const header = document.createElement("div");
+  header.style.display = "flex";
+  header.style.gap = "24px";
+  header.style.alignItems = "center";
+  header.style.marginTop = "40px";
+  header.style.marginBottom = "21px";
+
+  const title = document.createElement("p");
+  title.style.fontSize = "20px";
+  title.style.margin = "0px";
+  title.style.fontWeight = "700";
+  title.style.fontFamily = "Inter Medium";
+  title.style.color = "black";
+  title.textContent = "Данные по фазе";
+
+  const img = document.createElement("img");
+  img.src = "./img/phases/beaker.svg";
+
+  header.append(img, title);
+  col.appendChild(header);
   row.appendChild(col);
   phaseDataBlock.appendChild(row);
 
@@ -623,12 +643,13 @@ function createPhaseDataBlock(
     "Интенсивность перемешивания",
     "Температура загрузки",
     "Рабочая температура",
-    "Оснастка",
+    // "Оснастка",
   ];
   labels1.forEach((labelText) => {
     let formGroup = document.createElement("div");
     formGroup.className = "form-group";
     formGroup.style.maxWidth = "600px";
+    formGroup.style.marginBottom = "24px";
 
     let label = document.createElement("label");
     label.textContent = labelText;
@@ -744,11 +765,11 @@ function createPhaseDataBlock(
   });
 
   let labels2 = [
-    "Тип реактора",
+    // "Тип реактора",
     "Тип мешалки",
-    "Инструменты",
+    // "Инструменты",
     "pH фазы",
-    "Общее время на фазу (мин)",
+    // "Общее время на фазу (мин)",
   ];
   labels2.forEach((labelText) => {
     let formGroup = document.createElement("div");
@@ -870,15 +891,22 @@ function createPhaseDataBlock(
   });
 
   // Создаем текстовое поле для комментариев
-  let commentInput = document.createElement("input");
+  let commentInput = document.createElement("textarea");
   commentInput.type = "text";
   commentInput.placeholder = "Комментарий...";
+  commentInput.style.width = "100%";
+  commentInput.style.height = "192px";
   commentInput.className = "form-control commentary mt-2 m9-input"; // Добавляем отступ сверху
   commentInput.value =
     phaseData && phaseData.hasOwnProperty("commentary")
       ? phaseData.commentary
       : "";
-  phaseDataBlock.appendChild(commentInput);
+
+  const col2 = document.createElement("div");
+  col2.className = "col";
+  col2.style.marginTop = "83px";
+  col2.appendChild(commentInput);
+  row.appendChild(col2);
 
   return phaseDataBlock;
 }
