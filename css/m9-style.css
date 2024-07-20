@@ -27,6 +27,7 @@
   --blue-opacity: #3042dc0d;
   --blue-opacity-hover: #2933c01d;
   --gray: #f2f2f2;
+  --gray-2: #dbdbdb;
   --gray-hover: #e3e3e3;
   --input-percents: #0000001A;
   --select-focus-box-shadow: #3042dc33;
@@ -74,7 +75,7 @@ textarea {
 }
 
 .accordion-header.border-bottom-only {
-  border-bottom: 1px solid #dbdada;
+  border-bottom: 1px solid var(--gray-2);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -125,7 +126,7 @@ textarea {
   flex-direction: column;
   gap: 0.2rem;
   transition: 0.5s;
-  padding-top: 36px;
+  padding-top: 0px;
   margin-inline: 32px;
   transform: translateY(-100%);
   /* transform: translateY(0); */
@@ -224,14 +225,14 @@ tr:last-child td {
 }
 
 .show {
+  border-top: 1px solid var(--gray-2);
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-top: 20px;
-  background: #f8f9fa;
+  margin-inline: auto;
   padding: 12px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: calc(100% - 64px);
 }
 
 h5 {
@@ -1129,8 +1130,7 @@ a.underline_c:after {
   padding: 0;
   padding-bottom: 24px;
   margin-bottom: 24px;
-  cursor: pointer;
-  border-bottom: 1px solid #dbdada;
+  border-bottom: 1px solid var(--gray-2);
   border-radius: 0;
   background: var(--white);
   transition: var(--transition);

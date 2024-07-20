@@ -603,70 +603,20 @@ function createPhaseDataBlock(
 ) {
   let phaseDataBlock = document.createElement("div");
   // phaseDataBlock.className = 'card w-100 p-3'; // Добавляем границы
-  phaseDataBlock.className = "m9-container";
-  phaseDataBlock.style.backgroundColor = "#14ff0714"; // Изменяем цвет контейнера
-  phaseDataBlock.style.border = "1px solid silver"; // Добавляем жирную обводку края контейнера
+  // phaseDataBlock.className = "m9-container";
+  // phaseDataBlock.style.backgroundColor = "#14ff0714"; // Изменяем цвет контейнера
+  phaseDataBlock.style.borderTop = "1px solid #dbdbdb";
+  phaseDataBlock.style.width = "calc(100% - 64px)";
+  phaseDataBlock.style.marginInline = "auto";
 
-  // Создаем контейнер для кнопки и названия
-  let headerContainer = document.createElement("div");
-  headerContainer.className =
-    "d-flex justify-content-between align-items-center cursor-pointer";
-
-  // Создаем изображение для свертывания
-  let collapseImage = document.createElement("img");
-  collapseImage.src = "./icons/icons8-развернуть-96.png";
-  collapseImage.alt = "Expand";
-  collapseImage.style.width = "30px";
-  collapseImage.style.height = "30px";
-  collapseImage.style.cursor = "pointer";
-  collapseImage.title = "Нажмите, чтобы свернуть/развернуть"; // Подсказка
-
-  // Создаем заголовок для свертываемого контейнера
-  let phaseDataTitle = document.createElement("h5");
-  phaseDataTitle.textContent = "Данные по фазе";
-
-  // Добавляем заголовок и изображение в контейнер
-  headerContainer.appendChild(phaseDataTitle);
-  headerContainer.appendChild(collapseImage);
-
-  // Добавляем контейнер заголовка в блок данных
-  phaseDataBlock.appendChild(headerContainer);
-
-  // Создаем свертываемый контейнер с прозрачностью
-  let collapseContainer = document.createElement("div");
-  collapseContainer.className = "collapse";
-  collapseContainer.id = "collapsePhaseData";
-  phaseDataBlock.appendChild(collapseContainer);
-
-  // Функция для свертывания/разворачивания контейнера
-  function toggleCollapse() {
-    let isCollapsed = collapseContainer.classList.contains("show");
-    collapseImage.src = isCollapsed
-      ? "./icons/icons8-развернуть-96.png"
-      : "./icons/icons8-свернуть-96.png";
-    collapseContainer.classList.toggle("show");
-  }
-
-  // Добавляем обработчик событий click к collapseImage
-  collapseImage.addEventListener("click", toggleCollapse);
-
-  // Добавляем обработчик событий click к headerContainer
-  headerContainer.addEventListener("click", function (event) {
-    // Проверяем, что клик произошел не на collapseImage, чтобы избежать двойного срабатывания
-    if (event.target !== collapseImage) {
-      toggleCollapse();
-    }
-  });
-
-  let row = document.createElement("div");
+  const row = document.createElement("div");
   row.className = "row";
-  let column1 = document.createElement("div");
-  column1.className = "col";
-  let column2 = document.createElement("div");
-  column2.className = "col";
-  row.appendChild(column1);
-  row.appendChild(column2);
-  collapseContainer.appendChild(row);
+
+  const col = document.createElement("div");
+  col.className = "col";
+
+  row.appendChild(col);
+  phaseDataBlock.appendChild(row);
 
   let labels1 = [
     "Завоздушивание",
@@ -677,15 +627,16 @@ function createPhaseDataBlock(
   ];
   labels1.forEach((labelText) => {
     let formGroup = document.createElement("div");
-    formGroup.className =
-      "form-group d-flex flex-column justify-content-between w-100 flex-wrap gap-2";
+    formGroup.className = "form-group";
+    formGroup.style.maxWidth = "600px";
+
     let label = document.createElement("label");
     label.textContent = labelText;
 
     if (labelText === "Завоздушивание") {
       let select = document.createElement("select");
       select.className =
-        "form-control airing_id width-200 margin-right-200 check-input disabled-ptk m9-input";
+        "form-control airing_id width-200 check-input disabled-ptk m9-input";
       const defaultOption = document.createElement("option");
       defaultOption.textContent = "";
       defaultOption.value = "";
@@ -706,7 +657,7 @@ function createPhaseDataBlock(
     } else if (labelText === "Интенсивность перемешивания") {
       let select = document.createElement("select");
       select.className =
-        "form-control mixing_intensity_id width-200 margin-right-200 check-input disabled-ptk m9-input";
+        "form-control mixing_intensity_id width-200 check-input disabled-ptk m9-input";
       const defaultOption = document.createElement("option");
       defaultOption.textContent = "";
       defaultOption.value = "";
@@ -728,8 +679,7 @@ function createPhaseDataBlock(
           : "";
     } else if (labelText === "Температура загрузки") {
       let input = document.createElement("input");
-      input.className =
-        "form-control time_load width-200 margin-right-200 check-input m9-input";
+      input.className = "form-control time_load width-200 check-input m9-input";
       input.type = "number";
       input.value =
         phaseData && phaseData.hasOwnProperty("time_load")
@@ -741,8 +691,7 @@ function createPhaseDataBlock(
       formGroup.appendChild(input);
     } else if (labelText === "Рабочая температура") {
       let input = document.createElement("input");
-      input.className =
-        "form-control time_work width-200 margin-right-200 check-input m9-input";
+      input.className = "form-control time_work width-200 check-input m9-input";
       input.type = "number";
       input.value =
         phaseData && phaseData.hasOwnProperty("time_work")
@@ -756,8 +705,7 @@ function createPhaseDataBlock(
       let select = document.createElement("select");
       select.setAttribute("name", "equipment[]");
       select.setAttribute("multiple", "multiple");
-      select.className =
-        "form-control equipment_id width-200 margin-right-200 m9-input";
+      select.className = "form-control equipment_id width-200 m9-input";
       select.disabled = false;
       const defaultOption = document.createElement("option");
       defaultOption.textContent = "";
@@ -792,7 +740,7 @@ function createPhaseDataBlock(
       }
     }
 
-    column1.appendChild(formGroup);
+    col.appendChild(formGroup);
   });
 
   let labels2 = [
@@ -804,15 +752,15 @@ function createPhaseDataBlock(
   ];
   labels2.forEach((labelText) => {
     let formGroup = document.createElement("div");
-    formGroup.className =
-      "form-group d-flex flex-column justify-content-between w-100 flex-wrap gap-2";
+    formGroup.className = "form-group";
+    formGroup.style.maxWidth = "600px";
     let label = document.createElement("label");
     label.textContent = labelText;
 
     if (labelText === "Тип реактора" && currentPage === "PTK") {
       let select = document.createElement("select");
       select.className =
-        "form-control type_of_equipment_id width-200 margin-right-200 check-input m9-input";
+        "form-control type_of_equipment_id width-200 check-input m9-input";
       const defaultOption = document.createElement("option");
       defaultOption.textContent = "";
       defaultOption.value = "";
@@ -836,7 +784,7 @@ function createPhaseDataBlock(
     } else if (labelText === "Тип мешалки") {
       let select = document.createElement("select");
       select.className =
-        "form-control mixer_type_id width-200 margin-right-200 check-input m9-input";
+        "form-control mixer_type_id width-200 check-input m9-input";
       const defaultOption = document.createElement("option");
       defaultOption.textContent = "";
       defaultOption.value = "";
@@ -860,8 +808,7 @@ function createPhaseDataBlock(
       let select = document.createElement("select");
       select.setAttribute("name", "tools[]");
       select.setAttribute("multiple", "multiple");
-      select.className =
-        "form-control tool_id width-200 margin-right-200 check-input m9-input";
+      select.className = "form-control tool_id width-200 check-input m9-input";
       const defaultOption = document.createElement("option");
       select.disabled = false;
       defaultOption.textContent = "";
@@ -895,7 +842,7 @@ function createPhaseDataBlock(
     } else if (labelText === "pH фазы") {
       let input = document.createElement("input");
       input.className =
-        "form-control ph width-200 margin-right-200 check-input disabled-ptk m9-input";
+        "form-control ph width-200 check-input disabled-ptk m9-input";
       input.value =
         phaseData && phaseData.hasOwnProperty("ph") ? phaseData.ph : "";
       input.disabled = false;
@@ -908,7 +855,7 @@ function createPhaseDataBlock(
       let input = document.createElement("input");
       input.type = "number"; // Устанавливаем тип ввода как 'number'
       input.className =
-        "form-control time_general width-200 margin-right-200 check-input m9-input";
+        "form-control time_general width-200 check-input m9-input";
       input.addEventListener("input", checkAllInputs);
       input.value =
         phaseData && phaseData.hasOwnProperty("time_general")
@@ -919,7 +866,7 @@ function createPhaseDataBlock(
       input.disabled = true;
     }
 
-    column2.appendChild(formGroup);
+    col.appendChild(formGroup);
   });
 
   // Создаем текстовое поле для комментариев
@@ -931,15 +878,7 @@ function createPhaseDataBlock(
     phaseData && phaseData.hasOwnProperty("commentary")
       ? phaseData.commentary
       : "";
-  collapseContainer.appendChild(commentInput);
-
-  // Добавляем обработчик событий для изменения иконки при сворачивании/разворачивании
-  collapseImage.addEventListener("click", function () {
-    let isCollapsed = collapseContainer.classList.contains("show");
-    collapseImage.innerHTML = isCollapsed
-      ? '<img src="./icons/icons8-развернуть-96.png" alt="Expand" style="width: 30px; height: 30px;">'
-      : '<img src="./icons/icons8-свернуть-96.png" alt="Collapse" style="width: 30px; height: 30px;">';
-  });
+  phaseDataBlock.appendChild(commentInput);
 
   return phaseDataBlock;
 }
@@ -954,7 +893,6 @@ function createComponentsTable(
 
   let componentsBlock = document.createElement("div");
   // componentsBlock.className = 'card-body p-3 align-items-center my-2';
-  componentsBlock.className = "m9-container";
   componentsBlock.style.cssText =
     "display: flex; flex-direction: column; gap: 20px; overflow-x: auto; max-width: 100vw;";
   componentsBlock.style.backgroundColor = "#07c4ff17"; // Изменяем цвет контейнера
@@ -1784,73 +1722,14 @@ function createMixingModeBlock(
   dataversion = null
 ) {
   let mixingModeBlock = document.createElement("div");
-  // mixingModeBlock.className = 'card w-100 p-3';
-  mixingModeBlock.className = "m9-container";
-  mixingModeBlock.style.backgroundColor = "#fd07ff14"; // Изменяем цвет контейнера
-  mixingModeBlock.style.border = "1px solid silver"; // Добавляем жирную обводку края контейнера
+  mixingModeBlock.className = "collapse";
+  mixingModeBlock.id = "collapsePhaseData";
 
-  // Создаем контейнер для кнопки и названия
-  let headerContainer = document.createElement("div");
-  headerContainer.className =
-    "d-flex justify-content-between align-items-center cursor-pointer";
-
-  // Создаем изображение для свертывания
-  let collapseImage = document.createElement("img");
-  collapseImage.src = "./icons/icons8-развернуть-96.png";
-  collapseImage.alt = "Expand";
-  collapseImage.style.width = "30px";
-  collapseImage.style.height = "30px";
-  collapseImage.style.cursor = "pointer";
-  collapseImage.title = "Нажмите, чтобы свернуть/развернуть"; // Подсказка
-
-  // Создаем заголовок для свертываемого контейнера
-  let phaseMixingTitle = document.createElement("h5");
-  phaseMixingTitle.textContent = "Режим смешения";
-
-  // Добавляем заголовок и изображение в контейнер
-  headerContainer.appendChild(phaseMixingTitle);
-  headerContainer.appendChild(collapseImage);
-
-  // Добавляем контейнер заголовка в блок данных
-  mixingModeBlock.appendChild(headerContainer);
-
-  // Создаем свертываемый контейнер с прозрачностью
-  let collapseContainer = document.createElement("div");
-  collapseContainer.className = "collapse";
-  collapseContainer.id = "collapsePhaseData";
-  mixingModeBlock.appendChild(collapseContainer);
-
-  // Функция для свертывания/разворачивания контейнера
-  function toggleCollapse() {
-    let isCollapsed = collapseContainer.classList.contains("show");
-    collapseImage.src = isCollapsed
-      ? "./icons/icons8-развернуть-96.png"
-      : "./icons/icons8-свернуть-96.png";
-    collapseContainer.classList.toggle("show");
-  }
-
-  // Добавляем обработчик событий click к collapseImage
-  collapseImage.addEventListener("click", function (event) {
-    event.stopPropagation(); // Предотвращаем всплытие события
-    toggleCollapse();
-  });
-
-  // Добавляем обработчик событий click к headerContainer
-  headerContainer.addEventListener("click", function (event) {
-    // Проверяем, что клик произошел не на collapseImage, чтобы избежать двойного срабатывания
-    if (event.target !== collapseImage) {
-      toggleCollapse();
-    }
-  });
-
-  let row = document.createElement("div");
+  const row = document.createElement("div");
   row.className = "row";
-  let column1 = document.createElement("div");
-  column1.className = "col";
-  let column2 = document.createElement("div");
-  column2.className = "col";
-  row.appendChild(column1);
-  row.appendChild(column2);
+
+  const col = document.createElement("div");
+  col.className = "col";
 
   let labels1 = [
     "Адресная фаза",
@@ -1860,8 +1739,7 @@ function createMixingModeBlock(
   ];
   labels1.forEach((labelText) => {
     let formGroup = document.createElement("div");
-    formGroup.className =
-      "form-group d-flex flex-column justify-content-between w-100 flex-wrap gap-2";
+    formGroup.className = "form-group";
     let label = document.createElement("label");
     label.textContent = labelText;
 
@@ -1872,7 +1750,7 @@ function createMixingModeBlock(
       const select = document.createElement("select");
       select.id = "adress_phase_id";
       select.className =
-        "form-control adress_phase_id width-200 margin-right-200 check-input disabled-ptk m9-input";
+        "form-control adress_phase_id width-200 check-input disabled-ptk m9-input";
       const defaultOption = document.createElement("option");
       defaultOption.textContent = "";
       defaultOption.value = "";
@@ -1895,8 +1773,7 @@ function createMixingModeBlock(
     ) {
       //feed_type_id
       let select = document.createElement("select");
-      select.className =
-        "form-control feed_type_id width-200 margin-right-200 m9-input";
+      select.className = "form-control feed_type_id width-200 m9-input";
       const defaultOption = document.createElement("option");
       defaultOption.textContent = "";
       defaultOption.value = "";
@@ -1918,7 +1795,7 @@ function createMixingModeBlock(
     } else if (labelText === "t подачи") {
       let input = document.createElement("input");
       input.className =
-        "form-control time_supply width-200 margin-right-200 check-input disabled-ptk m9-input";
+        "form-control time_supply width-200 check-input disabled-ptk m9-input";
       input.type = "number";
       input.value =
         phaseData && phaseData.hasOwnProperty("time_supply")
@@ -1934,7 +1811,7 @@ function createMixingModeBlock(
     ) {
       let input = document.createElement("input");
       input.className =
-        "form-control rotation_mixing width-200 margin-right-200 check-input m9-input";
+        "form-control rotation_mixing width-200 check-input m9-input";
       input.type = "number";
       input.value =
         phaseData && phaseData.hasOwnProperty("rotation_mixing")
@@ -1945,21 +1822,21 @@ function createMixingModeBlock(
       formGroup.appendChild(label);
       formGroup.appendChild(input);
     }
-    column1.appendChild(formGroup);
+    col.appendChild(formGroup);
   });
 
   let labels2 = ["Время на смешение", "Внешний вид фазы", "Способ подачи"];
   labels2.forEach((labelText) => {
     let formGroup = document.createElement("div");
-    formGroup.className =
-      "form-group d-flex flex-column justify-content-between w-100 flex-wrap gap-2";
+    formGroup.className = "d-flex flex-wrap";
+    formGroup.style.gap = "10px";
     let label = document.createElement("label");
     label.textContent = labelText;
 
     if (labelText === "Внешний вид фазы") {
       let select = document.createElement("select");
       select.className =
-        "form-control appearance_id width-200 margin-right-200 check-input disabled-ptk m9-input";
+        "form-control appearance_id width-200 check-input disabled-ptk m9-input";
       const defaultOption = document.createElement("option");
       defaultOption.textContent = "";
       defaultOption.value = "";
@@ -1981,7 +1858,7 @@ function createMixingModeBlock(
     } else if (labelText === "Время на смешение") {
       let input = document.createElement("input");
       input.className =
-        "form-control time_to_mix width-200 margin-right-200 check-input m9-input";
+        "form-control time_to_mix width-200 check-input m9-input";
       input.type = "number";
       input.value =
         phaseData && phaseData.hasOwnProperty("time_to_mix")
@@ -1994,7 +1871,7 @@ function createMixingModeBlock(
     } else if (labelText === "Способ подачи") {
       let select = document.createElement("select");
       select.className =
-        "form-control delivery_method_id width-200 margin-right-200 check-input disabled-ptk m9-input";
+        "form-control delivery_method_id width-200 check-input disabled-ptk m9-input";
       const defaultOption = document.createElement("option");
       defaultOption.textContent = "";
       defaultOption.value = "";
@@ -2017,10 +1894,11 @@ function createMixingModeBlock(
           : "";
     }
 
-    column2.appendChild(formGroup);
+    col.appendChild(formGroup);
   });
 
-  collapseContainer.appendChild(row);
+  row.appendChild(col);
+  mixingModeBlock.appendChild(row);
 
   // // Создаем текстовое поле для комментариев
   // let commentInput = document.createElement('input');
@@ -2029,14 +1907,6 @@ function createMixingModeBlock(
   // commentInput.className = 'form-control commentary2 mt-2 m9-input'; // Добавляем отступ сверху
   // commentInput.value = phaseData && phaseData.hasOwnProperty('commentary2') ? phaseData.commentary2 : '';
   // collapseContainer.appendChild(commentInput);
-
-  // Добавляем обработчик событий для изменения иконки при сворачивании/разворачивании
-  collapseImage.addEventListener("click", function () {
-    let isCollapsed = collapseContainer.classList.contains("show");
-    collapseImage.innerHTML = isCollapsed
-      ? '<img src="./icons/icons8-развернуть-96.png" alt="Expand" style="width:   30px; height:   30px;">'
-      : '<img src="./icons/icons8-свернуть-96.png" alt="Collapse" style="width:   30px; height:   30px;">';
-  });
 
   return mixingModeBlock;
 }
@@ -2683,7 +2553,7 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   // Создаем контейнер для таблицы
   const tableContainer = document.createElement("div");
   tableContainer.className = "table-container"; // Добавляем класс для стилизации
-  tableContainer.style.marginTop = "0px";
+  tableContainer.style.marginTop = "36px";
 
   // Создаем таблицу внутри контента с классами Bootstrap
   const table = document.createElement("table");
@@ -2819,7 +2689,6 @@ function createOutputControlCollapsibleContainer(
   // Transition box
   const transitionBox = document.createElement("div");
   transitionBox.className = "transition-box";
-  transitionBox.style.paddingTop = "0";
 
   // Accordion content
   const accordionContent = document.createElement("div");
@@ -2837,7 +2706,7 @@ function createOutputControlCollapsibleContainer(
   table.className = "m9-table";
   table.style.tableLayout = "fixed";
   table.style.width = "100%";
-  table.style.marginTop = "20px";
+  table.style.marginTop = "29px";
   table.style.marginBottom = "32px";
   table.style.overflow = "auto";
 
@@ -3019,7 +2888,6 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   // Transition box
   const transitionBox = document.createElement("div");
   transitionBox.className = "transition-box";
-  transitionBox.style.paddingTop = "0";
 
   // Accordion content
   const accordionContent = document.createElement("div");
@@ -3048,13 +2916,14 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   table.id = "outputControlCollapsibleTable";
   table.style.tableLayout = ""; // Фиксируем ширину столбцов
   table.style.width = "100%"; // Устанавливаем ширину таблицы равной 100%
-  table.style.marginTop = "20px";
+  table.style.marginTop = "29px";
 
   _tableContainer.appendChild(table);
   accordionContent.appendChild(_tableContainer);
 
   // Создаем thead для таблицы
   const thead = document.createElement("thead");
+  thead.style.whiteSpace = "nowrap";
   table.appendChild(thead);
 
   // Создаем заголовки для thead
@@ -3120,9 +2989,11 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   const forms = document.createElement("div");
   forms.classList.add("col");
   forms.className += " d-flex flex-wrap";
-  forms.style.marginBlock = "32px";
+  forms.style.marginTop = "32px";
+  forms.style.marginBottom = "30px";
   forms.style.gap = "30px";
   forms.style.paddingBlock = "32px";
+  forms.style.paddingInline = "0px";
   forms.style.borderBlock = "2px solid var(--gray)";
 
   const formsRow = document.createElement("div");
@@ -3170,7 +3041,7 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
   const tableContainer = document.createElement("div");
   tableContainer.className += "table-container d-flex flex-wrap";
   tableContainer.style.position = "relative";
-  tableContainer.style.gap = "24px";
+  tableContainer.style.gap = "30px";
   accordionContent.appendChild(tableContainer);
 
   // Добавляем обработчик клика на ячейку таблицы
@@ -3184,6 +3055,14 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       input.click();
     }
   });
+
+  // Заголовок
+  const photoTestTitle = document.createElement("p");
+  photoTestTitle.textContent = "Фото испытаний";
+  photoTestTitle.style.display = "block";
+  photoTestTitle.style.width = "100%";
+  photoTestTitle.style.margin = "0px";
+  tableContainer.appendChild(photoTestTitle);
 
   // Создаем div-контейнер для кнопки с изображением
   const buttonContainer = document.createElement("div");
@@ -3473,6 +3352,7 @@ const createPhaseInterface = (
   phaseCounter++;
   const container = document.createElement("div");
   container.className = "card phase";
+
   if (phaseData && phaseData.ID) {
     container.id = phaseData.ID; // Устанавливаем существующий ID фазы
   }
@@ -3486,14 +3366,17 @@ const createPhaseInterface = (
   containerHeader.style.flexFlow = "row wrap";
   containerHeader.style.gap = "20px";
   containerHeader.style.paddingInline = "32px";
+  containerHeader.style.cursor = "pointer";
 
   // Кнопка для сворачивания/разворачивания
   // const collapseButton = document.createElement("button");
   // collapseButton.className = "m9-btn-custom";
   // collapseButton.id = "leftElementId";
   // collapseButton.innerHTML = "&#9660;"; // Стрелочка вниз в HTML
-  // collapseButton.setAttribute("data-toggle", "collapse");
-  // collapseButton.setAttribute("data-target", `#collapseContent${phaseCounter}`);
+  // containerHeader.setAttribute(
+  //   "data-target",
+  //   `#collapseContent${phaseCounter}`
+  // );
   // containerHeader.appendChild(collapseButton);
 
   // Создание списка для выбора названия фазы
@@ -3575,6 +3458,7 @@ const createPhaseInterface = (
   const arrow = document.createElement("img");
   arrow.style.position = "absolute";
   arrow.style.right = "32px";
+  arrow.style.transition = ".4s";
   arrow.src = "./img/accordion/open-arrow.svg";
   arrow.alt = "Открыть аккордеон";
   containerHeader.appendChild(arrow);
@@ -3583,8 +3467,6 @@ const createPhaseInterface = (
 
   // Создаем контейнер для сворачиваемого контента
   const collapseContent = document.createElement("div");
-  collapseContent.className = "collapse";
-  collapseContent.id = `collapseContent${phaseCounter}`;
 
   console.log(phaseData);
 
@@ -3623,8 +3505,39 @@ const createPhaseInterface = (
     ); // добавляем блок смешивания
     collapseContent.appendChild(mixingModeBlock);
   }
+  // Detail box
+  const detailBox = document.createElement("div");
+  detailBox.className = "detail-box";
+  detailBox.id = `collapseContent${phaseCounter}`;
 
-  container.appendChild(collapseContent);
+  // Клик по шапке
+  containerHeader.onclick = () => {
+    arrow.classList.toggle("rotate-180");
+    containerHeader.classList.toggle("border-bottom-only");
+    // Открывает контент
+    detailBox.classList.toggle("active");
+  };
+
+  // Inner box
+  const innerBox = document.createElement("div");
+  innerBox.className = "inner-box";
+
+  // Transition box
+  const transitionBox = document.createElement("div");
+  transitionBox.className = "transition-box";
+  transitionBox.style.marginInline = "0px";
+  transitionBox.style.paddingInline = "0px";
+  transitionBox.style.paddingTop = "24px";
+
+  // Accordion content
+  const accordionContent = document.createElement("div");
+  accordionContent.className = "transition content";
+
+  transitionBox.appendChild(collapseContent);
+  innerBox.appendChild(transitionBox);
+  detailBox.appendChild(innerBox);
+
+  container.appendChild(detailBox);
 
   return container;
 };
@@ -4346,6 +4259,7 @@ async function loadJsonFromLocalFile(filePath) {
           transitionBox.className = "transition-box";
           transitionBox.style.marginInline = "0px";
           transitionBox.style.paddingInline = "0px";
+          transitionBox.style.marginTop = "24px";
 
           // Accordion content
           const accordionContent = document.createElement("div");
