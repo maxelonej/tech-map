@@ -622,12 +622,12 @@ function createPhaseDataBlock(
   header.style.marginTop = "40px";
   header.style.marginBottom = "21px";
 
-  const title = document.createElement("p");
+  // title
+  const title = document.createElement("h5");
   title.style.fontSize = "20px";
   title.style.margin = "0px";
-  title.style.fontWeight = "700";
-  title.style.fontFamily = "Inter Medium";
-  title.style.color = "black";
+  title.textContent = "Состав фазы";
+  title.className = "m-0";
   title.textContent = "Данные по фазе";
 
   const img = document.createElement("img");
@@ -923,32 +923,47 @@ function createComponentsTable(
   // componentsBlock.className = 'card-body p-3 align-items-center my-2';
   componentsBlock.style.cssText =
     "display: flex; flex-direction: column; gap: 20px; overflow-x: auto; max-width: 100vw;";
-  componentsBlock.style.backgroundColor = "#07c4ff17"; // Изменяем цвет контейнера
-  componentsBlock.style.border = "1px solid silver"; // Добавляем жирную обводку края контейнера
 
   // Создание флекс-контейнера
   let flexContainer = document.createElement("div");
   flexContainer.style.display = "flex";
-  flexContainer.className = "align-items-center";
+  flexContainer.className = "justify-content-between align-items-center";
+  flexContainer.style.paddingInline = "32px";
   flexContainer.style.flexDirection = "row"; // Изменение направления flex-контейнера на 'row'
 
-  // Создание элемента title
+  const container = document.createElement("div");
+  container.style.display = "flex";
+  container.style.alignItems = "center";
+  container.style.gap = "24px";
+  // img
+  const img = document.createElement("img");
+  img.src = "./img/phases/cube.svg";
+  // title
   let title = document.createElement("h5");
   title.textContent = "Состав фазы";
   title.className = "m-0";
-  flexContainer.appendChild(title);
+
+  container.append(img, title);
+  flexContainer.appendChild(container);
   componentsBlock.appendChild(flexContainer);
 
   let input = document.createElement("input");
-  input.className = "form-control ml-5 m9-input";
-  input.style.width = "130px";
+  input.className = "form-control m9-input";
+  input.style.width = "126px";
+  input.style.height = "48px";
   input.disabled = "disabled";
   flexContainer.appendChild(input);
 
-  let table = document.createElement("table");
+  const tableContainer = document.createElement("div");
+  tableContainer.className = "table-container";
+  tableContainer.style.paddingInline = "32px";
+  tableContainer.style.paddingBottom = "0px";
+  tableContainer.style.overflow = "hidden";
+
+  const table = document.createElement("table");
   // table.className = 'table table-bordered';
   table.className = "m9-table";
-  table.style.cssText = "overflow-x: auto; display: block; max-width: 100%;";
+  table.style.cssText = "overflow-x: auto; display: block;";
 
   let headerRow = document.createElement("tr");
   let headers = [
@@ -992,14 +1007,14 @@ function createComponentsTable(
   }
   input.value = percent.toFixed(6) + " %";
 
-  let addButton = document.createElement("button");
-  let imgElement = document.createElement("img");
-  imgElement.src = "./icons/icons8-add-64.png";
-  imgElement.alt = "Добавить компонент";
-  addButton.appendChild(imgElement);
-  addButton.className = "button-image button-margin block-ptk";
-  addButton.id = "addButton";
-  addButton.style.cssText = "width:  30px;";
+  // Создаем кнопку для добавления новых строк
+  const addButton = document.createElement("button");
+  addButton.classList.add("m9-add-component");
+  addButton.style.outline = "none";
+  addButton.textContent = "+ Добавить компонент";
+  addButton.style.width = "calc(100% - 64px)";
+  addButton.style.margin = "0px";
+  // addButton.id = "addButton";
   addButton.onclick = function () {
     console.log("Нажатие на кнопку");
     const componentGood = collectSelectedValuesFromTable();
@@ -1020,7 +1035,8 @@ function createComponentsTable(
   buttonContainer.appendChild(addButton);
 
   // Добавляем div элемент с кнопкой в componentsBlock
-  componentsBlock.appendChild(table);
+  tableContainer.appendChild(table);
+  componentsBlock.appendChild(tableContainer);
   componentsBlock.appendChild(buttonContainer);
 
   // Вызовите функцию makeRowsDraggable и передайте ей таблицу компонентов после её создания
@@ -1509,8 +1525,8 @@ function addNewRowToTable(table, compDataFull, componentGood, selectsData) {
   newRow.className = "component";
 
   // Добавляем ячейку с значком
-  let dragCell = document.createElement("td");
-  let dragIcon = document.createElement("img");
+  const dragCell = document.createElement("td");
+  const dragIcon = document.createElement("img");
   dragIcon.setAttribute(
     "src",
     "https://img.icons8.com/ios/100/drag-reorder.png"
@@ -1521,7 +1537,7 @@ function addNewRowToTable(table, compDataFull, componentGood, selectsData) {
   dragCell.appendChild(dragIcon);
   newRow.appendChild(dragCell);
 
-  let newComponentNumberCell = document.createElement("td");
+  const newComponentNumberCell = document.createElement("td");
   newComponentNumberCell.textContent =
     table.querySelectorAll(".component").length + 1;
   newRow.appendChild(newComponentNumberCell);
@@ -3411,7 +3427,8 @@ const createPhaseInterface = (
   // Создание списка для выбора названия фазы
   const phaseNameSelect = document.createElement("select");
   phaseNameSelect.className = "m9-input name-select";
-  phaseNameSelect.style.width = "85px";
+  phaseNameSelect.style.width = "148px";
+  phaseNameSelect.style.height = "48px";
   const emptyOption = document.createElement("option"); // Добавляем пустую опцию
   emptyOption.value = "";
   emptyOption.text = "";
@@ -3434,6 +3451,8 @@ const createPhaseInterface = (
   const numberPhaseSelect = document.createElement("select");
   numberPhaseSelect.className = "m9-select num_phase num-phase-select";
   numberPhaseSelect.style.marginLeft = "10px";
+  numberPhaseSelect.style.width = "148px";
+  numberPhaseSelect.style.height = "48px";
   if (phaseData) {
     numberPhaseSelect.value = phaseData.num_phase;
     numberPhaseSelect.oldValue = phaseData.num_phase; // Сохраняем текущее значение для последующего использования

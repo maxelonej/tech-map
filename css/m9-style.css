@@ -361,7 +361,7 @@ h5 {
   line-height: 1.5;
   color: var(--black);
   background: var(--gray);
-  border: 1px solid var(--gray);
+  border: 2px solid var(--gray);
   border-radius: 8px;
   transition: var(--transition);
   outline: none;
@@ -372,10 +372,9 @@ h5 {
 
 /* Стилизация выпадающего списка при фокусе */
 .m9-select:focus {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  background-color: #fff;
-  transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out;
+  background: var(--white);
+  border: 2px solid var(--blue);
+  box-shadow: none;
 }
 
 .m9-select:disabled {

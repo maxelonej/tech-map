@@ -167,6 +167,20 @@ td {
   position: relative;
 }
 
+.component td {
+  min-width: auto;
+  padding-right: 24px;
+  margin-bottom: 24px;
+}
+
+tr:last-child.component td {
+  padding-bottom: 24px;
+}
+
+.component .m9-input {
+  width: 100%;
+}
+
 td:last-child {
   min-width: auto;
 }
