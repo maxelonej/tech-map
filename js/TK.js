@@ -2598,6 +2598,7 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   const tableContainer = document.createElement("div");
   tableContainer.className = "table-container"; // Добавляем класс для стилизации
   tableContainer.style.marginTop = "36px";
+  tableContainer.style.paddingBottom = "0px";
 
   // Создаем таблицу внутри контента с классами Bootstrap
   const table = document.createElement("table");
