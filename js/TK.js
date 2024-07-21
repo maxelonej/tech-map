@@ -3557,6 +3557,7 @@ const createPhaseInterface = (
   // Detail box
   const detailBox = document.createElement("div");
   detailBox.className = "detail-box";
+  detailBox.style.border = "0px";
   detailBox.id = `collapseContent${phaseCounter}`;
 
   // Клик по шапке
