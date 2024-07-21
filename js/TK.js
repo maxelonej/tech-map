@@ -3428,7 +3428,7 @@ const createPhaseInterface = (
   // Создание списка для выбора названия фазы
   const phaseNameSelect = document.createElement("select");
   phaseNameSelect.className = "m9-input name-select";
-  phaseNameSelect.style.width = "148px";
+  phaseNameSelect.style.maxWidth = "148px";
   phaseNameSelect.style.height = "48px";
   const emptyOption = document.createElement("option"); // Добавляем пустую опцию
   emptyOption.value = "";
@@ -3452,7 +3452,7 @@ const createPhaseInterface = (
   const numberPhaseSelect = document.createElement("select");
   numberPhaseSelect.className = "m9-select num_phase num-phase-select";
   numberPhaseSelect.style.marginLeft = "10px";
-  numberPhaseSelect.style.width = "148px";
+  numberPhaseSelect.style.maxWidth = "148px";
   numberPhaseSelect.style.height = "48px";
   if (phaseData) {
     numberPhaseSelect.value = phaseData.num_phase;
