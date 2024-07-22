@@ -4510,7 +4510,12 @@ async function loadJsonFromLocalFile(filePath) {
               selectedPhases,
               data
             );
-            phasesContainer.appendChild(newPhaseInterface);
+
+            // Get the parent element of the addPhaseButton
+            const parentElement = addPhaseButton.parentNode;
+
+            // Insert the new content before the addPhaseButton
+            parentElement.insertBefore(newPhaseInterface, addPhaseButton);
           });
           isAddPhaseButtonHandlerAdded = true;
         }
