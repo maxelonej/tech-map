@@ -963,7 +963,8 @@ function createComponentsTable(
   const table = document.createElement("table");
   // table.className = 'table table-bordered';
   table.className = "m9-table";
-  table.style.cssText = "overflow-x: auto; display: block;";
+  table.style.cssText =
+    "overflow-x: auto; display: block; padding-bottom: 24px;";
 
   let headerRow = document.createElement("tr");
   let headers = [
