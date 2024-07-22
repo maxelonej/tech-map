@@ -967,12 +967,13 @@ function createComponentsTable(
 
   let headerRow = document.createElement("tr");
   let headers = [
-    "<>",
+    "",
+    "",
     "№",
-    "Название компонента",
+    "Компонент",
     "Объем в продукте, %",
     "Объем в фазе, %",
-    "Вес в килограммах",
+    "Вес, кг",
     "Функция компонента",
     "t режим",
     "pH (Вод-пок)",
@@ -993,6 +994,10 @@ function createComponentsTable(
 
   headers.forEach((headerText) => {
     let headerCell = document.createElement("th");
+    table.appendChild(headerRow);
+    headerCell.style.borderTop = "1px solid rgba(0,0,0,.15)";
+    headerCell.style.borderBottom = "1px solid rgba(0,0,0,.15)";
+    headerCell.style.padding = "10px 40px 10px 0px";
     headerCell.textContent = headerText;
     headerCell.style.whiteSpace = "nowrap";
     headerRow.appendChild(headerCell);
@@ -1299,6 +1304,11 @@ function createCell(
   if (type === "select" && selectData) {
     let select = document.createElement("select");
     select.className = "form-control check-input m9-input"; // Добавляем класс check-input
+    select.style.padding = "auto";
+    select.style.height = "auto";
+    select.style.boxSizing = "content-box";
+    select.style.width = "auto";
+    select.style.minWidth = "80%";
     select.addEventListener("change", checkAllInputs); // Добавляем обработчик событий
 
     // Добавляем пустой option в начале
@@ -1318,6 +1328,11 @@ function createCell(
   } else if (type === "select_block" && selectData) {
     let select = document.createElement("select");
     select.className = "form-control check-input disabled-ptk m9-input"; // Добавляем класс check-input
+    select.style.padding = "auto";
+    select.style.height = "auto";
+    select.style.boxSizing = "content-box";
+    select.style.width = "auto";
+    select.style.minWidth = "80%";
     select.addEventListener("change", checkAllInputs); // Добавляем обработчик событий
 
     // Добавляем пустой option в начале
@@ -1338,6 +1353,11 @@ function createCell(
     let input = document.createElement("input");
     input.type = "number";
     input.className = "form-control check-input m9-input"; // Добавляем класс check-input
+    input.style.padding = "auto";
+    input.style.height = "auto";
+    input.style.boxSizing = "content-box";
+    input.style.width = "auto";
+    input.style.minWidth = "80%";
     input.addEventListener("input", checkAllInputs); // Добавляем обработчик событий
     input.value = value;
     cell.appendChild(input);
@@ -1347,29 +1367,54 @@ function createCell(
     let input = document.createElement("input");
     input.type = "text";
     input.className = "form-control check-input disabled-ptk m9-input"; // Добавляем класс check-input
+    input.style.padding = "auto";
+    input.style.height = "auto";
+    input.style.boxSizing = "content-box";
+    input.style.width = "auto";
+    input.style.minWidth = "80%";
     input.value = value;
     cell.appendChild(input);
   } else if (type === "time_prepare") {
     let input = document.createElement("input");
     input.type = "number";
     input.className = "form-control check-input time_prepare m9-input"; // Добавляем класс check-input
+    input.style.padding = "auto";
+    input.style.height = "auto";
+    input.style.boxSizing = "content-box";
+    input.style.width = "auto";
+    input.style.minWidth = "80%";
     input.value = value;
     cell.appendChild(input);
   } else if (type === "time_load") {
     let input = document.createElement("input");
     input.type = "number";
     input.className = "form-control check-input time_load m9-input"; // Добавляем класс check-input
+    input.style.padding = "auto";
+    input.style.height = "auto";
     input.value = value;
+    input.style.boxSizing = "content-box";
+    input.style.width = "auto";
+    input.style.minWidth = "80%";
     cell.appendChild(input);
   } else if (type === "time_processing") {
     let input = document.createElement("input");
     input.type = "number";
     input.className = "form-control check-input time_processing m9-input"; // Добавляем класс check-input
+    input.style.padding = "auto";
+    input.style.height = "auto";
+    input.style.boxSizing = "content-box";
+    input.style.width = "auto";
+    input.style.minWidth = "80%";
     input.value = value;
     cell.appendChild(input);
   } else if (type === "select name") {
     let select = document.createElement("select");
     select.className = "form-control check-input copyname m9-input"; // Добавляем класс check-input
+    select.style.padding = "auto";
+    select.style.height = "auto";
+    select.style.boxSizing = "content-box";
+    select.style.width = "auto";
+    select.style.minWidth = "80%";
     select.addEventListener("change", checkAllInputs); // Добавляем обработчик событий
 
     let option = document.createElement("option");
@@ -1407,6 +1452,11 @@ function createCell(
     let input = document.createElement("input");
     input.type = "number";
     input.className = "form-control check-input percent disabled-ptk m9-input"; // Используем класс вместо id
+    input.style.padding = "auto";
+    input.style.height = "auto";
+    input.style.boxSizing = "content-box";
+    input.style.width = "auto";
+    input.style.minWidth = "80%";
     input.min = 0;
     input.max = 100;
     if (["AAA-Test#1"].includes(dataversion.product_code)) {
@@ -1429,6 +1479,11 @@ function createCell(
     let input = document.createElement("input");
     input.type = "number";
     input.className = "form-control check-input percentInPhase m9-input";
+    input.style.padding = "auto";
+    input.style.height = "auto";
+    input.style.boxSizing = "content-box";
+    input.style.width = "auto";
+    input.style.minWidth = "80%";
     input.disabled = true;
     cell.appendChild(input);
   } else if (type === "componentWeight") {
@@ -1436,6 +1491,11 @@ function createCell(
     input.type = "number";
     input.className =
       "form-control check-input componentWeight disabled-ptk m9-input"; // Используем класс вместо id
+    input.style.padding = "auto";
+    input.style.height = "auto";
+    input.style.boxSizing = "content-box";
+    input.style.width = "auto";
+    input.style.minWidth = "80%";
     input.disabled = false;
     input.min = 0;
     input.max = 100;
@@ -1527,15 +1587,26 @@ function addNewRowToTable(table, compDataFull, componentGood, selectsData) {
   // Добавляем ячейку с значком
   const dragCell = document.createElement("td");
   const dragIcon = document.createElement("img");
-  dragIcon.setAttribute(
-    "src",
-    "https://img.icons8.com/ios/100/drag-reorder.png"
-  );
+  dragIcon.setAttribute("src", "./img/phases/menu.svg");
   dragIcon.setAttribute("alt", "drag-reorder");
   dragIcon.setAttribute("width", "20");
   dragIcon.setAttribute("height", "20");
   dragCell.appendChild(dragIcon);
   newRow.appendChild(dragCell);
+
+  if (currentPage === "LTK") {
+    // Кнопка удаления
+    let deleteCell = document.createElement("td");
+    let deleteImage = document.createElement("img");
+    deleteImage.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
+    deleteImage.alt = "Удалить";
+    deleteImage.src = "./img/phases/remove-table.svg";
+    deleteImage.onclick = function () {
+      newRow.remove();
+    };
+    deleteCell.appendChild(deleteImage);
+    newRow.appendChild(deleteCell);
+  }
 
   const newComponentNumberCell = document.createElement("td");
   newComponentNumberCell.textContent =
@@ -1612,20 +1683,6 @@ function addNewRowToTable(table, compDataFull, componentGood, selectsData) {
     )
   );
 
-  if (currentPage === "LTK") {
-    // Кнопка удаления
-    let deleteCell = document.createElement("td");
-    let deleteImage = document.createElement("img");
-    deleteImage.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
-    deleteImage.alt = "Удалить";
-    deleteImage.src = "./img/trash.svg";
-    deleteImage.onclick = function () {
-      newRow.remove();
-    };
-    deleteCell.appendChild(deleteImage);
-    newRow.appendChild(deleteCell);
-  }
-
   // Добавляем обработчик событий для нового input'а с классом 'percent'
   const newPercentInput = newRow.querySelector(".percent");
   newPercentInput.addEventListener("input", () => {
@@ -1665,15 +1722,35 @@ function createTableFromData(
     // Добавляем ячейку с значком перетаскивания
     let dragCell = document.createElement("td");
     let dragIcon = document.createElement("img");
-    dragIcon.setAttribute(
-      "src",
-      "https://img.icons8.com/ios/100/drag-reorder.png"
-    );
+    dragIcon.setAttribute("src", "./img/phases/menu.svg");
     dragIcon.setAttribute("alt", "drag-reorder");
     dragIcon.setAttribute("width", "20");
     dragIcon.setAttribute("height", "20");
     dragCell.appendChild(dragIcon);
     row.appendChild(dragCell);
+
+    if (currentPage === "LTK") {
+      // Кнопка удаления
+      let deleteCell = document.createElement("td");
+      let deleteImage = document.createElement("img");
+      deleteImage.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
+      deleteImage.alt = "Удалить";
+      deleteImage.src = "./img/phases/remove-table.svg";
+      deleteImage.onclick = function () {
+        newRow.remove();
+      };
+      // Добавляем изображение в кнопку
+      deleteImage.onclick = function () {
+        let param = component.ID; // Получаем ID компонента
+        console.log(param);
+        let urlupdate = `https://${domain}/9x/app/php/delete-phase-component.php?${urlParams}&component_id=${param}`;
+        saveDelete(urlupdate); // Вызываем функцию saveDelete с ID компонента
+        row.remove(); // Удаляем строку из таблицы
+      };
+
+      deleteCell.appendChild(deleteImage);
+      row.appendChild(deleteCell);
+    }
 
     row.appendChild(createCell("text", index + 1)); // Номер компонента
     row.appendChild(
@@ -1730,29 +1807,6 @@ function createTableFromData(
         selectsData.final_state
       )
     ); // Итоговое состояние фазы после ввода компонента
-
-    if (currentPage === "LTK") {
-      // Кнопка удаления
-      let deleteCell = document.createElement("td");
-      let deleteImage = document.createElement("img");
-      deleteImage.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
-      deleteImage.alt = "Удалить";
-      deleteImage.src = "./img/trash.svg";
-      deleteImage.onclick = function () {
-        newRow.remove();
-      };
-      // Добавляем изображение в кнопку
-      deleteImage.onclick = function () {
-        let param = component.ID; // Получаем ID компонента
-        console.log(param);
-        let urlupdate = `https://${domain}/9x/app/php/delete-phase-component.php?${urlParams}&component_id=${param}`;
-        saveDelete(urlupdate); // Вызываем функцию saveDelete с ID компонента
-        row.remove(); // Удаляем строку из таблицы
-      };
-
-      deleteCell.appendChild(deleteImage);
-      row.appendChild(deleteCell);
-    }
 
     table.appendChild(row);
   });

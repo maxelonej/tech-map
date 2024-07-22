@@ -169,8 +169,21 @@ td {
 
 .component td {
   min-width: auto;
-  padding-right: 24px;
-  margin-bottom: 24px;
+  border-bottom: 1px solid rgb(0, 0, 0, .15);
+  padding-right: 40px;
+  padding-block: 16px;
+}
+
+.component td input,
+.component td input.m9-input,
+.component td select {
+  background: none;
+}
+
+.component td input:focus,
+.component td input.m9-input:focus,
+.component td select:focus {
+  background: none;
 }
 
 tr:last-child.component td {
