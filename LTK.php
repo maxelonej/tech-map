@@ -16,7 +16,7 @@ $currentTime = time();
 
 <body data-page="LTK">
   <!-- custom select-option dropdown -->
-  <!-- Для проверки рекомендуется разкомментить в LTK.css первые строки и в TK.js последние -->
+  <!-- Для проверки нужно разкомментить в m9-style.css первые строки и в TK.js последние -->
   <!-- <div class="dropdown">
     <div class="dropdown-select">
       <span class="select">Default value</span>
