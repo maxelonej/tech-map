@@ -1140,6 +1140,7 @@ a.underline_c:after {
   border-bottom: 1px solid var(--gray-2);
   border-radius: 0;
   background: var(--white);
+  animation: fadeIn .7s forwards;
   transition: var(--transition);
 }
 
