@@ -4553,7 +4553,30 @@ async function loadJsonFromLocalFile(filePath) {
         }
 
         // Добавляем заголовок в контейнер
-        headerContainer.appendChild(header);
+
+        const headerInput = document.createElement("input");
+        headerInput.className += "form-control m9-input";
+
+        const headerInputNumber = document.createElement("input");
+        headerInputNumber.className = "m9-input";
+        headerInputNumber.type = "number";
+        headerInputNumber.min = "0";
+        headerInputNumber.max = "100.000";
+        headerInputNumber.placeholder = "100,000";
+
+        const headerInputPercents = document.createElement("input");
+        headerInputPercents.className = "m9-input";
+        headerInputPercents.type = "number";
+        headerInputPercents.min = "0";
+        headerInputPercents.max = "100";
+        headerInputPercents.placeholder = "100%";
+
+        headerContainer.append(
+          header,
+          headerInput,
+          headerInputNumber,
+          headerInputPercents
+        );
 
         //----------------------------------------------------------Конец---------------------------------------------------------------------------------
 
