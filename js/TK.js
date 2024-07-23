@@ -1584,6 +1584,7 @@ async function importTechMap(
 function addNewRowToTable(table, compDataFull, componentGood, selectsData) {
   let newRow = document.createElement("tr");
   newRow.className = "component";
+  newRow.style.animation = "fadeIn .7s forwards";
 
   // Добавляем ячейку с значком
   const dragCell = document.createElement("td");
@@ -1603,7 +1604,10 @@ function addNewRowToTable(table, compDataFull, componentGood, selectsData) {
     deleteImage.alt = "Удалить";
     deleteImage.src = "./img/phases/remove-table.svg";
     deleteImage.onclick = function () {
-      newRow.remove();
+      newRow.style.animation = "fadeOut .3s forwards";
+      setTimeout(() => {
+        newRow.remove();
+      }, 300); 
     };
     deleteCell.appendChild(deleteImage);
     newRow.appendChild(deleteCell);
@@ -1738,7 +1742,10 @@ function createTableFromData(
       deleteImage.alt = "Удалить";
       deleteImage.src = "./img/phases/remove-table.svg";
       deleteImage.onclick = function () {
-        newRow.remove();
+        newRow.style.animation = "fadeOut .3s forwards";
+        setTimeout(() => {
+          newRow.remove();
+        }, 300);
       };
       // Добавляем изображение в кнопку
       deleteImage.onclick = function () {
@@ -2202,7 +2209,10 @@ function addDeleteButton(row) {
     deleteImage.alt = "Удалить";
     deleteImage.src = "./img/trash.svg";
     deleteImage.onclick = function () {
-      newRow.remove();
+      newRow.style.animation = "fadeOut .7s forwards";
+      setTimeout(() => {
+        newRow.remove();
+      }, 700);
     };
     deleteCell.appendChild(deleteImage);
     row.appendChild(deleteCell);
@@ -2242,6 +2252,7 @@ function createEmptyComponentRow(tbody, data, _dataversion) {
 
   selects.forEach((select) => {
     select.classList.add("m9-select");
+    select.style.animation = "fadeIn .7s forwards";
     // table data cell
     const cell = document.createElement("td");
     cell.appendChild(select);
@@ -2434,7 +2445,10 @@ function createEmptyComponentRow(tbody, data, _dataversion) {
   deleteImage.alt = "Удалить";
   deleteImage.src = "./img/trash.svg";
   deleteImage.onclick = function () {
-    row.remove();
+    row.style.animation = "fadeOut .7s forwards";
+    setTimeout(() => {
+      row.remove();
+    }, 700);
   };
   deleteCell.appendChild(deleteImage);
   row.appendChild(deleteCell);
@@ -3267,15 +3281,10 @@ function createCollapsibleContainerTests(_data = null, dataversion = null) {
       deleteButton.addEventListener("click", (e) => {
         e.stopPropagation(); // Убирает открытие оверлея
         const containerElement = e.target.closest(".container-uploaded-image");
-        if (containerElement) {
-          containerElement.classList.add("animate-remove"); // Add a class to trigger the animation
-          // Анимация удаления
-          setTimeout(() => {
-            setTimeout(() => {
-              containerElement.parentNode.removeChild(containerElement); // Remove the container element after the animation finishes
-            }, 50); // Add a short delay before removing the element
-          }, 300); // Adjust the timeout duration to match your animation duration
-        }
+        containerElement.style.animation = "fadeOut .7s forwards";
+        setTimeout(() => {
+          containerElement.parentNode.removeChild(containerElement);
+        }, 700);
       });
 
       // Читаем содержимое файла в формате Data URL
@@ -3453,6 +3462,7 @@ const createPhaseInterface = (
   phaseCounter++;
   const container = document.createElement("div");
   container.className = "card phase";
+  container.style.animation = "fadeIn 1s";
 
   if (phaseData && phaseData.ID) {
     container.id = phaseData.ID; // Устанавливаем существующий ID фазы
@@ -3552,23 +3562,15 @@ const createPhaseInterface = (
       let urlupdate = `https://${domain}/9x/app/php/delete-phase.php?${urlParams}&phase_id=${param}`;
       console.log(urlupdate);
       saveDelete(urlupdate); // Вызываем функцию saveDelete с ID компонента
-      if (container) {
-        container.classList.add("animate-remove");
-        setTimeout(() => {
-          setTimeout(() => {
-            container.remove();
-          }, 50);
-        }, 300);
-      }
+      container.style.animation = "fadeOut .3s forwards";
+      setTimeout(() => {
+        container.remove();
+      }, 300);
     } else {
-      if (container) {
-        container.classList.add("animate-remove");
-        setTimeout(() => {
-          setTimeout(() => {
-            container.remove();
-          }, 50);
-        }, 300);
-      }
+      container.style.animation = "fadeOut .3s forwards";
+      setTimeout(() => {
+        container.remove();
+      }, 300);
     }
   };
   containerHeader.appendChild(removePhaseButton);

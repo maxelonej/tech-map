@@ -264,10 +264,6 @@ td:last-child {
   background: transparent;
 }
 
-.animate-remove {
-  animation: fadeOut 0.3s forwards;
-}
-
 .container-uploaded-image:not(:nth-last-child(1)) {
   animation: none;
 }
@@ -283,11 +279,11 @@ td:last-child {
 }
 
 @keyframes fadeOut {
-  0% {
+  from {
     opacity: 1;
   }
 
-  100% {
+  to {
     opacity: 0;
   }
 }
