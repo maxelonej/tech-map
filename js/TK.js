@@ -894,19 +894,22 @@ function createPhaseDataBlock(
   let commentInput = document.createElement("textarea");
   commentInput.type = "text";
   commentInput.placeholder = "Комментарий...";
-  commentInput.style.width = "100%";
   commentInput.style.height = "192px";
-  commentInput.className = "form-control commentary mt-2 m9-input"; // Добавляем отступ сверху
+  commentInput.style.maxWidth = "625px";
+  commentInput.style.minWidth = "192px";
+  commentInput.style.marginTop = "40px";
+  commentInput.style.marginBottom = "24px";
+  commentInput.className = "form-control commentary m9-input"; // Добавляем отступ сверху
   commentInput.value =
     phaseData && phaseData.hasOwnProperty("commentary")
       ? phaseData.commentary
       : "";
 
-  const col2 = document.createElement("div");
-  col2.className = "col";
-  col2.style.marginTop = "83px";
-  col2.appendChild(commentInput);
-  row.appendChild(col2);
+  // const col2 = document.createElement("div");
+  // col2.className = "col";
+  // col2.style.marginTop = "83px";
+  // col2.appendChild(commentInput);
+  row.appendChild(commentInput);
 
   return phaseDataBlock;
 }
@@ -927,8 +930,9 @@ function createComponentsTable(
   // Создание флекс-контейнера
   let flexContainer = document.createElement("div");
   flexContainer.style.display = "flex";
-  flexContainer.className = "justify-content-between align-items-center";
+  flexContainer.className = "justify-content-between align-items-center flex-wrap";
   flexContainer.style.paddingInline = "32px";
+  flexContainer.style.gap = "20px";
   flexContainer.style.flexDirection = "row"; // Изменение направления flex-контейнера на 'row'
 
   const container = document.createElement("div");

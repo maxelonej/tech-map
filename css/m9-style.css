@@ -102,7 +102,7 @@ textarea {
 
 #notes {
   max-width: 625px;
-  min-width: 350px;
+  min-width: 190px;
 }
 
 .accordion {
@@ -1585,4 +1585,19 @@ td:last-child {
 #adress {
   width: 100px;
   margin-left: 20px;
+}
+
+@media screen and (max-width: 385px) {
+  .accordion-header img.transition {
+    display: none;
+  }
+
+  .accordion-header div img {
+    margin-left: 20px !important;
+  }
+
+  .m9-input {
+    max-width: 300px;
+    width: 100%;
+  }
 }
