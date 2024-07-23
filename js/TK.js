@@ -3797,19 +3797,6 @@ function createNavigationMenu(_data) {
   //   supportButton.onclick = function () {};
   //   menuItemsContainer.appendChild(supportButton);
 
-  // Создаем кнопку для перехода на рецептуру
-  //   const openNewTab = document.createElement("span");
-  //   openNewTab.className = "m9-navigation-menu-icon cursor-pointer";
-  //   openNewTab.innerHTML = `
-  // <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="30" height="30"><path d="M19,1H5C2.24,1,0,3.24,0,6v12c0,2.76,2.24,5,5,5h14c2.76,0,5-2.24,5-5V6c0-2.76-2.24-5-5-5ZM5,3h14c1.65,0,3,1.35,3,3v2H2v-2c0-1.65,1.35-3,3-3Zm14,18H5c-1.65,0-3-1.35-3-3V10H22v8c0,1.65-1.35,3-3,3Zm-1-15.5c0-.83,.67-1.5,1.5-1.5s1.5,.67,1.5,1.5-.67,1.5-1.5,1.5-1.5-.67-1.5-1.5Zm-4,0c0-.83,.67-1.5,1.5-1.5s1.5,.67,1.5,1.5-.67,1.5-1.5,1.5-1.5-.67-1.5-1.5Zm-4,0c0-.83,.67-1.5,1.5-1.5s1.5,.67,1.5,1.5-.67,1.5-1.5,1.5-1.5-.67-1.5-1.5Z"/></svg>
-  // `;
-  //   openNewTab.title = "Открыть рецептуру в новом окне";
-  //   openNewTab.onclick = function () {
-  //     let recipeId = data.data.recipeId;
-  //     window.open(`https://app.salesap.ru/products/${recipeId}`, "_blank"); // Открываем ссылку в новом окне
-  //   };
-  //   menuItemsContainer.appendChild(openNewTab);
-
   // Создаем кнопку для обновления страницы
   //   const refreshPageIcon = document.createElement("span");
   //   refreshPageIcon.style.height = "30px";
@@ -3827,37 +3814,44 @@ function createNavigationMenu(_data) {
   //   menuItemsContainer.appendChild(refreshPageIcon);
 
   // Создаем кнопку для удаления
-  const deleteButton = document.createElement("span");
+  const deleteButton = document.createElement("img");
   deleteButton.className = "m9-navigation-menu-icon cursor-pointer"; // Добавляем класс к иконке
   deleteButton.id = "deletLTM";
   deleteButton.title = "Удалить версию";
-  deleteButton.innerHTML = `
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="30" height="30"><path d="M15.207,14.207,13.414,16l1.793,1.793a1,1,0,1,1-1.414,1.414L12,17.414l-1.793,1.793a1,1,0,0,1-1.414-1.414L10.586,16,8.793,14.207a1,1,0,0,1,1.414-1.414L12,14.586l1.793-1.793a1,1,0,0,1,1.414,1.414ZM22,10.485V19a5.006,5.006,0,0,1-5,5H7a5.006,5.006,0,0,1-5-5V5A5.006,5.006,0,0,1,7,0h4.515a6.958,6.958,0,0,1,4.95,2.05l3.484,3.486A6.951,6.951,0,0,1,22,10.485ZM15.051,3.464A5.01,5.01,0,0,0,14,2.684V7a1,1,0,0,0,1,1h4.316a4.983,4.983,0,0,0-.781-1.05ZM20,10.485c0-.165-.032-.323-.047-.485H15a3,3,0,0,1-3-3V2.047C11.838,2.032,11.679,2,11.515,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3Z"/></svg>
-`;
+  deleteButton.alt = "Удалить версию";
+  deleteButton.src = "./img/trash.svg";
   deleteButton.onclick = function () {};
   menuItemsContainer.appendChild(deleteButton);
 
   // Создаем кнопку для копирования
-  const copyButton = document.createElement("span");
+  const copyButton = document.createElement("img");
   copyButton.className = "m9-navigation-menu-icon cursor-pointer";
   copyButton.id = "newLtkButton";
   copyButton.title = "Копировать";
-  copyButton.innerHTML = `
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" height="30" viewBox="0 0 24 24" width="30" data-name="Layer 1"><path d="m16 16a1 1 0 0 1 -1 1h-2v2a1 1 0 0 1 -2 0v-2h-2a1 1 0 0 1 0-2h2v-2a1 1 0 0 1 2 0v2h2a1 1 0 0 1 1 1zm6-5.515v8.515a5.006 5.006 0 0 1 -5 5h-10a5.006 5.006 0 0 1 -5-5v-14a5.006 5.006 0 0 1 5-5h4.515a6.958 6.958 0 0 1 4.95 2.05l3.484 3.486a6.951 6.951 0 0 1 2.051 4.949zm-6.949-7.021a5.01 5.01 0 0 0 -1.051-.78v4.316a1 1 0 0 0 1 1h4.316a4.983 4.983 0 0 0 -.781-1.05zm4.949 7.021c0-.165-.032-.323-.047-.485h-4.953a3 3 0 0 1 -3-3v-4.953c-.162-.015-.321-.047-.485-.047h-4.515a3 3 0 0 0 -3 3v14a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3z"/></svg>
-`;
+  copyButton.alt = "Копировать";
+  copyButton.src = "./img/header/copy.svg";
   copyButton.onclick = function () {};
   menuItemsContainer.appendChild(copyButton);
 
+  // Создаем кнопку для перехода на рецептуру
+  const openNewTab = document.createElement("img");
+  openNewTab.className = "m9-navigation-menu-icon cursor-pointer";
+  openNewTab.title = "Открыть рецептуру в новом окне";
+  openNewTab.alt = "Открыть рецептуру в новом окне";
+  openNewTab.src = "./img/header/plus.svg";
+  openNewTab.onclick = function () {
+    let recipeId = data.data.recipeId;
+    window.open(`https://app.salesap.ru/products/${recipeId}`, "_blank"); // Открываем ссылку в новом окне
+  };
+  menuItemsContainer.appendChild(openNewTab);
+
   // Создаем кнопку для дополнительной информации
-  const infoButton = document.createElement("span");
+  const infoButton = document.createElement("img");
   infoButton.className = "m9-navigation-menu-icon cursor-pointer"; // Добавляем класс к иконке
   infoButton.id = "recipeButton";
   infoButton.title = "Рецептура";
-  infoButton.innerHTML = `
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-<path d="m11,23c0,.553-.448,1-1,1h-5c-2.757,0-5-2.243-5-5V5.001C0,2.244,2.242,0,4.999,0h10.001c2.757,0,5,2.242,5,4.999v2c0,.553-.448,1-1,1s-1-.447-1-1v-2c0-1.654-1.346-3-3-3H4.999c-1.654,0-3,1.347-3,3.001v13.999c0,1.654,1.346,3,3,3h5c.552,0,1,.447,1,1Zm12.553.553c-.195.195-.451.293-.707.293s-.512-.098-.707-.293l-2.666-2.666c-.981.698-2.177,1.113-3.473,1.113-3.314,0-6-2.686-6-6s2.686-6,6-6,6,2.686,6,6c0,1.296-.415,2.492-1.113,3.473l2.666,2.666c.391.391.391,1.023,0,1.414Zm-6.573-5.227l2.703-2.614c.398-.383.412-1.016.029-1.414-.382-.399-1.015-.41-1.414-.029l-2.713,2.624c-.143.142-.378.143-.522,0l-1.132-1.108c-.395-.386-1.028-.379-1.414.016-.387.395-.38,1.027.015,1.414l1.132,1.108c.459.449,1.062.674,1.664.674s1.201-.225,1.653-.671ZM7,5h-2c-.552,0-1,.447-1,1s.448,1,1,1h2c.552,0,1-.447,1-1s-.448-1-1-1Zm0,10h-2c-.552,0-1,.447-1,1s.448,1,1,1h2c.552,0,1-.447,1-1s-.448-1-1-1Zm4-10c-.552,0-1,.447-1,1s.448,1,1,1h4c.552,0,1-.447,1-1s-.448-1-1-1h-4Zm-4,5h-2c-.552,0-1,.447-1,1s.448,1,1,1h2c.552,0,1-.447,1-1s-.448-1-1-1Z"/>
-</svg>
-`;
+  infoButton.alt = "Рецептура";
+  infoButton.src = "./img/header/info.svg";
   infoButton.onclick = function () {};
   menuItemsContainer.appendChild(infoButton);
 
@@ -3881,13 +3875,10 @@ function createNavigationMenu(_data) {
   //   menuItemsContainer.appendChild(notApproveButton);
 
   // Создаем кнопку для утверждения
-  const approveButton = document.createElement("span");
-  approveButton.className = "m9-navigation-menu-icon cursor-pointer";
+  const approveButton = document.createElement("button");
   approveButton.id = "assembleButton";
   approveButton.title = "Утвердить";
-  approveButton.innerHTML = `
-<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" height="30" viewBox="0 0 24 24" width="30" data-name="Layer 1"><path d="m19.95 5.536-3.486-3.486a6.954 6.954 0 0 0 -4.949-2.05h-4.515a5.006 5.006 0 0 0 -5 5v14a5.006 5.006 0 0 0 5 5h10a5.006 5.006 0 0 0 5-5v-8.515a6.954 6.954 0 0 0 -2.05-4.949zm-1.414 1.414a5.018 5.018 0 0 1 .781 1.05h-4.317a1 1 0 0 1 -1-1v-4.317a5.018 5.018 0 0 1 1.05.781zm1.464 12.05a3 3 0 0 1 -3 3h-10a3 3 0 0 1 -3-3v-14a3 3 0 0 1 3-3h4.515c.165 0 .323.032.485.047v4.953a3 3 0 0 0 3 3h4.953c.015.162.047.32.047.485zm-3.276-5.689a1 1 0 0 1 -.035 1.413l-3.589 3.414a3 3 0 0 1 -4.226-.017l-1.54-1.374a1 1 0 0 1 1.332-1.494l1.585 1.414a1 1 0 0 0 1.456.04l3.6-3.431a1 1 0 0 1 1.417.035z"/></svg>
-`;
+  approveButton.innerHTML = `Утвердить`;
   approveButton.onclick = function () {};
   menuItemsContainer.appendChild(approveButton);
 
@@ -3914,28 +3905,24 @@ function createNavigationMenu(_data) {
   //   menuItemsContainer.appendChild(redactButton);
 
   // Создаем кнопку для сохранения
-  const saveButton = document.createElement("span");
-  saveButton.className = "m9-navigation-menu-icon cursor-pointer";
+  const saveButton = document.createElement("button");
   saveButton.id = "collectButton";
   saveButton.title = "Сохранить";
-  saveButton.innerHTML = `
-<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="30" height="30"><path d="M12,10a4,4,0,1,0,4,4A4,4,0,0,0,12,10Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,16Z"/><path d="M22.536,4.122,19.878,1.464A4.966,4.966,0,0,0,16.343,0H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V7.657A4.966,4.966,0,0,0,22.536,4.122ZM17,2.08V3a3,3,0,0,1-3,3H10A3,3,0,0,1,7,3V2h9.343A2.953,2.953,0,0,1,17,2.08ZM22,19a3,3,0,0,1-3,3H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2V3a5.006,5.006,0,0,0,5,5h4a4.991,4.991,0,0,0,4.962-4.624l2.16,2.16A3.02,3.02,0,0,1,22,7.657Z"/></svg>
-`;
+  saveButton.innerHTML = `Сохранить`;
   saveButton.onclick = function () {};
   menuItemsContainer.appendChild(saveButton);
 
   // Создаем кнопку для открытия страницы в новом окне
-  const openPageIcon = document.createElement("span");
-  openPageIcon.className = "m9-navigation-menu-icon cursor-pointer"; // Добавляем класс к иконке
-  openPageIcon.id = "openNewTabButton";
-  openPageIcon.title = "Открыть в полном окне";
-  openPageIcon.innerHTML = `
-  <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="30" height="30"><path d="M9.707,14.293c.391,.391,.391,1.023,0,1.414l-6.293,6.293h4.586c.553,0,1,.448,1,1s-.447,1-1,1H3c-1.654,0-3-1.346-3-3v-5c0-.552,.447-1,1-1s1,.448,1,1v4.586l6.293-6.293c.391-.391,1.023-.391,1.414,0ZM21,0h-5c-.553,0-1,.448-1,1s.447,1,1,1h4.586l-6.293,6.293c-.391,.391-.391,1.023,0,1.414,.195,.195,.451,.293,.707,.293s.512-.098,.707-.293l6.293-6.293v4.586c0,.552,.447,1,1,1s1-.448,1-1V3c0-1.654-1.346-3-3-3Z"/></svg>
-  `;
-  openPageIcon.onclick = function () {
+  const openPageButton = document.createElement("button");
+  const openPageIcon = document.createElement("img");
+  openPageIcon.src = "./img/header/expand.svg";
+  openPageButton.appendChild(openPageIcon);
+  openPageButton.id = "openNewTabButton";
+  openPageButton.title = "Открыть в полном окне";
+  openPageButton.onclick = function () {
     window.open(window.location.href, "_blank");
   };
-  menuItemsContainer.appendChild(openPageIcon);
+  menuItemsContainer.appendChild(openPageButton);
 
   // Добавляем контейнер элементов меню в основной контейнер
   menuContainer.appendChild(menuItemsContainer);
