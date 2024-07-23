@@ -3552,9 +3552,23 @@ const createPhaseInterface = (
       let urlupdate = `https://${domain}/9x/app/php/delete-phase.php?${urlParams}&phase_id=${param}`;
       console.log(urlupdate);
       saveDelete(urlupdate); // Вызываем функцию saveDelete с ID компонента
-      container.remove();
+      if (container) {
+        container.classList.add("animate-remove");
+        setTimeout(() => {
+          setTimeout(() => {
+            container.remove();
+          }, 50);
+        }, 300);
+      }
     } else {
-      container.remove(); // Просто удаляем контейнер, если ID нет
+      if (container) {
+        container.classList.add("animate-remove");
+        setTimeout(() => {
+          setTimeout(() => {
+            container.remove();
+          }, 50);
+        }, 300);
+      }
     }
   };
   containerHeader.appendChild(removePhaseButton);
@@ -3643,6 +3657,22 @@ const createPhaseInterface = (
   detailBox.appendChild(innerBox);
 
   container.appendChild(detailBox);
+
+  phaseNameSelect.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  numberPhaseSelect.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  copyTable.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  removePhaseButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
 
   return container;
 };
