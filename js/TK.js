@@ -3812,6 +3812,10 @@ function createNavigationMenu(_data) {
   //     location.reload();
   //   };
   //   menuItemsContainer.appendChild(refreshPageIcon);
+  // Контейнер для иконок
+  const icons = document.createElement("icons");
+  icons.style.display = "flex";
+  icons.style.flexWrap = "wrap";
 
   // Создаем кнопку для удаления
   const deleteButton = document.createElement("img");
@@ -3821,7 +3825,6 @@ function createNavigationMenu(_data) {
   deleteButton.alt = "Удалить версию";
   deleteButton.src = "./img/trash.svg";
   deleteButton.onclick = function () {};
-  menuItemsContainer.appendChild(deleteButton);
 
   // Создаем кнопку для копирования
   const copyButton = document.createElement("img");
@@ -3831,7 +3834,6 @@ function createNavigationMenu(_data) {
   copyButton.alt = "Копировать";
   copyButton.src = "./img/header/copy.svg";
   copyButton.onclick = function () {};
-  menuItemsContainer.appendChild(copyButton);
 
   // Создаем кнопку для перехода на рецептуру
   const openNewTab = document.createElement("img");
@@ -3843,7 +3845,6 @@ function createNavigationMenu(_data) {
     let recipeId = data.data.recipeId;
     window.open(`https://app.salesap.ru/products/${recipeId}`, "_blank"); // Открываем ссылку в новом окне
   };
-  menuItemsContainer.appendChild(openNewTab);
 
   // Создаем кнопку для дополнительной информации
   const infoButton = document.createElement("img");
@@ -3853,7 +3854,9 @@ function createNavigationMenu(_data) {
   infoButton.alt = "Рецептура";
   infoButton.src = "./img/header/info.svg";
   infoButton.onclick = function () {};
-  menuItemsContainer.appendChild(infoButton);
+
+  icons.append(deleteButton, copyButton, openNewTab, infoButton);
+  menuItemsContainer.appendChild(icons);
 
   // Создаем кнопку для не утверждать
   //   const notApproveButton = document.createElement("span");
@@ -3873,6 +3876,12 @@ function createNavigationMenu(_data) {
   //     }
   //   };
   //   menuItemsContainer.appendChild(notApproveButton);
+  // Контейнер для кнопок
+  const buttons = document.createElement("div");
+  buttons.className = "buttons";
+  buttons.style.display = "flex";
+  buttons.style.flexWrap = "wrap";
+  buttons.style.gap = "12px";
 
   // Создаем кнопку для утверждения
   const approveButton = document.createElement("button");
@@ -3880,7 +3889,6 @@ function createNavigationMenu(_data) {
   approveButton.title = "Утвердить";
   approveButton.innerHTML = `Утвердить`;
   approveButton.onclick = function () {};
-  menuItemsContainer.appendChild(approveButton);
 
   // Создаем кнопку для импорта
   //   const importButton = document.createElement("span");
@@ -3910,7 +3918,6 @@ function createNavigationMenu(_data) {
   saveButton.title = "Сохранить";
   saveButton.innerHTML = `Сохранить`;
   saveButton.onclick = function () {};
-  menuItemsContainer.appendChild(saveButton);
 
   // Создаем кнопку для открытия страницы в новом окне
   const openPageButton = document.createElement("button");
@@ -3922,7 +3929,9 @@ function createNavigationMenu(_data) {
   openPageButton.onclick = function () {
     window.open(window.location.href, "_blank");
   };
-  menuItemsContainer.appendChild(openPageButton);
+
+  buttons.append(approveButton, saveButton, openPageButton);
+  menuItemsContainer.appendChild(buttons);
 
   // Добавляем контейнер элементов меню в основной контейнер
   menuContainer.appendChild(menuItemsContainer);
@@ -4415,6 +4424,7 @@ async function loadJsonFromLocalFile(filePath) {
         const header = document.createElement("h1");
         header.style.textAlign = "center"; // Выравниваем текст по центру
         header.style.margin = "0px";
+        header.style.marginRight = "calc(32px - 12px)";
 
         //-------------------------Условия для версий LTK (Утверждена или Неутверждена)---------------------------
 
@@ -4556,9 +4566,13 @@ async function loadJsonFromLocalFile(filePath) {
 
         const headerInput = document.createElement("input");
         headerInput.className += "form-control m9-input";
+        headerInput.style.maxWidth = "296px";
+        headerInput.style.height = "48px";
 
         const headerInputNumber = document.createElement("input");
         headerInputNumber.className = "m9-input";
+        headerInputNumber.style.maxWidth = "126px";
+        headerInputNumber.style.height = "48px";
         headerInputNumber.type = "number";
         headerInputNumber.min = "0";
         headerInputNumber.max = "100.000";
@@ -4566,6 +4580,8 @@ async function loadJsonFromLocalFile(filePath) {
 
         const headerInputPercents = document.createElement("input");
         headerInputPercents.className = "m9-input";
+        headerInputPercents.style.maxWidth = "92px";
+        headerInputPercents.style.height = "48px";
         headerInputPercents.type = "number";
         headerInputPercents.min = "0";
         headerInputPercents.max = "100";
