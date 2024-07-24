@@ -930,7 +930,8 @@ function createComponentsTable(
   // Создание флекс-контейнера
   let flexContainer = document.createElement("div");
   flexContainer.style.display = "flex";
-  flexContainer.className = "justify-content-between align-items-center flex-wrap";
+  flexContainer.className =
+    "justify-content-between align-items-center flex-wrap";
   flexContainer.style.paddingInline = "32px";
   flexContainer.style.gap = "20px";
   flexContainer.style.flexDirection = "row"; // Изменение направления flex-контейнера на 'row'
@@ -2613,7 +2614,8 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   // Accordion header
   const accordionHeader = document.createElement("div");
   accordionHeader.className +=
-    "accordion-header d-flex justify-content-between align-items-center py-3 cursor-pointer";
+    "accordion-header d-flex flex-wrap justify-content-between align-items-center py-3 cursor-pointer";
+  accordionHeader.style.gap = "10px";
 
   // Header left side: img, text
   const accordionLeft = document.createElement("div");
@@ -2632,6 +2634,28 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
 
   // Header right side: text + switcher, img
   const accordionRight = document.createElement("div");
+  accordionRight.style.display = "flex";
+  accordionRight.style.alignItems = "center";
+  accordionRight.style.justifyContent = "center";
+  accordionRight.style.marginLeft = "auto";
+
+  const procentsTitle = document.createElement("h4");
+  procentsTitle.className += "components__show-procents";
+  procentsTitle.style.margin = "0px";
+  procentsTitle.style.paddingRight = "14px";
+  procentsTitle.textContent = "Показать проценты";
+
+  const switcher = document.createElement("label");
+  switcher.className += "switcher";
+
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.className += "switcher__input";
+  switcher.appendChild(checkbox);
+
+  const slider = document.createElement("span");
+  slider.className += "switcher__slider";
+  switcher.appendChild(slider);
 
   const accordionRightImg = document.createElement("img");
   accordionRightImg.className += "transition";
@@ -2639,7 +2663,7 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   accordionRightImg.src = "./img/accordion/open-arrow.svg";
   accordionRightImg.alt = "Открыть аккордеон";
 
-  accordionRight.appendChild(accordionRightImg);
+  accordionRight.append(procentsTitle, switcher, accordionRightImg);
 
   accordionHeader.append(accordionLeft, accordionRight);
   accordion.appendChild(accordionHeader);
@@ -2660,11 +2684,17 @@ function createCollapsibleTableContainer(data = null, dataversion = null) {
   const accordionContent = document.createElement("div");
   accordionContent.className = "transition content";
 
+  switcher.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
   // Show content on accodion click
   accordionHeader.addEventListener("click", function () {
     detailBox.classList.toggle("active");
     accordionRightImg.classList.toggle("rotate-180");
     accordionHeader.classList.toggle("border-bottom-only");
+    procentsTitle.classList.toggle("active");
+    switcher.classList.toggle("active");
   });
 
   // Создаем контейнер для таблицы
