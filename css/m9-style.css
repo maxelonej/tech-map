@@ -84,6 +84,43 @@
   --ff-700: 'Inter Bold';
 }
 
+.logo-container {
+  display: flex;
+  gap: 12px;
+}
+
+.menu-items-container button[id] {
+  border-radius: 8px;
+  width: 125px;
+  height: 48px;
+  border: 0;
+  outline: none;
+  transition: var(--transition);
+}
+
+#assembleButton:hover {
+  background: var(--gray-hover);
+}
+
+#collectButton {
+  color: var(--white);
+  background: var(--blue);
+}
+
+#collectButton:hover {
+  background: var(--blue-hover);
+}
+
+#openNewTabButton {
+  width: 48px;
+  height: 48px;
+  background: var(--black);
+}
+
+#openNewTabButton:hover {
+  rotate: 180deg;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -826,18 +863,19 @@ h5 {
   justify-content: space-between;
   align-items: center;
   gap: 1.6rem;
-  background-color: #d6d6d6;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 20px;
+  padding: 20px 32px;
   margin-bottom: 0;
+  min-height: 112px;
+  border-bottom: 1px solid rgb(219, 229, 230);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--white);
 }
 
 .m9-navigation-menu-icon {
-  width: 48px;
-  height: 48px;
+  box-sizing: content-box;
   padding: 12px;
+  width: 24px;
+  height: 24px;
   border-radius: 8px;
   cursor: pointer;
   transition: var(--transition);
@@ -866,7 +904,7 @@ h5 {
 .menu-items-container {
   display: flex;
   flex-flow: row wrap;
-  gap: 30px;
+  gap: 12px;
   row-gap: 1rem;
   align-items: center;
   justify-content: end;

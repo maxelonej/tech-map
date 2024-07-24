@@ -3572,7 +3572,7 @@ const createPhaseInterface = (
   const copyTable = document.createElement("img");
   copyTable.className = "m9-navigation-menu-icon"; // Добавляем класс к иконке
   copyTable.alt = "Копировать таблицу";
-  copyTable.src = "./img/copy.svg";
+  copyTable.src = "./img/header/copy.svg";
   copyTable.onclick = function () {
     // Находим таблицу внутри контейнера с классом 'card phase'
     const table = this.closest(".card.phase").querySelector("table");
